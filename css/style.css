@@ -269,6 +269,17 @@ ul { list-style: none; }
   background: var(--bg-gray); border-radius: var(--radius); padding: 36px;
   border: 1px solid var(--border);
 }
+.wechat-card {
+  background: #fff; border: 1px solid var(--blue); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); padding: 22px; margin-bottom: 20px;
+  display: grid; grid-template-columns: 1fr 190px; gap: 20px; align-items: center;
+}
+.wechat-card h3 { font-size: 1.15rem; font-weight: 800; margin: 6px 0 8px; color: var(--text); }
+.wechat-card p { font-size: .9rem; color: var(--text-mid); line-height: 1.65; }
+.wechat-card img {
+  width: 190px; max-width: 100%; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: #fff; display: block;
+}
 .contact-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
 .contact-item:last-child { margin-bottom: 0; }
 .contact-item-icon {
@@ -458,6 +469,7 @@ ul { list-style: none; }
   .cities-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+  .wechat-card { max-width: 620px; }
   .two-col-content { grid-template-columns: 1fr; }
   .sticky-aside { position: static; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -476,6 +488,8 @@ ul { list-style: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .profile-block { flex-direction: column; }
   .profile-photo { width: 100%; height: 260px; }
+  .wechat-card { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .wechat-card img { width: 210px; }
   .why-features { grid-template-columns: 1fr; }
   .page-header h1 { font-size: 1.8rem; }
   .cta-banner h2 { font-size: 1.5rem; }
