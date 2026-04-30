@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咨询记录后台 | rentalinca.com</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body { background: var(--bg-gray); }
+  .admin-shell { max-width: 1180px; margin: 0 auto; padding: 40px 20px; }
+  .admin-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .admin-header h1 { font-size: 1.8rem; }
+  .admin-table-wrap { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: auto; box-shadow: var(--shadow-sm); }
+  .admin-table { width: 100%; border-collapse: collapse; min-width: 980px; }
+  .admin-table th, .admin-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; font-size: .86rem; }
+  .admin-table th { background: var(--blue-light); color: var(--blue-dark); font-weight: 700; }
+  .admin-table td { color: var(--text-mid); }
+  .admin-empty { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; color: var(--text-mid); }
+</style>
+</head>
+<body>
+<div class="admin-shell">
+  <div class="admin-header">
+    <div>
+      <h1>咨询记录后台</h1>
+      <p class="text-mid">Contact form and rental estimate submissions</p>
+    </div>
+    <a href="index.html" class="btn btn-primary">回到首页</a>
+  </div>
+  <div id="adminContent" class="admin-empty">正在读取咨询记录...</div>
+</div>
+<script>
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+async function loadInquiries() {
+  const content = document.getElementById('adminContent');
+  try {
+    const token = localStorage.getItem('adminToken') || '';
+    const response = await fetch('/api/inquiries', {
+      headers: token ? { Authorization: `Bearer ${token}` } : {}
+    });
+    if (response.status === 401) {
+      const entered = prompt('请输入后台访问 token');
+      if (entered) {
+        localStorage.setItem('adminToken', entered);
+        return loadInquiries();
+      }
+      content.textContent = '需要后台访问 token。';
+      return;
+    }
+    const data = await response.json();
+    const inquiries = data.inquiries || [];
+    if (!inquiries.length) {
+      content.textContent = '目前还没有咨询记录。';
+      return;
+    }
+    content.className = 'admin-table-wrap';
+    content.innerHTML = `
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>时间</th>
+            <th>来源</th>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>邮箱</th>
+            <th>需求</th>
+            <th>城市</th>
+            <th>房型/面积</th>
+            <th>估价</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${inquiries.map(item => `
+            <tr>
+              <td>${new Date(item.createdAt).toLocaleString()}</td>
+              <td>${escapeHtml(item.source)}</td>
+              <td>${escapeHtml(item.name)}</td>
+              <td>${escapeHtml(item.phone)}</td>
+              <td>${escapeHtml(item.email)}</td>
+              <td>${escapeHtml(item.serviceNeeded)}</td>
+              <td>${escapeHtml(item.city)}</td>
+              <td>${[item.propertyType, item.areaSqft ? `${item.areaSqft} sqft` : ''].filter(Boolean).map(escapeHtml).join('<br>')}</td>
+              <td>${escapeHtml(item.estimatedRent)}</td>
+              <td>${escapeHtml(item.notes)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  } catch (error) {
+    content.textContent = '后台服务没有启动，或 /api/inquiries 无法访问。';
+  }
+}
+loadInquiries();
+</script>
+</body>
+</html>

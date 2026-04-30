@@ -1,0 +1,13 @@
+{
+  "name": "rentalinca",
+  "version": "1.0.0",
+  "private": true,
+  "description": "rentalinca.com website with rental estimate and inquiry backend",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check js/main.js && node --check js/components.js && node --check api/rental-estimate.js && node --check api/inquiries.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

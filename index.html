@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rentalinca.com | David Dai — 南加州华人出租专家 | Chinese Rental Specialist Southern California</title>
+<meta name="description" content="David Dai，南加州华人出租专家。服务尔湾(Irvine)、阿凯迪亚、罗兰岗等地华人房东及租客。中文全程服务。DRE# 02202763">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left: Copy -->
+      <div>
+        <div class="hero-eyebrow">Southern California · Chinese Rental Specialist</div>
+        <h1>您在南加州的<br><span>华人出租专家</span></h1>
+        <p class="hero-cn">Your Trusted Chinese Rental Specialist in Southern California</p>
+        <p class="hero-desc">出租 · 找房 · 买卖 · 物业管理，以尔湾为中心，服务南加州华人社区，中文全程服务，省心省力。</p>
+        <div class="hero-btns">
+          <a href="landlords.html" class="btn btn-gold btn-lg">🏠 我要出租房子</a>
+          <a href="tenants.html"   class="btn btn-white btn-lg">🔍 我要找租房</a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            中文全程服务
+          </div>
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            DRE# 02202763
+          </div>
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Southern California
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Rental Estimator Tool -->
+      <div>
+        <div class="hero-card" id="rentalTool">
+          <h3>🏡 免费出租估价</h3>
+          <p class="hero-card-sub">Free Rental Estimate — 30 seconds</p>
+
+          <!-- Step 1: City -->
+          <div class="tool-step active" id="toolStep1">
+            <label class="tool-label">选择城市 / Select City</label>
+            <select class="tool-select" id="toolCity">
+              <option value="">请选择城市...</option>
+              <option value="irvine">Irvine 尔湾</option>
+              <option value="los-angeles">Los Angeles 洛杉矶</option>
+              <option value="arcadia">Arcadia 阿凯迪亚</option>
+              <option value="pasadena">Pasadena 帕萨迪纳</option>
+              <option value="san-gabriel">San Gabriel 圣盖博</option>
+              <option value="rowland-heights">Rowland Heights 罗兰岗</option>
+              <option value="diamond-bar">Diamond Bar 钻石吧</option>
+              <option value="chino-hills">Chino Hills 奇诺岗</option>
+              <option value="riverside">Riverside 河滨市</option>
+            </select>
+            <div class="tool-btn-row">
+              <button class="btn btn-white" style="flex:1" id="toolNext1">下一步 →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Type -->
+          <div class="tool-step" id="toolStep2">
+            <label class="tool-label">房型 / Property Type</label>
+            <select class="tool-select" id="toolType">
+              <option value="">请选择房型...</option>
+              <option value="1bd">1室1卫 (1BD/1BA)</option>
+              <option value="2bd">2室2卫 (2BD/2BA)</option>
+              <option value="3bd">3室2卫 (3BD/2BA)</option>
+              <option value="sfr">独立屋 (SFR 4BD+)</option>
+            </select>
+            <label class="tool-label">面积 / Approx. Size</label>
+            <input type="number" class="tool-input" id="toolArea" min="300" max="10000" step="50" placeholder="例如 1200 sqft">
+            <div class="tool-btn-row">
+              <button class="btn btn-white btn-sm" onclick="document.getElementById('toolStep1').classList.add('active');document.getElementById('toolStep2').classList.remove('active')">← 返回</button>
+              <button class="btn btn-white" style="flex:1" id="toolNext2">查看租金 →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Result + Contact -->
+          <div class="tool-step" id="toolStep3">
+            <div class="rent-result">
+              <div style="font-size:.85rem;color:rgba(255,255,255,.7)" id="toolCityName"></div>
+              <div class="rent-range" id="toolRentRange"></div>
+              <div style="font-size:.8rem;color:rgba(255,255,255,.7)" id="toolEstimateMeta"></div>
+              <div class="rent-note">参考月租区间 / Estimated monthly rent range</div>
+            </div>
+            <label class="tool-label">姓名 / Name</label>
+            <input type="text" class="tool-input" id="toolName" placeholder="您的姓名">
+            <label class="tool-label">电话 / Phone</label>
+            <input type="tel" class="tool-input" id="toolPhone" placeholder="(949) 000-0000">
+            <div class="tool-btn-row">
+              <button class="btn btn-gold" style="flex:1" id="toolSubmit">获取详细分析 →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Success -->
+          <div class="tool-step" id="toolStep4">
+            <div style="text-align:center;padding:16px 0">
+              <div style="font-size:2.5rem;margin-bottom:12px">✅</div>
+              <div style="font-size:1.05rem;font-weight:700;margin-bottom:8px">收到！</div>
+              <div style="font-size:.875rem;color:rgba(255,255,255,.75);margin-bottom:20px">David 将在24小时内与您联系，提供详细出租分析报告。</div>
+              <button class="btn btn-white btn-sm" id="toolReset">重新估价</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cities Strip -->
+<div class="cities-strip">
+  <div class="container">
+    <div class="cities-strip-inner">
+      <span class="cities-strip-label">服务城市</span>
+      <a href="cities/irvine.html">Irvine 尔湾</a>
+      <a href="cities/los-angeles.html">Los Angeles 洛杉矶</a>
+      <a href="cities/arcadia.html">Arcadia 阿凯迪亚</a>
+      <a href="cities/pasadena.html">Pasadena 帕萨迪纳</a>
+      <a href="cities/san-gabriel.html">San Gabriel 圣盖博</a>
+      <a href="cities/rowland-heights.html">Rowland Heights 罗兰岗</a>
+      <a href="cities/diamond-bar.html">Diamond Bar 钻石吧</a>
+      <a href="cities/chino-hills.html">Chino Hills 奇诺岗</a>
+      <a href="cities/riverside.html">Riverside 河滨市</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-center">
+      <span class="tag">全套服务 Full Service</span>
+      <h2 class="section-title">无论您需要什么，我都在这里</h2>
+      <p class="section-sub">从出租到买卖，从找房到物业管理，David Dai 为南加州华人社区提供一站式中文地产服务。</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card featured">
+        <div class="service-icon">🏠</div>
+        <h3>房东出租服务<span>For Landlords — 主推服务</span></h3>
+        <p>帮华人房东找到可靠租客，保护房东权益，全程中文服务。定价分析、多平台推广、租客审查、合同协助一应俱全。</p>
+        <ul>
+          <li>市场租金定价分析</li>
+          <li>MLS + Zillow + 微信社群推广</li>
+          <li>专业租客背景审查</li>
+          <li>加州租赁法规保护（AB 1482）</li>
+          <li>物业管理转介服务</li>
+        </ul>
+        <a href="landlords.html" class="service-link">了解详情 →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>租客找房服务<span>For Tenants</span></h3>
+        <p>在南加州找房不再困难。David 帮您筛选房源、安排看房、审阅租约，中文全程陪伴。</p>
+        <ul>
+          <li>精准匹配需求房源</li>
+          <li>中文陪同看房</li>
+          <li>租约条款中文解读</li>
+          <li>申请材料准备指导</li>
+        </ul>
+        <a href="tenants.html" class="service-link">了解详情 →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon gold">🤝</div>
+        <h3>买卖房产服务<span>Buy &amp; Sell</span></h3>
+        <p>无论是买入第一套自住房还是出售投资房产，David 提供专业的买卖服务，帮您做出最优决策。</p>
+        <ul>
+          <li>购房需求分析与选房</li>
+          <li>投资房购置策略</li>
+          <li>卖房定价与营销</li>
+          <li>全程谈判代理</li>
+        </ul>
+        <a href="buy-sell.html" class="service-link">了解详情 →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY DAVID ═══ -->
+<section class="section why-section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-photo">
+        <img src="images/david-dai.jpg" alt="David Dai — Southern California Chinese Rental Specialist" onerror="this.style.display='none'">
+        <div class="why-photo-overlay">
+          <div class="why-photo-name">David Dai</div>
+          <div class="why-photo-title">Southern California Rental Specialist</div>
+          <div class="why-photo-dre">DRE# 02202763 · Universal Elite Realty 环球地产</div>
+        </div>
+      </div>
+      <div>
+        <span class="tag">为什么选择 David</span>
+        <h2 class="section-title">懂您的处境<br>也懂加州的规则</h2>
+        <p class="section-sub">作为常驻尔湾的华人地产经纪人，David 深知每一个华人家庭在南加州置业出租时所面临的独特挑战。</p>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-icon">🗣️</div>
+            <h4>中英双语服务</h4>
+            <p>全程普通话沟通，消除语言障碍，让每个条款都清晰明了。</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">⚖️</div>
+            <h4>加州法规专业</h4>
+            <p>熟悉 AB 1482 租金管控、驱逐程序、押金规定，保护您的权益。</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">🎯</div>
+            <h4>专注出租市场</h4>
+            <p>深耕南加州出租市场，对华人房东和租客需求有深度理解。</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">📍</div>
+            <h4>本地深耕</h4>
+            <p>常驻尔湾，服务整个南加州，熟知每个社区的出租行情。</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">⚡</div>
+            <h4>快速响应</h4>
+            <p>微信、电话随时可联系，24小时内回复，高效处理每个需求。</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">🔗</div>
+            <h4>一站式服务</h4>
+            <p>出租、买卖、物业管理，全程一人对接，省去多方沟通烦恼。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CITIES ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-center">
+      <span class="tag">服务范围</span>
+      <h2 class="section-title">服务整个南加州</h2>
+      <p class="section-sub">覆盖南加州华人聚居的核心城市，无论您的房产在哪里，David 都能为您服务。</p>
+    </div>
+    <div class="cities-grid">
+      <a href="cities/irvine.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🏙️</div>
+        <h3>Irvine<span>尔湾 · 服务中心城市</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$3,000 – $3,800</strong></div>
+      </a>
+      <a href="cities/los-angeles.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🏙️</div>
+        <h3>Los Angeles<span>洛杉矶 · LA 核心市场</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,500 – $3,500</strong></div>
+      </a>
+      <a href="cities/arcadia.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🌳</div>
+        <h3>Arcadia<span>阿凯迪亚 · SGV 核心</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,500 – $3,200</strong></div>
+      </a>
+      <a href="cities/pasadena.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🌆</div>
+        <h3>Pasadena<span>帕萨迪纳 · LA 东北核心</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,700 – $3,500</strong></div>
+      </a>
+      <a href="cities/san-gabriel.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🏮</div>
+        <h3>San Gabriel<span>圣盖博 · 华人生活核心</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,300 – $3,000</strong></div>
+      </a>
+      <a href="cities/rowland-heights.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🏘️</div>
+        <h3>Rowland Heights<span>罗兰岗 · 华人密集区</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,200 – $2,800</strong></div>
+      </a>
+      <a href="cities/diamond-bar.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">💎</div>
+        <h3>Diamond Bar<span>钻石吧 · 家庭首选</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,300 – $2,900</strong></div>
+      </a>
+      <a href="cities/chino-hills.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">⛰️</div>
+        <h3>Chino Hills<span>奇诺岗 · 新兴华人区</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$2,400 – $3,000</strong></div>
+      </a>
+      <a href="cities/riverside.html" class="city-card" style="text-decoration:none;color:inherit">
+        <div class="city-icon">🌅</div>
+        <h3>Riverside<span>河滨市 · 内陆帝国</span></h3>
+        <div class="city-rent">2BD 月租参考：<strong>$1,900 – $2,400</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-center">
+      <span class="tag" style="background:rgba(255,255,255,.15);color:#fff">客户评价</span>
+      <h2 class="section-title">客户怎么说</h2>
+      <p class="section-sub">客户反馈涵盖房东出租、租客找房、买房卖房等不同需求。</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"David 帮我在尔湾出租了一套2室的公寓，定价非常精准，两周内就找到了非常靠谱的租客。整个过程中文沟通，省心太多了！"</p>
+        <div class="testimonial-author">— Chen 先生，Irvine 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我在阿凯迪亚有两套出租房，之前一直自己管，后来找了 David，他帮我审查租客背景，签了正规的加州租约，让我安心多了。"</p>
+        <div class="testimonial-author">— Wang 女士，Arcadia 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"刚来美国，不熟悉租房流程。David 全程中文帮我找房、看房、解释租约，感觉像有个自己人在帮忙，非常感谢！"</p>
+        <div class="testimonial-author">— Li 小姐，Irvine 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"洛杉矶的房子空了快一个月，David 重新看了周边租金，调整照片和广告文案，很快就安排了多组看房。最后租客条件比我预期还好。"</p>
+        <div class="testimonial-author">— Zhao 先生，Los Angeles 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我人在国内，Pasadena 的 condo 全程交给 David 处理。从定价、筛选申请、解释合同到交接钥匙，微信沟通很清楚。"</p>
+        <div class="testimonial-author">— Lin 女士，Pasadena 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"San Gabriel 的房子之前租客筛选不够严格，踩过坑。David 这次帮我把收入、信用、背景都核清楚，流程专业很多。"</p>
+        <div class="testimonial-author">— Huang 先生，San Gabriel 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Rowland Heights 的出租房需要一些小修小补，David 帮我协调拍照和上市时间，没有耽误出租窗口。效率很高。"</p>
+        <div class="testimonial-author">— Xu 女士，Rowland Heights 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Diamond Bar 的独立屋租金不好判断，David 给了几个可比房源和策略，最后价格没有压太低，也很快租出去了。"</p>
+        <div class="testimonial-author">— Wu 先生，Diamond Bar 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Chino Hills 的房子第一次出租，我担心加州租约和押金问题。David 把关键条款逐条解释，签约前后都很稳。"</p>
+        <div class="testimonial-author">— Yang 女士，Chino Hills 房东</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我们想住 Irvine 学区，但预算有限。David 没有只推贵的房源，而是帮我们比较不同小区和通勤，最后找到了合适的。"</p>
+        <div class="testimonial-author">— Zhang 女士，Irvine 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"在 LA 找房信息太杂，很多 listing 回复慢。David 帮我筛掉不合适的，安排一天集中看房，省了很多时间。"</p>
+        <div class="testimonial-author">— Liu 先生，Los Angeles 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我对英文租约很紧张，David 帮我解释押金、维修、提前搬出这些条款，签之前心里踏实很多。"</p>
+        <div class="testimonial-author">— Gao 小姐，Arcadia 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我们刚搬来南加州，对 Pasadena 和 San Gabriel 不熟。David 根据上班路线、孩子学校和生活习惯帮我们缩小范围。"</p>
+        <div class="testimonial-author">— Sun 家庭，Pasadena 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"申请材料一开始准备得很乱，David 告诉我房东通常会看哪些内容，帮我补齐后申请顺利很多。"</p>
+        <div class="testimonial-author">— Ma 先生，San Gabriel 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我带宠物找房，本来以为很难。David 提前确认 pet policy，避免白跑，最后找到房东也能接受的房源。"</p>
+        <div class="testimonial-author">— Zhou 小姐，Rowland Heights 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Riverside 的选择多但距离远，David 帮我把安全、通勤、租金都放在一起比较，最后选择很清楚。"</p>
+        <div class="testimonial-author">— Peng 先生，Riverside 租客</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"第一次在美国买房，贷款、inspection、报价都不熟。David 讲得很细，也不会催我做决定。"</p>
+        <div class="testimonial-author">— He 先生，Irvine 买家</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我们想买投资房，David 不只看房价，还帮我们估租金、空置风险和后续出租策略，思路很实用。"</p>
+        <div class="testimonial-author">— Tang 女士，Los Angeles 买家</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"卖 Arcadia 的房子时，David 对定价很谨慎，给了市场数据和准备清单。上市后的反馈也更新得很及时。"</p>
+        <div class="testimonial-author">— Luo 先生，Arcadia 卖家</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我们换房同时要卖旧房、买新房，时间线很复杂。David 帮我们把 offer、closing 和搬家安排串起来，少走了很多弯路。"</p>
+        <div class="testimonial-author">— Qian 家庭，Pasadena 买卖客户</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"买房时我们最担心学区和未来出租。David 帮我们比较 Irvine、Diamond Bar、Chino Hills，最后选择更符合长期计划。"</p>
+        <div class="testimonial-author">— Guo 女士，Diamond Bar 买家</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"David 帮我卖房前先看了哪些地方值得修、哪些不需要花钱。准备方向很清楚，没有乱做无效装修。"</p>
+        <div class="testimonial-author">— Xie 先生，Chino Hills 卖家</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"我们买 San Gabriel 附近的自住房，David 对华人生活圈和街区差异很熟，带看时讲得很具体。"</p>
+        <div class="testimonial-author">— Fan 家庭，San Gabriel 买家</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"从出租咨询到后来决定出售，David 都能衔接上。先分析租金回报，再看卖房净收益，帮我做了更理性的决定。"</p>
+        <div class="testimonial-author">— Wei 女士，Riverside 卖家</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUICK CONTACT ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="tag">联系 David</span>
+        <h2 class="section-title">免费咨询<br>今天就开始</h2>
+        <p class="section-sub">无论您是房东、租客，还是有买卖需求，欢迎随时联系。微信、电话、邮件均可，24小时内回复。</p>
+        <div class="contact-info-card mt-32">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">电话 Phone</div>
+              <div class="contact-item-value"><a href="tel:9496561278">(949) 656-1278</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">邮箱 Email</div>
+              <div class="contact-item-value"><a href="mailto:daviddairealty@gmail.com">daviddairealty@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label">微信 WeChat</div>
+              <div class="contact-item-value">请电话或邮件联系获取微信</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">服务地区</div>
+              <div class="contact-item-value">Irvine, Los Angeles &amp; Southern California</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:6px">发送咨询 / Send Inquiry</h3>
+        <p style="font-size:.875rem;color:var(--text-mid);margin-bottom:24px">填写表单，David 将在24小时内与您联系。</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 Name *</label>
+              <input type="text" name="name" placeholder="您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label>电话 Phone *</label>
+              <input type="tel" name="phone" placeholder="(949) 000-0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>服务需求 Service Needed</label>
+            <select name="serviceNeeded">
+              <option value="">请选择 / Please select</option>
+              <option>出租房子 Rent Out My Property</option>
+              <option>找租房 Find a Rental</option>
+              <option>买房 Buy a Home</option>
+              <option>卖房 Sell My Home</option>
+              <option>物业管理 Property Management</option>
+              <option>其他 Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>城市 City</label>
+            <select name="city" class="city-select">
+              <option value="">请选择 / Please select</option>
+              <option>Irvine 尔湾</option>
+              <option>Los Angeles 洛杉矶</option>
+              <option>Arcadia 阿凯迪亚</option>
+              <option>Pasadena 帕萨迪纳</option>
+              <option>San Gabriel 圣盖博</option>
+              <option>Rowland Heights 罗兰岗</option>
+              <option>Diamond Bar 钻石吧</option>
+              <option>Chino Hills 奇诺岗</option>
+              <option>Riverside 河滨市</option>
+              <option value="other">其他 Other</option>
+            </select>
+            <input type="text" name="cityOther" class="city-other-input" placeholder="请输入其他城市 / Enter another city">
+          </div>
+          <div class="form-group">
+            <label>备注 Notes（可选）</label>
+            <textarea name="notes" placeholder="简单描述您的需求..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%">提交咨询 Submit →</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          ✅ 已收到您的咨询！David 将在24小时内联系您。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<div class="compliance">
+  David Dai · DRE# 02202763 · Universal Elite Realty 环球地产 · DRE# 02121645 · Irvine &amp; Los Angeles, California<br>
+  Property Management services provided by Universal Elite Realty (DRE# 02121645) · © 2026 rentalinca.com
+</div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
