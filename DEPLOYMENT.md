@@ -22,7 +22,7 @@ Set these environment variables in Vercel:
 
 - `ADMIN_TOKEN`
 - `GITHUB_TOKEN`
-- `GITHUB_DATA_REPO=davard123/rentalinca`
+- `GITHUB_DATA_REPO=davard123/rentalinca-data`
 
 Production API:
 
