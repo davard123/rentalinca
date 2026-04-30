@@ -20,6 +20,8 @@ For Vercel deployment, set:
 - `ADMIN_TOKEN`: password/token for `/admin.html`
 - `GITHUB_TOKEN`: GitHub token with private repo issue read/write access
 - `GITHUB_DATA_REPO`: private repository used for backend records, e.g. `davard123/rentalinca-data`
+- `TELEGRAM_BOT_TOKEN`: Telegram bot token for backend notifications
+- `TELEGRAM_CHAT_ID`: Telegram chat ID that should receive backend notifications
 
 Production customer records are stored as private GitHub Issues so new inquiries do not trigger redeploys and do not become static site files.
 

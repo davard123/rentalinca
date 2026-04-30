@@ -23,6 +23,8 @@ Set these environment variables in Vercel:
 - `ADMIN_TOKEN`
 - `GITHUB_TOKEN`
 - `GITHUB_DATA_REPO=davard123/rentalinca-data`
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
 
 Production API:
 

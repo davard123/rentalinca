@@ -194,10 +194,57 @@ async function prependGithubRecord(filePath, record, message) {
   await createGithubRecord(getRecordKind(filePath), record, message);
 }
 
+function formatTelegramRecord(recordKind, record) {
+  if (recordKind === 'rental-estimate') {
+    return [
+      '🏠 New Rental Estimate',
+      `City: ${record.cityName || record.cityKey || ''}`,
+      `Type: ${record.propertyTypeLabel || record.propertyType || ''}`,
+      `Area: ${record.areaSqft || ''} sqft`,
+      `Range: ${record.displayRange || ''}`,
+      `Time: ${record.createdAt || ''}`
+    ].join('\n');
+  }
+
+  return [
+    '📋 New Inquiry',
+    `Name: ${record.name || ''}`,
+    `Phone: ${record.phone || ''}`,
+    `Email: ${record.email || ''}`,
+    `Service: ${record.serviceNeeded || record.source || ''}`,
+    `City: ${record.city || ''}`,
+    `Type/Area: ${[record.propertyType, record.areaSqft ? `${record.areaSqft} sqft` : ''].filter(Boolean).join(' / ')}`,
+    `Estimate: ${record.estimatedRent || ''}`,
+    `Notes: ${record.notes || ''}`,
+    `Time: ${record.createdAt || ''}`
+  ].join('\n');
+}
+
+async function sendTelegramNotification(recordKind, record) {
+  const botToken = String(process.env.TELEGRAM_BOT_TOKEN || '').trim();
+  const chatId = String(process.env.TELEGRAM_CHAT_ID || '').trim();
+  if (!botToken || !chatId) return;
+
+  const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: formatTelegramRecord(recordKind, record),
+      disable_web_page_preview: true
+    })
+  });
+
+  if (!response.ok) {
+    console.error(`Telegram notification failed: ${response.status}`);
+  }
+}
+
 module.exports = {
   createEstimate,
   prependGithubRecord,
   readGithubJson,
+  sendTelegramNotification,
   sanitizeInquiry,
   sendJson
 };

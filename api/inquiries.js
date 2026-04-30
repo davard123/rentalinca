@@ -1,4 +1,4 @@
-const { prependGithubRecord, sanitizeInquiry, sendJson } = require('./_shared');
+const { prependGithubRecord, sanitizeInquiry, sendJson, sendTelegramNotification } = require('./_shared');
 
 module.exports = async function handler(req, res) {
   if (req.method === 'POST') {
@@ -9,6 +9,7 @@ module.exports = async function handler(req, res) {
         inquiry,
         `Record inquiry ${inquiry.id}`
       );
+      await sendTelegramNotification('inquiry', inquiry);
       sendJson(res, 201, { ok: true, id: inquiry.id });
     } catch (error) {
       sendJson(res, error.statusCode || 400, { ok: false, error: error.message || 'Invalid inquiry payload' });

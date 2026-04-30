@@ -1,4 +1,4 @@
-const { createEstimate, prependGithubRecord, sendJson } = require('./_shared');
+const { createEstimate, prependGithubRecord, sendJson, sendTelegramNotification } = require('./_shared');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -13,6 +13,7 @@ module.exports = async function handler(req, res) {
       estimate,
       `Record rental estimate ${estimate.id}`
     );
+    await sendTelegramNotification('rental-estimate', estimate);
     sendJson(res, 201, { ok: true, estimate });
   } catch (error) {
     sendJson(res, error.statusCode || 400, { ok: false, error: error.message || 'Invalid rental estimate payload' });
