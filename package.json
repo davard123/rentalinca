@@ -8,6 +8,6 @@
     "check": "node --check server.js && node --check js/main.js && node --check js/components.js && node --check api/rental-estimate.js && node --check api/inquiries.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": "22.x"
   }
 }
