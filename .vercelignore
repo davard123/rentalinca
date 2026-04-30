@@ -1,0 +1,9 @@
+.git
+.vercel
+node_modules
+data/
+README.md
+DEPLOYMENT.md
+server.js
+.env
+.env.*
