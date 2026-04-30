@@ -118,14 +118,16 @@ ul { list-style: none; }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-mid) 100%);
+  background: linear-gradient(90deg, rgba(13,61,107,.94) 0%, rgba(13,61,107,.82) 44%, rgba(26,95,168,.46) 100%),
+              url('../images/visual-hero.jpg') center/cover no-repeat;
   color: #fff; padding: 100px 0 80px; position: relative; overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: radial-gradient(circle at 72% 18%, rgba(255,209,102,.24), transparent 28%),
+              linear-gradient(to bottom, rgba(0,0,0,0) 62%, rgba(0,0,0,.16) 100%);
 }
-.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
 .hero-eyebrow { font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.7); margin-bottom: 16px; }
 .hero h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
 .hero h1 span { color: #FFD166; }
@@ -178,6 +180,11 @@ ul { list-style: none; }
   background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 32px 28px; transition: all .25s; position: relative; overflow: hidden;
 }
+.service-card-photo {
+  margin: -32px -28px 24px; height: 160px; overflow: hidden; background: var(--blue-light);
+}
+.service-card-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.service-card:hover .service-card-photo img { transform: scale(1.04); }
 .service-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: var(--blue); border-radius: var(--radius) var(--radius) 0 0; opacity: 0; transition: opacity .25s;
@@ -201,6 +208,25 @@ ul { list-style: none; }
 .service-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; font-size: .8rem; }
 .service-link { font-size: .875rem; font-weight: 600; color: var(--blue); display: inline-flex; align-items: center; gap: 4px; }
 .service-link:hover { gap: 8px; }
+
+/* ── VISUAL SHOWCASE ── */
+.visual-showcase { padding-top: 0; }
+.visual-grid { display: grid; grid-template-columns: 1.25fr .85fr .85fr; gap: 18px; }
+.visual-panel {
+  min-height: 340px; border-radius: 18px; overflow: hidden; position: relative;
+  background-size: cover; background-position: center; box-shadow: var(--shadow);
+}
+.visual-panel.small { min-height: 340px; }
+.visual-panel::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,61,107,.82) 0%, rgba(13,61,107,.16) 60%, rgba(13,61,107,0) 100%);
+}
+.visual-panel-copy { position: absolute; left: 26px; right: 26px; bottom: 24px; color: #fff; }
+.visual-panel-copy h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+.visual-panel-copy p { font-size: .92rem; opacity: .88; line-height: 1.55; }
+.visual-home { background-image: url('../images/visual-home-exterior.jpg'); }
+.visual-interior { background-image: url('../images/visual-interior.jpg'); }
+.visual-family { background-image: url('../images/visual-family-tour.jpg'); }
 
 /* ── WHY DAVID ── */
 .why-section { background: var(--bg-gray); }
@@ -321,8 +347,27 @@ ul { list-style: none; }
 /* ── PAGE HEADER ── */
 .page-header {
   background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
-  color: #fff; padding: 64px 0 56px;
+  color: #fff; padding: 70px 0 62px; position: relative; overflow: hidden;
 }
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 76% 30%, rgba(255,209,102,.22), transparent 30%);
+}
+.page-header .container { position: relative; z-index: 1; }
+.page-header-photo {
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.page-header-photo::before {
+  background: linear-gradient(90deg, rgba(13,61,107,.94) 0%, rgba(13,61,107,.78) 48%, rgba(13,61,107,.36) 100%);
+}
+.page-header-landlords,
+.page-header-city,
+.page-header-cities { background-image: url('../images/visual-home-exterior.jpg'); }
+.page-header-tenants { background-image: url('../images/visual-interior.jpg'); }
+.page-header-buy-sell { background-image: url('../images/visual-family-tour.jpg'); }
+.page-header-management { background-image: url('../images/visual-apartment.jpg'); }
+.page-header-about { background-image: url('../images/visual-luxury-home.jpg'); }
+.page-header-contact { background-image: url('../images/visual-interior.jpg'); }
 .page-header .tag { background: rgba(255,255,255,.15); color: #fff; }
 .page-header h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
 .page-header h1 span { display: block; font-size: 1.2rem; font-weight: 400; opacity: .8; margin-top: 4px; }
@@ -467,6 +512,8 @@ ul { list-style: none; }
   .why-grid { grid-template-columns: 1fr; }
   .why-photo { min-height: 320px; }
   .cities-grid { grid-template-columns: repeat(2, 1fr); }
+  .visual-grid { grid-template-columns: 1fr; }
+  .visual-panel, .visual-panel.small { min-height: 280px; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .wechat-card { max-width: 620px; }
@@ -484,7 +531,9 @@ ul { list-style: none; }
   .hero { padding: 72px 0 56px; }
   .hero h1 { font-size: 1.75rem; }
   .hero-btns { flex-direction: column; }
+  .service-card-photo { height: 130px; }
   .cities-grid { grid-template-columns: 1fr 1fr; }
+  .visual-panel, .visual-panel.small { min-height: 230px; }
   .footer-grid { grid-template-columns: 1fr; }
   .profile-block { flex-direction: column; }
   .profile-photo { width: 100%; height: 260px; }
