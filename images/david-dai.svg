@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">David Dai profile placeholder</title>
+  <desc id="desc">Profile placeholder for David Dai, Southern California Chinese Rental Specialist</desc>
+  <rect width="640" height="640" rx="36" fill="#e7f0fb"/>
+  <circle cx="320" cy="230" r="118" fill="#1a5fa8"/>
+  <path d="M132 556c24-104 96-166 188-166s164 62 188 166" fill="#0d3d6b"/>
+  <circle cx="278" cy="222" r="14" fill="#ffffff"/>
+  <circle cx="362" cy="222" r="14" fill="#ffffff"/>
+  <path d="M274 284c28 28 64 28 92 0" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+  <text x="320" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#0d3d6b">David Dai</text>
+  <text x="320" y="604" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#ffffff">DRE# 02202763</text>
+</svg>
