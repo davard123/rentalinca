@@ -306,7 +306,7 @@ ul { list-style: none; }
 }
 .city-card-photo::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(7,26,46,.86) 0%, rgba(7,26,46,.28) 60%, rgba(7,26,46,.08) 100%);
+  background: linear-gradient(to top, rgba(7,26,46,.68) 0%, rgba(7,26,46,.18) 58%, rgba(255,255,255,.06) 100%);
 }
 .city-card-photo > * { position: relative; z-index: 1; }
 .city-card-photo .city-icon {
@@ -321,12 +321,12 @@ ul { list-style: none; }
 .city-card-irvine,
 .city-card-la,
 .city-card-pasadena,
-.city-card-sg { background-image: url('../images/visual-apartment.jpg'); }
+.city-card-sg { background-image: url('../images/visual-neighborhood-homes.jpg'); }
 .city-card-arcadia,
 .city-card-rowland,
 .city-card-db,
-.city-card-chino { background-image: url('../images/visual-home-exterior.jpg'); }
-.city-card-riverside { background-image: url('../images/visual-luxury-home.jpg'); }
+.city-card-chino { background-image: url('../images/visual-suburban-house.jpg'); }
+.city-card-riverside { background-image: url('../images/visual-neighborhood-homes.jpg'); }
 
 /* ── TESTIMONIALS ── */
 .testimonials-section { background: var(--blue-dark); color: #fff; }
@@ -419,11 +419,11 @@ ul { list-style: none; }
   background-size: cover; background-position: center; background-repeat: no-repeat;
 }
 .page-header-photo::before {
-  background: linear-gradient(90deg, rgba(13,61,107,.94) 0%, rgba(13,61,107,.78) 48%, rgba(13,61,107,.36) 100%);
+  background: linear-gradient(90deg, rgba(13,61,107,.76) 0%, rgba(13,61,107,.54) 48%, rgba(13,61,107,.22) 100%);
 }
 .page-header-landlords,
 .page-header-city,
-.page-header-cities { background-image: url('../images/visual-home-exterior.jpg'); }
+.page-header-cities { background-image: url('../images/visual-neighborhood-homes.jpg'); }
 .page-header-tenants { background-image: url('../images/visual-interior.jpg'); }
 .page-header-buy-sell { background-image: url('../images/visual-family-tour.jpg'); }
 .page-header-management { background-image: url('../images/visual-apartment.jpg'); }
