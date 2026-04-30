@@ -18,7 +18,8 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'GET') {
     const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || req.query?.token || '';
-    if (process.env.ADMIN_TOKEN && token !== process.env.ADMIN_TOKEN) {
+    const adminToken = String(process.env.ADMIN_TOKEN || '').trim();
+    if (adminToken && token.trim() !== adminToken) {
       sendJson(res, 401, { ok: false, error: 'Unauthorized' });
       return;
     }

@@ -215,7 +215,7 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === 'GET' && url.pathname === '/api/inquiries') {
     const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || url.searchParams.get('token') || '';
-    if (ADMIN_TOKEN && token !== ADMIN_TOKEN) {
+    if (ADMIN_TOKEN && token.trim() !== ADMIN_TOKEN.trim()) {
       sendJson(res, 401, { ok: false, error: 'Unauthorized' });
       return;
     }
