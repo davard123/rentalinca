@@ -310,8 +310,9 @@ ul { list-style: none; }
 }
 .city-card-photo > * { position: relative; z-index: 1; }
 .city-card-photo .city-icon {
-  font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 800;
+  font-size: .95rem; letter-spacing: 0; font-weight: 800;
   color: #FFD166; margin-bottom: 54px;
+  text-shadow: 0 1px 12px rgba(0,0,0,.35);
 }
 .city-card-photo h3 { color: #fff; font-size: 1.15rem; }
 .city-card-photo h3 span { color: rgba(255,255,255,.76); }
