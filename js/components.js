@@ -42,7 +42,7 @@ function buildNav() {
         <a href="${BASE_PATH}about.html">${ZH.about}</a>
       </div>
       <div class="nav-cta">
-        <span class="nav-phone nav-phone-secondary"><a href="tel:9496561278">(949) 656-1278</a></span>
+        <span class="nav-phone nav-phone-secondary">(949) 656-1278</span>
         <a href="${BASE_PATH}contact.html" class="btn btn-primary btn-sm">${ZH.wechatScan}</a>
       </div>
       <div class="nav-hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
@@ -60,7 +60,7 @@ function buildNav() {
     <a href="${BASE_PATH}cases.html">${ZH.cases} Cases</a>
     <a href="${BASE_PATH}about.html">${ZH.about} About</a>
     <a href="${BASE_PATH}contact.html" style="color:var(--green);font-weight:800">${ZH.wechatScan}</a>
-    <a href="tel:9496561278" style="color:var(--text-mid)">\u7535\u8bdd: (949) 656-1278</a>
+    <span style="color:var(--text-mid)">\u7535\u8bdd: (949) 656-1278</span>
   </div>
 </nav>`;
 }
@@ -73,8 +73,8 @@ function buildFooter() {
     <p>${ZH.ctaBody}</p>
     <div class="cta-banner-btns">
       <a href="${BASE_PATH}contact.html" class="btn btn-white btn-lg">${ZH.wechatScan}</a>
-      <a href="tel:9496561278" class="btn btn-outline btn-lg">${ZH.phoneAssist}</a>
     </div>
+    <p class="cta-contact-lines">\u7535\u8bdd: (949) 656-1278 &nbsp;&nbsp;|&nbsp;&nbsp; \u90ae\u7bb1: daviddairealty@gmail.com</p>
   </div>
 </section>
 
@@ -106,8 +106,8 @@ function buildFooter() {
       </div>
       <div class="footer-col">
         <h4>${ZH.footerAssist} Contact</h4>
-        <a href="tel:9496561278">\u7535\u8bdd: (949) 656-1278</a>
-        <a href="mailto:daviddairealty@gmail.com">\u90ae\u7bb1: daviddairealty@gmail.com</a>
+        <span>\u7535\u8bdd: (949) 656-1278</span>
+        <span>\u90ae\u7bb1: daviddairealty@gmail.com</span>
         <a href="${BASE_PATH}contact.html">${ZH.footerPage}</a>
         <a href="${BASE_PATH}about.html">${ZH.footerAboutDavid}</a>
       </div>
@@ -140,9 +140,8 @@ function prioritizeHomeContact() {
         <p>\u53d1\u623f\u6e90\u56fe\u7247\u3001\u6237\u578b\u3001\u9884\u7b97\u3001\u533a\u57df\u504f\u597d\uff0c\u5fae\u4fe1\u6c9f\u901a\u901a\u5e38\u6700\u5feb\uff0c\u4e5f\u66f4\u9002\u5408\u534e\u4eba\u5ba2\u6237\u65e5\u5e38\u54a8\u8be2\u3002</p>
         <div class="wechat-actions">
           <a href="contact.html" class="btn btn-primary">\u67e5\u770b\u5927\u56fe\u4e8c\u7ef4\u7801</a>
-          <a href="tel:9496561278" class="btn btn-white">\u7535\u8bdd\u8054\u7cfb</a>
         </div>
-        <div class="contact-support-note">\u4e5f\u53ef\u4ee5\u76f4\u63a5\u7535\u8bdd\u6216\u90ae\u7bb1\u8054\u7cfb\u3002</div>
+        <div class="contact-support-note">\u7535\u8bdd: (949) 656-1278<br>\u90ae\u7bb1: daviddairealty@gmail.com</div>
       </div>
       <img src="images/wechat-qr.jpg" alt="David Dai WeChat QR code">
     </div>
@@ -158,14 +157,14 @@ function prioritizeHomeContact() {
         <div class="contact-item-icon">\u{1F4DE}</div>
         <div>
           <div class="contact-item-label">\u7535\u8bdd Phone</div>
-          <div class="contact-item-value"><a href="tel:9496561278">(949) 656-1278</a></div>
+          <div class="contact-item-value">(949) 656-1278</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-item-icon">\u2709\uFE0F</div>
         <div>
           <div class="contact-item-label">\u90ae\u7bb1 Email</div>
-          <div class="contact-item-value"><a href="mailto:daviddairealty@gmail.com">daviddairealty@gmail.com</a></div>
+          <div class="contact-item-value">daviddairealty@gmail.com</div>
         </div>
       </div>
       <div class="contact-item">
@@ -207,9 +206,8 @@ function prioritizeContactPage() {
         <p>\u534e\u4eba\u5ba2\u6237\u6700\u5e38\u7528\u7684\u8054\u7cfb\u65b9\u5f0f\u3002\u5fae\u4fe1\u66f4\u65b9\u4fbf\u53d1\u623f\u6e90\u3001\u9884\u7b97\u3001\u5b66\u533a\u3001\u901a\u52e4\u548c\u8d37\u6b3e\u95ee\u9898\uff0c\u4e5f\u66f4\u9002\u5408\u540e\u7eed\u6301\u7eed\u6c9f\u901a\u3002</p>
         <div class="wechat-actions">
           <a href="images/wechat-qr.jpg" class="btn btn-primary">\u6253\u5f00\u4e8c\u7ef4\u7801\u5927\u56fe</a>
-          <a href="tel:9496561278" class="btn btn-white">\u7535\u8bdd\u8054\u7cfb</a>
         </div>
-        <div class="contact-support-note">\u4e5f\u53ef\u4ee5\u76f4\u63a5\u7535\u8bdd\u6216\u90ae\u7bb1\u8054\u7cfb\u3002</div>
+        <div class="contact-support-note">\u7535\u8bdd: (949) 656-1278<br>\u90ae\u7bb1: daviddairealty@gmail.com</div>
       </div>
       <img src="images/wechat-qr.jpg" alt="David Dai WeChat QR code">
     </div>
@@ -225,14 +223,14 @@ function prioritizeContactPage() {
         <div class="contact-item-icon">\u{1F4DE}</div>
         <div>
           <div class="contact-item-label">\u7535\u8bdd Phone</div>
-          <div class="contact-item-value"><a href="tel:9496561278">(949) 656-1278</a></div>
+          <div class="contact-item-value">(949) 656-1278</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-item-icon">\u2709\uFE0F</div>
         <div>
           <div class="contact-item-label">\u90ae\u7bb1 Email</div>
-          <div class="contact-item-value"><a href="mailto:daviddairealty@gmail.com">daviddairealty@gmail.com</a></div>
+          <div class="contact-item-value">daviddairealty@gmail.com</div>
         </div>
       </div>
       <div class="contact-item">

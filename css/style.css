@@ -446,6 +446,12 @@ ul { list-style: none; }
   margin-top: 14px;
   font-size: .82rem;
   color: var(--text-light);
+  line-height: 1.8;
+}
+.cta-contact-lines {
+  margin-top: 18px;
+  font-size: .92rem;
+  color: rgba(255,255,255,.84);
 }
 .contact-secondary-card {
   background: var(--bg-gray);
@@ -577,6 +583,7 @@ ul { list-style: none; }
 .footer-brand .dre-info { margin-top: 16px; font-size: .78rem; opacity: .5; line-height: 1.8; }
 .footer-col h4 { color: #fff; font-size: .9rem; font-weight: 700; margin-bottom: 14px; }
 .footer-col a { display: block; font-size: .875rem; color: rgba(255,255,255,.65); margin-bottom: 8px; transition: color .2s; }
+.footer-col span { display: block; font-size: .875rem; color: rgba(255,255,255,.65); margin-bottom: 8px; }
 .footer-col a:hover { color: #fff; }
 .footer-col-wechat { max-width: 240px; }
 .footer-wechat-copy {
