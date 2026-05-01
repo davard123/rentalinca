@@ -17,6 +17,7 @@ const NAV_HTML = `
         <a href="${BASE_PATH}buy-sell.html">买卖房产</a>
         <a href="${BASE_PATH}property-management.html">物业管理</a>
         <a href="${BASE_PATH}cities.html">城市指南</a>
+        <a href="${BASE_PATH}cases.html">成交案例</a>
         <a href="${BASE_PATH}about.html">关于我</a>
       </div>
       <div class="nav-cta">
@@ -35,6 +36,7 @@ const NAV_HTML = `
     <a href="${BASE_PATH}buy-sell.html">🤝 买卖房产 Buy &amp; Sell</a>
     <a href="${BASE_PATH}property-management.html">🔧 物业管理 Property Mgmt</a>
     <a href="${BASE_PATH}cities.html">📍 城市指南 City Guides</a>
+    <a href="${BASE_PATH}cases.html">📋 成交案例 Cases</a>
     <a href="${BASE_PATH}about.html">👤 关于我 About</a>
     <a href="${BASE_PATH}contact.html" style="color:var(--blue);font-weight:700">📋 免费咨询 Contact</a>
     <a href="tel:9496561278" style="color:var(--blue)">📞 (949) 656-1278</a>
