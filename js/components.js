@@ -12,14 +12,14 @@ const ZH = {
   cases: '\u6210\u4ea4\u6848\u4f8b',
   about: '\u5173\u4e8e\u6211',
   wechatScan: '\u626b\u7801\u52a0\u5fae\u4fe1',
-  phoneAssist: '\u7535\u8bdd\u8f85\u52a9\u8054\u7cfb',
-  wechatFirst: '\u5fae\u4fe1\u4f18\u5148',
+  phoneAssist: '\u7535\u8bdd\u8054\u7cfb',
+  wechatFirst: '\u626b\u7801\u8054\u7cfb',
   footerWechatCopy: '\u626b\u7801\u5373\u53ef\u76f4\u63a5\u6dfb\u52a0\u5fae\u4fe1\uff0c\u54a8\u8be2\u51fa\u79df\u3001\u4e70\u5356\u3001\u8d37\u6b3e\u6216\u7269\u4e1a\u7ba1\u7406\u90fd\u66f4\u65b9\u4fbf\u3002',
-  footerAssist: '\u8f85\u52a9\u8054\u7cfb',
+  footerAssist: '\u5176\u4ed6\u8054\u7cfb\u65b9\u5f0f',
   footerPage: '\u8054\u7cfb\u9875\u9762',
   footerAboutDavid: '\u5173\u4e8e David Dai',
-  ctaTitle: '\u5148\u52a0\u5fae\u4fe1\uff0c\u66f4\u5feb\u6c9f\u901a',
-  ctaBody: '\u534e\u4eba\u5ba2\u6237\u901a\u5e38\u76f4\u63a5\u5fae\u4fe1\u6c9f\u901a\u6700\u5feb\u3002\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\uff0c\u7535\u8bdd\u4f5c\u4e3a\u8f85\u52a9\u8054\u7cfb\u65b9\u5f0f\u4fdd\u7559\u3002'
+  ctaTitle: '\u626b\u7801\u8054\u7cfb\uff0c\u6c9f\u901a\u66f4\u65b9\u4fbf',
+  ctaBody: '\u6b22\u8fce\u76f4\u63a5\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\uff0c\u53d1\u623f\u6e90\u3001\u9884\u7b97\u3001\u533a\u57df\u548c\u9700\u6c42\u90fd\u66f4\u65b9\u4fbf\u3002\u4e5f\u53ef\u4ee5\u7535\u8bdd\u8054\u7cfb\u3002'
 };
 
 function buildNav() {
@@ -60,7 +60,7 @@ function buildNav() {
     <a href="${BASE_PATH}cases.html">${ZH.cases} Cases</a>
     <a href="${BASE_PATH}about.html">${ZH.about} About</a>
     <a href="${BASE_PATH}contact.html" style="color:var(--green);font-weight:800">${ZH.wechatScan}</a>
-    <a href="tel:9496561278" style="color:var(--text-mid)">${ZH.phoneAssist}: (949) 656-1278</a>
+    <a href="tel:9496561278" style="color:var(--text-mid)">\u7535\u8bdd: (949) 656-1278</a>
   </div>
 </nav>`;
 }
@@ -90,7 +90,7 @@ function buildFooter() {
         <p class="dre-info">David Dai · DRE# 02202763<br>Universal Elite Realty \u73af\u7403\u5730\u4ea7 · DRE# 02121645<br>Irvine &amp; Los Angeles, California</p>
       </div>
       <div class="footer-col footer-col-wechat">
-        <h4>${ZH.wechatFirst} WeChat First</h4>
+        <h4>${ZH.wechatFirst} WeChat</h4>
         <p class="footer-wechat-copy">${ZH.footerWechatCopy}</p>
         <a href="${BASE_PATH}contact.html" class="footer-wechat-card">
           <img src="${BASE_PATH}images/wechat-qr.jpg" alt="David Dai WeChat QR code">
@@ -131,18 +131,18 @@ function prioritizeHomeContact() {
 
   leftCol.innerHTML = `
     <span class="tag">\u8054\u7cfb David</span>
-    <h2 class="section-title">\u5148\u52a0\u5fae\u4fe1<br>\u6c9f\u901a\u66f4\u5feb</h2>
-    <p class="section-sub">\u5982\u679c\u60a8\u662f\u623f\u4e1c\u3001\u79df\u5ba2\uff0c\u6216\u8005\u6709\u4e70\u5356\u3001\u8d37\u6b3e\u3001\u7269\u4e1a\u7ba1\u7406\u9700\u6c42\uff0c\u5efa\u8bae\u5148\u626b\u7801\u52a0\u5fae\u4fe1\u3002\u7535\u8bdd\u548c\u90ae\u7bb1\u4fdd\u7559\uff0c\u4f5c\u4e3a\u8f85\u52a9\u8054\u7cfb\u65b9\u5f0f\u3002</p>
+    <h2 class="section-title">\u626b\u7801\u52a0\u5fae\u4fe1<br>\u6c9f\u901a\u66f4\u65b9\u4fbf</h2>
+    <p class="section-sub">\u5982\u679c\u60a8\u662f\u623f\u4e1c\u3001\u79df\u5ba2\uff0c\u6216\u8005\u6709\u4e70\u5356\u3001\u8d37\u6b3e\u3001\u7269\u4e1a\u7ba1\u7406\u9700\u6c42\uff0c\u6b22\u8fce\u76f4\u63a5\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\u3002\u4e5f\u53ef\u4ee5\u7535\u8bdd\u6216\u90ae\u7bb1\u8054\u7cfb\u3002</p>
     <div class="wechat-priority-card mt-32">
       <div class="wechat-priority-copy">
-        <div class="contact-item-label">\u5fae\u4fe1\u4f18\u5148 WeChat First</div>
+        <div class="contact-item-label">\u5fae\u4fe1 WeChat</div>
         <h3>\u626b\u7801\u6dfb\u52a0 David \u5fae\u4fe1</h3>
         <p>\u53d1\u623f\u6e90\u56fe\u7247\u3001\u6237\u578b\u3001\u9884\u7b97\u3001\u533a\u57df\u504f\u597d\uff0c\u5fae\u4fe1\u6c9f\u901a\u901a\u5e38\u6700\u5feb\uff0c\u4e5f\u66f4\u9002\u5408\u534e\u4eba\u5ba2\u6237\u65e5\u5e38\u54a8\u8be2\u3002</p>
         <div class="wechat-actions">
           <a href="contact.html" class="btn btn-primary">\u67e5\u770b\u5927\u56fe\u4e8c\u7ef4\u7801</a>
-          <a href="tel:9496561278" class="btn btn-white">\u7535\u8bdd\u8f85\u52a9\u8054\u7cfb</a>
+          <a href="tel:9496561278" class="btn btn-white">\u7535\u8bdd\u8054\u7cfb</a>
         </div>
-        <div class="contact-support-note">\u7535\u8bdd\u4fdd\u7559\u4e3a\u8f85\u52a9\u8054\u7cfb\u65b9\u5f0f\uff1a\u5982\u679c\u5f53\u4e0b\u4e0d\u65b9\u4fbf\u5fae\u4fe1\uff0c\u518d\u7535\u8bdd\u8054\u7cfb\u3002</div>
+        <div class="contact-support-note">\u4e5f\u53ef\u4ee5\u76f4\u63a5\u7535\u8bdd\u6216\u90ae\u7bb1\u8054\u7cfb\u3002</div>
       </div>
       <img src="images/wechat-qr.jpg" alt="David Dai WeChat QR code">
     </div>
@@ -188,7 +188,7 @@ function prioritizeContactPage() {
   if (!window.location.pathname.endsWith('/contact.html')) return;
   const headerDesc = document.querySelector('.page-header p');
   if (headerDesc) {
-    headerDesc.textContent = '\u5efa\u8bae\u5148\u626b\u7801\u52a0\u5fae\u4fe1\uff0c\u7535\u8bdd\u548c\u90ae\u4ef6\u4f5c\u4e3a\u8f85\u52a9\u8054\u7cfb\u6e20\u9053\uff0c24\u5c0f\u65f6\u5185\u56de\u590d\u3002';
+    headerDesc.textContent = '\u6b22\u8fce\u76f4\u63a5\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\uff0c\u4e5f\u53ef\u4ee5\u7535\u8bdd\u6216\u90ae\u4ef6\u8054\u7cfb\uff0c24\u5c0f\u65f6\u5185\u56de\u590d\u3002';
   }
 
   const contactGrid = document.querySelector('.contact-grid');
@@ -199,17 +199,17 @@ function prioritizeContactPage() {
 
   leftCol.innerHTML = `
     <h2 class="section-title">\u8054\u7cfb\u65b9\u5f0f</h2>
-    <p style="color:var(--text-mid);margin-bottom:32px">\u5fae\u4fe1\u662f\u6700\u63a8\u8350\u7684\u8054\u7cfb\u65b9\u5f0f\u3002\u65e0\u8bba\u60a8\u8981\u51fa\u79df\u3001\u627e\u623f\u3001\u4e70\u5356\u3001\u8d37\u6b3e\u8fd8\u662f\u7269\u4e1a\u7ba1\u7406\uff0c\u5148\u626b\u7801\u52a0\u5fae\u4fe1\u901a\u5e38\u6700\u5feb\u3002</p>
+    <p style="color:var(--text-mid);margin-bottom:32px">\u65e0\u8bba\u60a8\u662f\u51fa\u79df\u3001\u627e\u623f\u3001\u4e70\u5356\u3001\u8d37\u6b3e\u8fd8\u662f\u7269\u4e1a\u7ba1\u7406\uff0c\u90fd\u53ef\u4ee5\u76f4\u63a5\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\uff0c\u53d1\u6d88\u606f\u6c9f\u901a\u4f1a\u66f4\u65b9\u4fbf\u3002</p>
     <div class="wechat-priority-card">
       <div class="wechat-priority-copy">
-        <div class="contact-item-label">\u5fae\u4fe1\u4f18\u5148 WeChat First</div>
+        <div class="contact-item-label">\u5fae\u4fe1 WeChat</div>
         <h3>\u626b\u7801\u6dfb\u52a0 David \u5fae\u4fe1</h3>
         <p>\u534e\u4eba\u5ba2\u6237\u6700\u5e38\u7528\u7684\u8054\u7cfb\u65b9\u5f0f\u3002\u5fae\u4fe1\u66f4\u65b9\u4fbf\u53d1\u623f\u6e90\u3001\u9884\u7b97\u3001\u5b66\u533a\u3001\u901a\u52e4\u548c\u8d37\u6b3e\u95ee\u9898\uff0c\u4e5f\u66f4\u9002\u5408\u540e\u7eed\u6301\u7eed\u6c9f\u901a\u3002</p>
         <div class="wechat-actions">
           <a href="images/wechat-qr.jpg" class="btn btn-primary">\u6253\u5f00\u4e8c\u7ef4\u7801\u5927\u56fe</a>
-          <a href="tel:9496561278" class="btn btn-white">\u7535\u8bdd\u8f85\u52a9\u8054\u7cfb</a>
+          <a href="tel:9496561278" class="btn btn-white">\u7535\u8bdd\u8054\u7cfb</a>
         </div>
-        <div class="contact-support-note">\u7535\u8bdd\u548c\u90ae\u7bb1\u7ee7\u7eed\u4fdd\u7559\uff0c\u4f46\u9ed8\u8ba4\u5efa\u8bae\u5148\u5fae\u4fe1\u8054\u7cfb\u3002</div>
+        <div class="contact-support-note">\u4e5f\u53ef\u4ee5\u76f4\u63a5\u7535\u8bdd\u6216\u90ae\u7bb1\u8054\u7cfb\u3002</div>
       </div>
       <img src="images/wechat-qr.jpg" alt="David Dai WeChat QR code">
     </div>
