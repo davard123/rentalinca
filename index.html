@@ -25,83 +25,66 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <!-- Left: Copy -->
-      <div>
-        <div class="hero-eyebrow">Southern California · Chinese Rental Specialist</div>
-        <h1>您在南加州的<br><span>华人出租专家</span></h1>
-        <p class="hero-cn">Your Trusted Chinese Rental Specialist in Southern California</p>
-        <p class="hero-desc">出租 · 找房 · 买卖 · 物业管理，以尔湾为中心，服务南加州华人社区，中文全程服务，省心省力。</p>
-        <div class="hero-btns">
-          <a href="landlords.html" class="btn btn-gold btn-lg">🏠 我要出租房子</a>
-          <a href="tenants.html"   class="btn btn-white btn-lg">🔍 我要找租房</a>
-        </div>
-        <div class="hero-badges">
-          <div class="hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            中文全程服务
-          </div>
-          <div class="hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            DRE# 02202763
-          </div>
-          <div class="hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            Southern California
-          </div>
-        </div>
-        <div class="hero-stats">
-          <div><strong>9</strong><span>重点服务城市</span></div>
-          <div><strong>24h</strong><span>咨询响应</span></div>
-          <div><strong>中英</strong><span>双语沟通</span></div>
+  <div class="container hero-inner">
+    <!-- Left: Copy -->
+    <div>
+      <div class="kicker">Southern California · Chinese Real Estate Service</div>
+      <h1>南加州房东出租，一步到位</h1>
+      <p class="hero-cn">以出租打开局面，同时承接买房、卖房与投资规划。中文全程服务，帮你定价、推广、筛选租客、签约交付。</p>
+      <div class="hero-btns">
+        <a href="landlords.html" class="btn btn-primary btn-lg">🏠 我要出租房子</a>
+        <a href="tenants.html"   class="btn btn-white btn-lg">🔍 我要找租房</a>
+      </div>
+      <div class="hero-badges">
+        <span class="pill">中文全程服务</span>
+        <span class="pill">出租 · 买房 · 卖房</span>
+        <span class="pill">Southern California</span>
+      </div>
+    </div>
+
+    <!-- Right: Rental Estimator Tool -->
+    <div class="hero-card hero-estimate-card" id="rentalTool">
+      <div class="estimate-card-kicker">Rental Estimate Tool</div>
+      <h3>🏡 免费出租估价</h3>
+      <p class="hero-card-sub">填写基础信息，先判断你的房子大概能租到什么区间。</p>
+
+      <!-- Step 1: City -->
+      <div class="tool-step active" id="toolStep1">
+        <label class="tool-label">选择城市 / Select City</label>
+        <select class="tool-select" id="toolCity">
+          <option value="">请选择城市...</option>
+          <option value="irvine">Irvine 尔湾</option>
+          <option value="los-angeles">Los Angeles 洛杉矶</option>
+          <option value="arcadia">Arcadia 阿凯迪亚</option>
+          <option value="pasadena">Pasadena 帕萨迪纳</option>
+          <option value="san-gabriel">San Gabriel 圣盖博</option>
+          <option value="rowland-heights">Rowland Heights 罗兰岗</option>
+          <option value="diamond-bar">Diamond Bar 钻石吧</option>
+          <option value="chino-hills">Chino Hills 奇诺岗</option>
+          <option value="riverside">Riverside 河滨市</option>
+        </select>
+        <div class="tool-btn-row">
+          <button class="btn btn-primary" style="flex:1" id="toolNext1">下一步 →</button>
         </div>
       </div>
 
-      <!-- Right: Rental Estimator Tool -->
-      <div>
-        <div class="hero-card hero-estimate-card" id="rentalTool">
-          <div class="estimate-card-kicker">Rental Estimate Tool</div>
-          <h3>🏡 免费出租估价</h3>
-          <p class="hero-card-sub">Free Rental Estimate — 30 seconds</p>
-
-          <!-- Step 1: City -->
-          <div class="tool-step active" id="toolStep1">
-            <label class="tool-label">选择城市 / Select City</label>
-            <select class="tool-select" id="toolCity">
-              <option value="">请选择城市...</option>
-              <option value="irvine">Irvine 尔湾</option>
-              <option value="los-angeles">Los Angeles 洛杉矶</option>
-              <option value="arcadia">Arcadia 阿凯迪亚</option>
-              <option value="pasadena">Pasadena 帕萨迪纳</option>
-              <option value="san-gabriel">San Gabriel 圣盖博</option>
-              <option value="rowland-heights">Rowland Heights 罗兰岗</option>
-              <option value="diamond-bar">Diamond Bar 钻石吧</option>
-              <option value="chino-hills">Chino Hills 奇诺岗</option>
-              <option value="riverside">Riverside 河滨市</option>
-            </select>
-            <div class="tool-btn-row">
-              <button class="btn btn-white" style="flex:1" id="toolNext1">下一步 →</button>
-            </div>
-          </div>
-
-          <!-- Step 2: Type -->
-          <div class="tool-step" id="toolStep2">
-            <label class="tool-label">房型 / Property Type</label>
-            <select class="tool-select" id="toolType">
-              <option value="">请选择房型...</option>
-              <option value="1bd">1室1卫 (1BD/1BA)</option>
-              <option value="2bd">2室2卫 (2BD/2BA)</option>
-              <option value="3bd">3室2卫 (3BD/2BA)</option>
-              <option value="sfr">独立屋 (SFR 4BD+)</option>
-            </select>
-            <label class="tool-label">面积 / Approx. Size</label>
-            <input type="number" class="tool-input" id="toolArea" min="300" max="10000" step="50" placeholder="例如 1200 sqft">
-            <div class="tool-btn-row">
-              <button class="btn btn-white btn-sm" onclick="document.getElementById('toolStep1').classList.add('active');document.getElementById('toolStep2').classList.remove('active')">← 返回</button>
-              <button class="btn btn-white" style="flex:1" id="toolNext2">查看租金 →</button>
-            </div>
-          </div>
+      <!-- Step 2: Type -->
+      <div class="tool-step" id="toolStep2">
+        <label class="tool-label">房型 / Property Type</label>
+        <select class="tool-select" id="toolType">
+          <option value="">请选择房型...</option>
+          <option value="1bd">1室1卫 (1BD/1BA)</option>
+          <option value="2bd">2室2卫 (2BD/2BA)</option>
+          <option value="3bd">3室2卫 (3BD/2BA)</option>
+          <option value="sfr">独立屋 (SFR 4BD+)</option>
+        </select>
+        <label class="tool-label">面积 / Approx. Size</label>
+        <input type="number" class="tool-input" id="toolArea" min="300" max="10000" step="50" placeholder="例如 1200 sqft">
+        <div class="tool-btn-row">
+          <button class="btn btn-white btn-sm" onclick="document.getElementById('toolStep1').classList.add('active');document.getElementById('toolStep2').classList.remove('active')">← 返回</button>
+          <button class="btn btn-primary" style="flex:1" id="toolNext2">查看租金 →</button>
+        </div>
+      </div>
 
           <!-- Step 3: Result + Contact -->
           <div class="tool-step" id="toolStep3">
@@ -153,106 +136,77 @@
   </div>
 </div>
 
-<!-- ═══ EDITORIAL INTRO ═══ -->
-<section class="section editorial-intro">
-  <div class="container">
-    <div class="editorial-grid">
-      <div class="editorial-copy">
-        <span class="tag">Rental · Sales · Management</span>
-        <h2 class="section-title">不是把房子挂出去而已，是把它放到正确的人面前。</h2>
-        <p>南加州华人房产服务，核心不是“信息多”，而是定价、展示、沟通和筛选都要做对。David Dai 把出租、找房、买卖和管理咨询放在同一个服务链条里，让房东和租客都少走弯路。</p>
-        <div class="editorial-points">
-          <div><strong>定位</strong><span>按城市、房型、租客画像制定策略</span></div>
-          <div><strong>展示</strong><span>用更专业的图片和文案提升咨询质量</span></div>
-          <div><strong>筛选</strong><span>重视信用、收入、沟通和长期稳定性</span></div>
+<!-- ═══ FEATURES ═══ -->
+<section class=”section features-section”>
+  <div class=”container”>
+    <div class=”section-center”>
+      <h2 class=”section-title”>让房源第一眼就有价值感</h2>
+      <p class=”section-sub”>出租、买卖、物业管理，都从正确展示房产开始。</p>
+    </div>
+    <div class=”features-grid”>
+      <div class=”feature-card”>
+        <img src=”images/value.jpg” alt=”Professional property listing” loading=”lazy”>
+        <div class=”feature-card-body”>
+          <h3>让房源第一眼就有价值感</h3>
+          <p>明亮、清晰、无遮挡的房源展示，让客户先产生信任。</p>
         </div>
       </div>
-      <div class="editorial-photo">
-        <img src="images/visual-luxury-home.jpg" alt="Southern California luxury residential property" loading="lazy">
+      <div class=”feature-card”>
+        <img src=”images/staging.jpg” alt=”Professional property staging” loading=”lazy”>
+        <div class=”feature-card-body”>
+          <h3>专业包装</h3>
+          <p>突出室内亮点、生活动线和租客关心的核心信息。</p>
+        </div>
+      </div>
+      <div class=”feature-card”>
+        <img src=”images/matching.jpg” alt=”Tenant matching service” loading=”lazy”>
+        <div class=”feature-card-body”>
+          <h3>精准匹配</h3>
+          <p>把合适的房源推荐给真正合适的家庭和租客。</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ SERVICES ═══ -->
-<section class="section services-section">
-  <div class="container">
-    <div class="section-center">
-      <span class="tag">全套服务 Full Service</span>
-      <h2 class="section-title">无论您需要什么，我都在这里</h2>
-      <p class="section-sub">从出租到买卖，从找房到物业管理，David Dai 为南加州华人社区提供一站式中文地产服务。</p>
+<section class=”section services-section”>
+  <div class=”container”>
+    <div class=”section-center”>
+      <h2 class=”section-title”>不只是出租，也做长期房产规划</h2>
+      <p class=”section-sub”>以出租为入口，但业务完整覆盖买房、卖房和投资。</p>
     </div>
-    <div class="services-grid">
-
-      <div class="service-card featured">
-        <div class="service-card-photo"><img src="images/new-cards-irvine.jpg" alt="Irvine rental property" loading="lazy"></div>
-        <div class="service-icon">🏠</div>
-        <h3>房东出租服务<span>For Landlords — 主推服务</span></h3>
-        <p>帮华人房东找到可靠租客，保护房东权益，全程中文服务。定价分析、多平台推广、租客审查、合同协助一应俱全。</p>
-        <ul>
-          <li>市场租金定价分析</li>
-          <li>MLS + Zillow + 微信社群推广</li>
-          <li>专业租客背景审查</li>
-          <li>加州租赁法规保护（AB 1482）</li>
-          <li>物业管理转介服务</li>
-        </ul>
-        <a href="landlords.html" class="service-link">了解详情 →</a>
+    <div class=”services-grid”>
+      <div class=”service-card featured”>
+        <h3>房东出租</h3>
+        <p>定价、拍照包装、MLS与华人渠道推广、筛选租客、签约交付。</p>
+        <a href=”landlords.html” class=”btn btn-primary”>开始出租咨询</a>
       </div>
-
-      <div class="service-card">
-        <div class="service-card-photo"><img src="images/new-cards-la.jpg" alt="Modern rental apartment interior" loading="lazy"></div>
-        <div class="service-icon">🔍</div>
-        <h3>租客找房服务<span>For Tenants</span></h3>
-        <p>在南加州找房不再困难。David 帮您筛选房源、安排看房、审阅租约，中文全程陪伴。</p>
-        <ul>
-          <li>精准匹配需求房源</li>
-          <li>中文陪同看房</li>
-          <li>租约条款中文解读</li>
-          <li>申请材料准备指导</li>
-        </ul>
-        <a href="tenants.html" class="service-link">了解详情 →</a>
+      <div class=”service-card”>
+        <h3>买房服务</h3>
+        <p>选区、看房、出价策略、贷款衔接、合同流程解释。</p>
       </div>
-
-      <div class="service-card">
-        <div class="service-card-photo"><img src="images/new-cards-arcadia.jpg" alt="Family touring a home with a real estate professional" loading="lazy"></div>
-        <div class="service-icon gold">🤝</div>
-        <h3>买卖房产服务<span>Buy &amp; Sell</span></h3>
-        <p>无论是买入第一套自住房还是出售投资房产，David 提供专业的买卖服务，帮您做出最优决策。</p>
-        <ul>
-          <li>购房需求分析与选房</li>
-          <li>投资房购置策略</li>
-          <li>卖房定价与营销</li>
-          <li>全程谈判代理</li>
-        </ul>
-        <a href="buy-sell.html" class="service-link">了解详情 →</a>
+      <div class=”service-card”>
+        <h3>卖房服务</h3>
+        <p>市场定价、房源包装、推广曝光、谈判与成交策略。</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══ VISUAL SHOWCASE ═══ -->
-<section class="section visual-showcase">
-  <div class="container">
-    <div class="visual-grid">
-      <div class="visual-panel visual-home">
-        <div class="visual-panel-copy">
-          <h3>让房源第一眼就有价值感</h3>
-          <p>出租、买卖、物业管理，都从正确展示房产开始。</p>
-        </div>
-      </div>
-      <div class="visual-panel visual-interior small">
-        <div class="visual-panel-copy">
-          <h3>专业包装</h3>
-          <p>室内亮点、生活动线和租客关心点，清楚呈现。</p>
-        </div>
-      </div>
-      <div class="visual-panel visual-family small">
-        <div class="visual-panel-copy">
-          <h3>精准匹配</h3>
-          <p>把合适的房源，推荐给真正适合的家庭和租客。</p>
-        </div>
-      </div>
+<!-- ═══ RENTAL PROCESS STEPS ═══ -->
+<section class=”section steps-section”>
+  <div class=”container”>
+    <div class=”section-center”>
+      <h2 class=”section-title”>出租流程</h2>
+      <p class=”section-sub”>把复杂流程拆成清楚的五步。</p>
+    </div>
+    <div class=”steps-grid”>
+      <div class=”step-card”><div class=”step-num”>1</div><b>免费估租</b></div>
+      <div class=”step-card”><div class=”step-num”>2</div><b>房源包装</b></div>
+      <div class=”step-card”><div class=”step-num”>3</div><b>推广曝光</b></div>
+      <div class=”step-card”><div class=”step-num”>4</div><b>租客筛选</b></div>
+      <div class=”step-card”><div class=”step-num”>5</div><b>签约交付</b></div>
     </div>
   </div>
 </section>
