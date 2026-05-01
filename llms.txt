@@ -1,5 +1,9 @@
 # rentalinca.com
 
+LLM-friendly extended profile: https://rentalinca.com/llms-full.txt
+Sitemap: https://rentalinca.com/sitemap.xml
+Last updated: 2026-04-30
+
 David Dai is a Chinese-speaking real estate professional serving Southern California through rentalinca.com.
 
 Primary entity:
