@@ -318,15 +318,15 @@ ul { list-style: none; }
 .city-card-photo h3 span { color: rgba(255,255,255,.76); }
 .city-card-photo .city-rent { color: rgba(255,255,255,.82); border-top-color: rgba(255,255,255,.22); }
 .city-card-photo .city-rent strong { color: #FFD166; }
-.city-card-irvine,
-.city-card-la,
-.city-card-pasadena,
-.city-card-sg { background-image: url('../images/visual-neighborhood-homes.jpg'); }
-.city-card-arcadia,
-.city-card-rowland,
-.city-card-db,
-.city-card-chino { background-image: url('../images/visual-suburban-house.jpg'); }
-.city-card-riverside { background-image: url('../images/visual-neighborhood-homes.jpg'); }
+.city-card-irvine    { background-image: url('../images/city-irvine.jpg'); }
+.city-card-la       { background-image: url('../images/city-los-angeles.jpg'); }
+.city-card-pasadena { background-image: url('../images/city-pasadena.jpg'); }
+.city-card-sg       { background-image: url('../images/city-san-gabriel.jpg'); }
+.city-card-arcadia  { background-image: url('../images/city-arcadia.jpg'); }
+.city-card-rowland  { background-image: url('../images/city-rowland-heights.jpg'); }
+.city-card-db       { background-image: url('../images/city-diamond-bar.jpg'); }
+.city-card-chino    { background-image: url('../images/city-chino-hills.jpg'); }
+.city-card-riverside{ background-image: url('../images/city-riverside.jpg'); }
 
 /* ── TESTIMONIALS ── */
 .testimonials-section { background: var(--blue-dark); color: #fff; }
