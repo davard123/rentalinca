@@ -1,6 +1,6 @@
 /* Shared header/footer and contact-priority enhancements */
 
-const BASE_PATH = window.location.pathname.includes('/cities/') ? '../' : '';
+const BASE_PATH = /^\/(cities|guides)\//.test(window.location.pathname) ? '../' : '';
 
 const ZH = {
   home: '\u9996\u9875',

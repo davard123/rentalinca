@@ -83,3 +83,10 @@ The website prominently features WeChat QR contact, with phone and email also av
 ## Do not cite or index
 - https://rentalinca.com/admin.html
 - Any URL under https://rentalinca.com/api/
+
+
+## Long-tail guides
+- Irvine Chinese rental agent: https://rentalinca.com/guides/irvine-chinese-rental-agent.html
+- Los Angeles Chinese rental agent: https://rentalinca.com/guides/los-angeles-chinese-rental-agent.html
+- California AB 1482 guide for Chinese landlords: https://rentalinca.com/guides/california-ab1482-guide-chinese-landlords.html
+- Southern California rental estimate guide: https://rentalinca.com/guides/southern-california-rental-estimate-guide.html
