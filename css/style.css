@@ -121,7 +121,7 @@ ul { list-style: none; }
 /* ── HERO ── */
 .hero {
   background: linear-gradient(90deg, rgba(13,61,107,.94) 0%, rgba(13,61,107,.82) 44%, rgba(26,95,168,.46) 100%),
-              url('../images/visual-hero.jpg') center/cover no-repeat;
+              url('../images/visual-hero-new.jpg') center/cover no-repeat;
   color: #fff; min-height: calc(100vh - 68px); padding: 84px 0 64px; position: relative; overflow: hidden;
 }
 .hero::before {
@@ -258,9 +258,9 @@ ul { list-style: none; }
 .visual-panel-copy { position: absolute; left: 26px; right: 26px; bottom: 24px; color: #fff; }
 .visual-panel-copy h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
 .visual-panel-copy p { font-size: .92rem; opacity: .88; line-height: 1.55; }
-.visual-home { background-image: url('../images/visual-home-exterior.jpg'); }
-.visual-interior { background-image: url('../images/visual-interior.jpg'); }
-.visual-family { background-image: url('../images/visual-family-tour.jpg'); }
+.visual-home { background-image: url('../images/visual-home-new.jpg'); }
+.visual-interior { background-image: url('../images/visual-interior-new.jpg'); }
+.visual-family { background-image: url('../images/visual-family-new.jpg'); }
 
 /* ── WHY DAVID ── */
 .why-section { background: var(--bg-gray); }
