@@ -456,6 +456,52 @@
   </div>
 </section>
 
+<!-- ═══ MARKET NEWS ═══ -->
+<section class="section market-news-section">
+  <div class="container">
+    <div class="section-center">
+      <span class="tag tag-gold">市场动态</span>
+      <h2 class="section-title">南加州房产市场动态</h2>
+      <p class="section-sub">每日自动更新，AI 提炼值得关注的市场信号，帮你提前看懂趋势变化。</p>
+    </div>
+    <div class="testimonials-grid" id="market-news-grid">
+      <div class="testimonial-card" style="grid-column:1/-1;text-align:center;color:var(--text-mid);padding:40px">加载中...</div>
+    </div>
+  </div>
+</section>
+<style>
+.market-news-section { background: var(--cream); }
+.market-news-section .section-title { color: var(--text); }
+.market-news-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:24px; display:flex; flex-direction:column; gap:10px; }
+.market-news-source { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); }
+.market-news-title { font-size:.95rem; font-weight:700; color:var(--text); line-height:1.45; }
+.market-news-title a { color:var(--text); text-decoration:none; }
+.market-news-title a:hover { color:var(--green); }
+.market-news-insight { font-size:.83rem; color:var(--teal); background:var(--teal-light); border-radius:6px; padding:8px 12px; line-height:1.55; }
+.market-news-summary { font-size:.875rem; color:var(--text-mid); line-height:1.65; }
+.market-news-date { font-size:.75rem; color:var(--text-light); margin-top:auto; }
+</style>
+<script>
+(async function() {
+  const grid = document.getElementById('market-news-grid');
+  try {
+    const res = await fetch('https://ai-content-pipeline.wuxishanecnc.workers.dev/api/articles?limit=6');
+    let articles = await res.json();
+    if (!Array.isArray(articles) || !articles.length) { grid.innerHTML = ''; return; }
+    const top = articles.slice(0, 6);
+    grid.innerHTML = top.map(a => `
+      <div class="market-news-card">
+        <div class="market-news-source">${a.source || '市场资讯'}</div>
+        <div class="market-news-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title_zh || a.title}</a></div>
+        ${a.why_it_matters ? `<div class="market-news-insight">${a.why_it_matters}</div>` : ''}
+        ${a.summary_zh ? `<div class="market-news-summary">${a.summary_zh}</div>` : ''}
+        <div class="market-news-date">${new Date(a.created_at).toLocaleDateString('zh-CN')}</div>
+      </div>
+    `).join('');
+  } catch(e) { grid.innerHTML = ''; }
+})();
+</script>
+
 <!-- ═══ QUICK CONTACT ═══ -->
 <section class="section">
   <div class="container">
