@@ -259,11 +259,30 @@ function initSmoothScroll() {
   });
 }
 
+// ── Case Filter ───────────────────────────────────────────────────────
+function initCaseFilter() {
+  const pills = document.querySelectorAll('.filter .pill');
+  const cards = document.querySelectorAll('.case-grid .big-case');
+  if (!pills.length || !cards.length) return;
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+      pill.classList.add('active');
+      pill.setAttribute('aria-pressed', 'true');
+      const filter = pill.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+}
+
 // ── Init ─────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initRentalTool();
   initFAQ();
+  initCaseFilter();
   initCityOtherInputs();
   initContactForm();
   initSmoothScroll();
