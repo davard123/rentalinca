@@ -30,7 +30,9 @@ h1{font-size:clamp(42px,6vw,72px);line-height:1.06;margin:16px 0 20px;color:var(
 .hero p.lead{font-size:21px;color:#32413a;max-width:700px;font-weight:650}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0}
 .trust-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.pill{padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid var(--line);font-weight:700;color:#3e4b45}
+.pill{padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid var(--line);font-weight:700;color:#3e4b45;cursor:pointer;transition:background .2s,color .2s}
+button.pill{font:inherit}
+.pill.active{background:var(--green);color:#fff;border-color:var(--green)}
 .estimate-card{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.7);box-shadow:0 30px 80px rgba(15,37,28,.16);border-radius:28px;padding:30px;backdrop-filter:blur(12px)}
 .estimate-card h3{margin:4px 0 6px;font-size:26px;color:var(--green)}
 .form-grid{display:grid;gap:14px;margin-top:22px}
