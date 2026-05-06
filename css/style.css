@@ -9,6 +9,7 @@
   --gold:          #C9A96E;
   --gold-dark:     #a8854a;
   --gold-light:    #FBF5EA;
+  --green:         #07C160;
   --bg:            #F7F5F2;
   --bg-white:      #FFFFFF;
   --text:          #333333;
@@ -220,20 +221,36 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
   border-radius: 4px; margin-bottom: 6px; text-transform: uppercase;
 }
 .city-name  { font-size: 1.1rem; font-weight: 800; color: #fff; line-height: 1.2; }
-.city-name-cn { font-size: .8rem; color: rgba(255,255,255,.75); font-weight: 400; }
+.city-name-cn { display: block; font-size: .8rem; color: rgba(255,255,255,.78); font-weight: 400; margin-top: 4px; }
 .city-price { font-size: .9rem; font-weight: 800; color: var(--gold); margin-top: 5px; }
 .city-desc-tag { font-size: .72rem; color: rgba(255,255,255,.7); margin-top: 2px; }
 
-/* City card gradient backgrounds (per area) */
-.city-bg-irvine      { background: linear-gradient(145deg, #1a3a5c 0%, #2563ab 100%); }
-.city-bg-la          { background: linear-gradient(145deg, #3d1a5c 0%, #7c3aed 100%); }
-.city-bg-arcadia     { background: linear-gradient(145deg, #1a4c2e 0%, #16a34a 100%); }
-.city-bg-pasadena    { background: linear-gradient(145deg, #7c2d12 0%, #dc2626 100%); }
-.city-bg-san-gabriel { background: linear-gradient(145deg, #1e3a5f 0%, #0369a1 100%); }
-.city-bg-rh          { background: linear-gradient(145deg, #422006 0%, #b45309 100%); }
-.city-bg-diamond-bar { background: linear-gradient(145deg, #1f2937 0%, #374151 100%); }
-.city-bg-chino-hills { background: linear-gradient(145deg, #1a4c3e 0%, #0f766e 100%); }
-.city-bg-riverside   { background: linear-gradient(145deg, #4a1942 0%, #9333ea 100%); }
+/* Legacy city card support */
+.cities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.city-card {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.city-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.city-icon { font-size: 1.6rem; margin-bottom: 12px; }
+.city-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+.city-card h3 span { display: block; font-size: .82rem; font-weight: 500; color: var(--text-mid); margin-top: 4px; }
+.city-rent { font-size: .9rem; color: var(--text-mid); }
+.city-rent strong { color: var(--primary); }
+
+/* City card photo backgrounds */
+.city-bg-irvine      { background-image: url("../images/city-irvine.jpg"); }
+.city-bg-la          { background-image: url("../images/city-los-angeles.jpg"); }
+.city-bg-arcadia     { background-image: url("../images/city-arcadia.jpg"); }
+.city-bg-pasadena    { background-image: url("../images/city-pasadena.jpg"); }
+.city-bg-san-gabriel { background-image: url("../images/city-san-gabriel.jpg"); }
+.city-bg-rh          { background-image: url("../images/city-rowland-heights.jpg"); }
+.city-bg-diamond-bar { background-image: url("../images/city-diamond-bar.jpg"); }
+.city-bg-chino-hills { background-image: url("../images/city-chino-hills.jpg"); }
+.city-bg-riverside   { background-image: url("../images/city-riverside.jpg"); }
 
 /* ── CASE STUDIES ── */
 .cases-section { background: var(--bg-white); }
@@ -354,10 +371,202 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   padding: 72px 0 56px; color: #fff;
 }
+.page-header-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page-header-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(22,54,41,.88) 0%, rgba(31,77,58,.72) 55%, rgba(42,100,80,.62) 100%);
+}
+.page-header-photo .container { position: relative; z-index: 1; }
+.page-header-city            { background-image: url("../images/visual-suburban-house.jpg"); }
+.page-header-cities          { background-image: url("../images/visual-neighborhood-homes.jpg"); }
+.page-header-irvine          { background-image: url("../images/city-irvine.jpg"); }
+.page-header-los-angeles     { background-image: url("../images/city-los-angeles.jpg"); }
+.page-header-arcadia         { background-image: url("../images/city-arcadia.jpg"); }
+.page-header-pasadena        { background-image: url("../images/city-pasadena.jpg"); }
+.page-header-san-gabriel     { background-image: url("../images/city-san-gabriel.jpg"); }
+.page-header-rowland-heights { background-image: url("../images/city-rowland-heights.jpg"); }
+.page-header-diamond-bar     { background-image: url("../images/city-diamond-bar.jpg"); }
+.page-header-chino-hills     { background-image: url("../images/city-chino-hills.jpg"); }
+.page-header-riverside       { background-image: url("../images/city-riverside.jpg"); }
 .page-header .tag { background: rgba(255,255,255,.15); color: #fff; }
 .page-header h1 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #fff; margin-bottom: 12px; }
 .page-header h1 span { display: block; font-size: .55em; font-weight: 500; color: rgba(255,255,255,.65); margin-top: 6px; }
 .page-header p { color: rgba(255,255,255,.75); font-size: 1rem; max-width: 600px; }
+
+/* Shared content components */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: .84rem;
+  color: rgba(255,255,255,.72);
+}
+.breadcrumb a:hover { color: #fff; }
+.rent-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.rent-table th,
+.rent-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.rent-table th {
+  background: var(--primary);
+  color: #fff;
+  font-size: .84rem;
+  font-weight: 700;
+}
+.rent-table tr:last-child td { border-bottom: none; }
+.rent-table .price { color: var(--primary); font-weight: 800; }
+.feature-list { display: grid; gap: 16px; }
+.feature-item { display: flex; gap: 14px; align-items: flex-start; }
+.feature-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 800;
+}
+.feature-item h4 { font-size: .95rem; margin-bottom: 4px; }
+.feature-item p { color: var(--text-mid); font-size: .88rem; line-height: 1.65; }
+.aside-card-light {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.aside-card-light h4 { font-size: 1rem; margin-bottom: 8px; color: var(--text); }
+
+/* About page */
+.profile-block {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.profile-photo {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 12px;
+}
+.profile-photo img {
+  width: 100%;
+  border-radius: 14px;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
+}
+.profile-creds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.cred-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+/* Contact / footer enhanced blocks */
+.nav-phone-secondary {
+  color: rgba(255,255,255,.88);
+  font-size: .85rem;
+  font-weight: 700;
+}
+.cta-contact-lines {
+  margin-top: 18px;
+  margin-bottom: 0 !important;
+  font-size: .92rem;
+  color: rgba(255,255,255,.86) !important;
+}
+.footer-wechat-copy {
+  font-size: .84rem;
+  color: rgba(255,255,255,.68);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.footer-wechat-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  padding: 14px;
+}
+.footer-wechat-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #fff;
+}
+.footer-wechat-card span {
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 700;
+}
+.wechat-priority-card {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 24px;
+  align-items: center;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.wechat-priority-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #fff;
+}
+.wechat-priority-copy h3 {
+  font-size: 1.15rem;
+  margin: 6px 0 10px;
+  color: var(--text);
+}
+.wechat-priority-copy p {
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.wechat-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.contact-support-note {
+  margin-top: 16px;
+  color: var(--text-mid);
+  font-size: .88rem;
+  line-height: 1.7;
+}
+.contact-secondary-card { margin-top: 20px; }
 
 /* ── CTA BANNER ── */
 .cta-banner { background: var(--primary); padding: 64px 0; text-align: center; }
@@ -494,6 +703,10 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .form-row { grid-template-columns: 1fr; }
   .why-features { grid-template-columns: 1fr 1fr; }
+  .profile-block { grid-template-columns: 1fr; }
+  .profile-photo { max-width: 280px; }
+  .wechat-priority-card { grid-template-columns: 1fr; }
+  .wechat-priority-card img { margin: 0 auto; }
   .process-steps { flex-wrap: wrap; gap: 24px; }
   .process-steps::before { display: none; }
   .process-step { flex: 1 1 calc(33% - 24px); min-width: 140px; }
@@ -510,11 +723,13 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
   .hero { padding: 64px 0 48px; }
   .hero h1 { font-size: 1.8rem; }
   .hero-btns { flex-direction: column; }
+  .cities-grid,
   .cities-grid-9 { grid-template-columns: 1fr 1fr; gap: 12px; }
   .cases-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .cred-grid { grid-template-columns: 1fr 1fr; }
+  .profile-creds { grid-template-columns: 1fr; }
   .why-features { grid-template-columns: 1fr; }
   .process-step { flex: 1 1 calc(50% - 12px); }
 }
