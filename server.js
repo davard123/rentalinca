@@ -9,6 +9,8 @@ const DATA_DIR = path.join(ROOT, 'data');
 const INQUIRIES_FILE = path.join(DATA_DIR, 'inquiries.json');
 const ESTIMATES_FILE = path.join(DATA_DIR, 'rental-estimates.json');
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
+const TELEGRAM_BOT_TOKEN = String(process.env.TELEGRAM_BOT_TOKEN || '').trim();
+const TELEGRAM_CHAT_ID = String(process.env.TELEGRAM_CHAT_ID || '').trim();
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -165,6 +167,54 @@ function saveInquiry(input, req) {
   return inquiry;
 }
 
+function formatTelegramMessage(kind, payload) {
+  if (kind === 'rental-estimate') {
+    return [
+      'New Rental Estimate',
+      `City: ${payload.cityName || payload.cityKey || ''}`,
+      `Type: ${payload.propertyTypeLabel || payload.propertyType || ''}`,
+      `Area: ${payload.areaSqft || ''} sqft`,
+      `Range: ${payload.displayRange || ''}`,
+      `Time: ${payload.createdAt || ''}`
+    ].join('\n');
+  }
+
+  return [
+    'New Inquiry',
+    `Name: ${payload.name || ''}`,
+    `Phone: ${payload.phone || ''}`,
+    `Email: ${payload.email || ''}`,
+    `Service: ${payload.serviceNeeded || payload.source || ''}`,
+    `City: ${payload.city || ''}`,
+    `Type/Area: ${[payload.propertyType, payload.areaSqft ? `${payload.areaSqft} sqft` : ''].filter(Boolean).join(' / ')}`,
+    `Estimate: ${payload.estimatedRent || ''}`,
+    `Notes: ${payload.notes || ''}`,
+    `Time: ${payload.createdAt || ''}`
+  ].join('\n');
+}
+
+async function sendTelegramNotification(kind, payload) {
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: formatTelegramMessage(kind, payload),
+        disable_web_page_preview: true
+      })
+    });
+
+    if (!response.ok) {
+      console.error(`Telegram notification failed: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Telegram notification failed:', error);
+  }
+}
+
 function serveStatic(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const decodedPath = decodeURIComponent(url.pathname);
@@ -195,6 +245,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const body = await readJsonBody(req);
       const inquiry = saveInquiry(body, req);
+      await sendTelegramNotification('inquiry', inquiry);
       sendJson(res, 201, { ok: true, id: inquiry.id });
     } catch (error) {
       sendJson(res, 400, { ok: false, error: 'Invalid inquiry payload' });
@@ -206,6 +257,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const body = await readJsonBody(req);
       const estimate = createRentalEstimate(body, req);
+      await sendTelegramNotification('rental-estimate', estimate);
       sendJson(res, 201, { ok: true, estimate });
     } catch (error) {
       sendJson(res, error.statusCode || 400, { ok: false, error: 'Invalid rental estimate payload' });
