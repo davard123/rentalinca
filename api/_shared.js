@@ -220,6 +220,90 @@ function formatTelegramRecord(recordKind, record) {
   ].join('\n');
 }
 
+async function sendResendAutoReply(inquiry) {
+  const apiKey = String(process.env.RESEND_API_KEY || '').trim();
+  if (!apiKey || !inquiry.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inquiry.email)) return;
+
+  const from = String(process.env.RESEND_FROM || 'onboarding@resend.dev').trim();
+  const name = inquiry.name || '您'
+  const service = inquiry.serviceNeeded || '物业管理咨询'
+  const city = inquiry.city ? ` · ${inquiry.city}` : ''
+
+  const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f0;font-family:'Helvetica Neue',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f0;padding:32px 0;">
+  <tr><td align="center">
+    <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+      <tr>
+        <td style="background:#1c2b1a;padding:28px 40px;text-align:center;">
+          <p style="margin:0;color:#a8c49a;font-size:13px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;">RentalInCA</p>
+          <p style="margin:4px 0 0;color:#888;font-size:11px;letter-spacing:.15em;">南加州华人物业管理 · David Dai</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:40px;">
+          <p style="margin:0 0 4px;color:#999;font-size:12px;letter-spacing:.2em;text-transform:uppercase;">咨询确认</p>
+          <h1 style="margin:0 0 24px;font-size:22px;font-weight:400;color:#1c2b1a;">已收到您的物业咨询</h1>
+          <p style="margin:0 0 16px;color:#444;font-size:15px;line-height:1.8;">${name} 您好，</p>
+          <p style="margin:0 0 20px;color:#666;font-size:14px;line-height:1.8;">
+            我已收到您关于 <strong>${service}${city}</strong> 的咨询，将在 1 个工作日内与您联系。
+          </p>
+          <table cellpadding="0" cellspacing="0" style="width:100%;background:#f8faf7;border:1px solid #e0e8de;border-radius:3px;margin-bottom:24px;">
+            <tr><td style="padding:12px 20px;border-bottom:1px solid #e0e8de;">
+              <span style="color:#999;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:12px;">服务类型</span>
+              <span style="color:#333;font-size:14px;">${service}</span>
+            </td></tr>
+            ${inquiry.city ? `<tr><td style="padding:12px 20px;border-bottom:1px solid #e0e8de;">
+              <span style="color:#999;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:12px;">城市</span>
+              <span style="color:#333;font-size:14px;">${inquiry.city}</span>
+            </td></tr>` : ''}
+            <tr><td style="padding:12px 20px;">
+              <span style="color:#999;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:12px;">联系电话</span>
+              <span style="color:#333;font-size:14px;">${inquiry.phone || '未填写'}</span>
+            </td></tr>
+          </table>
+          <p style="margin:0 0 16px;color:#666;font-size:14px;line-height:1.8;">
+            如需更快响应，欢迎直接微信联系 David，DRE# 02202763。
+          </p>
+          <p style="margin:24px 0 0;text-align:center;">
+            <a href="https://rentalinca.com/contact.html" style="display:inline-block;background:#1c2b1a;color:#fff;text-decoration:none;font-size:12px;letter-spacing:.2em;padding:12px 32px;text-transform:uppercase;">访问 RentalInCA</a>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background:#f8faf7;padding:20px 40px;text-align:center;border-top:1px solid #e0e8de;">
+          <p style="margin:0;color:#999;font-size:11px;line-height:1.6;">
+            此邮件由 <a href="https://rentalinca.com" style="color:#a8c49a;text-decoration:none;">rentalinca.com</a> 自动发送。
+            David Dai · DRE# 02202763 · Universal Elite Realty
+          </p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>`
+
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    body: JSON.stringify({
+      from,
+      to: inquiry.email,
+      subject: `已收到您的物业管理咨询 | RentalInCA`,
+      html,
+    }),
+  })
+}
+
 async function sendTelegramNotification(recordKind, record) {
   const botToken = String(process.env.TELEGRAM_BOT_TOKEN || '').trim();
   const chatId = String(process.env.TELEGRAM_CHAT_ID || '').trim();
@@ -245,6 +329,7 @@ module.exports = {
   prependGithubRecord,
   readGithubJson,
   sendTelegramNotification,
+  sendResendAutoReply,
   sanitizeInquiry,
   sendJson
 };
