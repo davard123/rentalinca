@@ -187,7 +187,7 @@ function prioritizeContactPage() {
   if (!window.location.pathname.endsWith('/contact.html')) return;
   const headerDesc = document.querySelector('.page-header p');
   if (headerDesc) {
-    headerDesc.textContent = '\u6b22\u8fce\u76f4\u63a5\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\uff0c\u4e5f\u53ef\u4ee5\u7535\u8bdd\u6216\u90ae\u4ef6\u8054\u7cfb\uff0c24\u5c0f\u65f6\u5185\u56de\u590d\u3002';
+    headerDesc.textContent = '\u5fae\u4fe1\u6700\u65b9\u4fbf\uff0c\u7535\u8bdd\u548c\u90ae\u4ef6\u4e5f\u53ef\u4ee5\u3002\u53ea\u8981\u628a\u57ce\u5e02\u3001\u623f\u578b\u3001\u9884\u7b97\u6216\u4f60\u73b0\u5728\u6700\u5361\u7684\u5730\u65b9\u544a\u8bc9\u6211\uff0c\u6211\u4eec\u5c31\u80fd\u66f4\u5feb\u8fdb\u5165\u6b63\u9898\u3002';
   }
 
   const contactGrid = document.querySelector('.contact-grid');
@@ -197,13 +197,13 @@ function prioritizeContactPage() {
   if (!leftCol || !formCard) return;
 
   leftCol.innerHTML = `
-    <h2 class="section-title">\u8054\u7cfb\u65b9\u5f0f</h2>
-    <p style="color:var(--text-mid);margin-bottom:32px">\u65e0\u8bba\u60a8\u662f\u51fa\u79df\u3001\u627e\u623f\u3001\u4e70\u5356\u3001\u8d37\u6b3e\u8fd8\u662f\u7269\u4e1a\u7ba1\u7406\uff0c\u90fd\u53ef\u4ee5\u76f4\u63a5\u626b\u7801\u6dfb\u52a0\u5fae\u4fe1\uff0c\u53d1\u6d88\u606f\u6c9f\u901a\u4f1a\u66f4\u65b9\u4fbf\u3002</p>
+    <h2 class="section-title">\u5148\u9009\u4f60\u6700\u65b9\u4fbf\u7684\u8054\u7cfb\u65b9\u5f0f</h2>
+    <p style="color:var(--text-mid);margin-bottom:32px">\u5982\u679c\u4f60\u5df2\u7ecf\u51c6\u5907\u597d\u804a\u5177\u4f53\u60c5\u51b5\uff0c\u5fae\u4fe1\u901a\u5e38\u6700\u5feb\u3002\u6682\u65f6\u4e0d\u65b9\u4fbf\u626b\u7801\uff0c\u4e5f\u53ef\u4ee5\u76f4\u63a5\u586b\u8868\u5355\uff0c\u6211\u4f1a\u5c3d\u5feb\u56de\u590d\u3002</p>
     <div class="wechat-priority-card">
       <div class="wechat-priority-copy">
         <div class="contact-item-label">\u5fae\u4fe1 WeChat</div>
         <h3>\u626b\u7801\u6dfb\u52a0 David \u5fae\u4fe1</h3>
-        <p>\u534e\u4eba\u5ba2\u6237\u6700\u5e38\u7528\u7684\u8054\u7cfb\u65b9\u5f0f\u3002\u5fae\u4fe1\u66f4\u65b9\u4fbf\u53d1\u623f\u6e90\u3001\u9884\u7b97\u3001\u5b66\u533a\u3001\u901a\u52e4\u548c\u8d37\u6b3e\u95ee\u9898\uff0c\u4e5f\u66f4\u9002\u5408\u540e\u7eed\u6301\u7eed\u6c9f\u901a\u3002</p>
+        <p>\u5fae\u4fe1\u6700\u9002\u5408\u53d1\u623f\u6e90\u56fe\u7247\u3001\u5730\u5740\u3001\u9884\u7b97\u3001\u5b66\u533a\u8981\u6c42\u548c\u65f6\u95f4\u5b89\u6392\uff0c\u6c9f\u901a\u4f1a\u66f4\u5feb\u66f4\u76f4\u63a5\u3002</p>
         <div class="wechat-actions">
           <a href="images/wechat-qr.jpg" class="btn btn-primary">\u6253\u5f00\u4e8c\u7ef4\u7801\u5927\u56fe</a>
         </div>
@@ -257,9 +257,9 @@ function prioritizeContactPage() {
 
   const title = formCard.querySelector('h3');
   const desc = formCard.querySelector('p');
-  if (title) title.textContent = '\u53d1\u9001\u54a8\u8be2 / Send Your Inquiry';
+  if (title) title.textContent = '\u4e0d\u65b9\u4fbf\u626b\u7801\uff0c\u5c31\u76f4\u63a5\u7559\u8a00';
   if (desc) {
-    desc.innerHTML = '\u5982\u679c\u60a8\u6682\u65f6\u4e0d\u65b9\u4fbf\u626b\u7801\u5fae\u4fe1\uff0c\u4e5f\u53ef\u4ee5\u586b\u5199\u8868\u5355\u3002<br><em style="color:var(--text-light)">Fill in the form below and David will respond within 24 hours.</em>';
+    desc.innerHTML = '\u628a\u4f60\u7684\u9700\u6c42\u7b80\u5355\u5199\u6e05\u695a\u5c31\u884c\u3002\u57ce\u5e02\u3001\u623f\u578b\u3001\u9884\u7b97\u3001\u65f6\u95f4\u70b9\uff0c\u8fd9\u4e9b\u4fe1\u606f\u8d8a\u5b8c\u6574\uff0c\u6211\u56de\u590d\u65f6\u5c31\u8d8a\u80fd\u76f4\u63a5\u8fdb\u5165\u91cd\u70b9\u3002<br><em style="color:var(--text-light)">Fill in the form below and David will respond within 24 hours.</em>';
   }
 }
 
