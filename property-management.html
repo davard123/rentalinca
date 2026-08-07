@@ -3,66 +3,235 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<title>物业管理 Property Management | David Dai — rentalinca.com</title>
-<meta name="description" content="南加州华人物业管理服务，通过 Universal Elite Realty 提供全托管方案。DRE# 02202763">
-<link rel="canonical" href="https://rentalinca.com/property-management.html">
+<title>California Property Management for Chinese Landlords (2026) | RentalInCA — David Dai DRE# 02202763</title>
+<meta name="description" content="Professional property management services for California landlords — AB 1482 compliance, tenant screening, rent collection, eviction assistance. Serving Orange County, LA, San Diego. Chinese-speaking team. David Dai DRE# 02202763.">
+<link rel="canonical" href="https://rentalinca.com/property-management">
+<meta property="og:type" content="website">
+<meta property="og:title" content="California Property Management for Chinese Landlords (2026) | RentalInCA">
+<meta property="og:description" content="Full-service property management in Southern California — AB 1482, SB 567, eviction law compliance. Chinese-speaking team. David Dai DRE# 02202763.">
+<meta property="og:url" content="https://rentalinca.com/property-management">
+<meta property="og:site_name" content="RentalInCA">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"California Property Management","serviceType":"Property Management","provider":{"@type":"RealEstateAgent","name":"David Dai — RentalInCA","url":"https://rentalinca.com","telephone":"(949) 656-1278","identifier":"DRE# 02202763","address":{"@type":"PostalAddress","addressLocality":"Irvine","addressRegion":"CA","addressCountry":"US"}},"areaServed":[{"@type":"City","name":"Irvine"},{"@type":"City","name":"Orange County"},{"@type":"City","name":"Los Angeles"},{"@type":"City","name":"San Diego"}],"description":"Full-service property management for California rental property owners — tenant placement, rent collection, AB 1482 compliance, and eviction assistance."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AB 1482 and does it apply to my California rental property?","acceptedAnswer":{"@type":"Answer","text":"AB 1482 (the Tenant Protection Act of 2019) applies to most California residential rental properties that are at least 15 years old (built before 2010 as of 2025). It caps rent increases at 5% + local CPI, with a maximum of 10% per year. Single-family homes owned by individual landlords are generally exempt if the tenant receives a written notice of exemption. Condos sold separately from other units may also be exempt. A property manager familiar with AB 1482 is essential to ensure compliance and avoid costly mistakes."}},{"@type":"Question","name":"How much does property management cost in California?","acceptedAnswer":{"@type":"Answer","text":"California property management fees typically range from 8% to 12% of monthly collected rent for residential properties. Most companies also charge a leasing fee (equal to 50%–100% of one month's rent) when placing a new tenant, plus smaller fees for lease renewals ($100–$300), maintenance coordination, and annual inspections. In Orange County and Los Angeles, you should budget approximately 10% of gross monthly rent as an all-in management cost."}},{"@type":"Question","name":"What is the California security deposit limit under SB 567?","acceptedAnswer":{"@type":"Answer","text":"Under SB 567, which took effect April 1, 2024, California landlords are generally limited to collecting a maximum security deposit equal to one month's rent for unfurnished residential units. This significantly reduced the prior limit of two months' rent. Small landlords who own no more than two residential rental properties with a total of no more than four units may be exempt from this limit under certain circumstances. Consult a licensed property manager to confirm the rules for your specific property."}},{"@type":"Question","name":"How much notice must a California landlord give before entering a rental property?","acceptedAnswer":{"@type":"Answer","text":"Under California Civil Code Section 1954, a landlord must give at least 24 hours' advance written notice before entering a rental unit, except in genuine emergencies. Entry must be at a reasonable time (between 8 AM and 8 PM). Failure to give proper notice can expose landlords to tenant harassment claims and legal liability. A professional property manager handles all entry coordination and documentation."}},{"@type":"Question","name":"What is the eviction process in California for non-paying tenants?","acceptedAnswer":{"@type":"Answer","text":"California's eviction process (unlawful detainer) starts with a 3-Day Notice to Pay Rent or Quit. If the tenant does not comply, the landlord files an unlawful detainer lawsuit in Superior Court. The process typically takes 3–6 weeks in Orange County and LA County for uncontested cases, though it can take longer if the tenant contests the eviction. California requires strict adherence to notice formats and filing procedures. A licensed property manager and eviction attorney ensure the process is handled correctly from day one."}},{"@type":"Question","name":"Does California rent control apply to single-family homes?","acceptedAnswer":{"@type":"Answer","text":"Most single-family homes owned by individual landlords are exempt from AB 1482 rent caps IF the landlord provides the tenant with a written exemption notice at the start of the tenancy. However, many California cities have their own local rent control ordinances (Los Angeles, Santa Ana, Long Beach, Glendale) that may cover single-family homes. Always check both state and local laws for your specific property and city."}}]}]}</script>
 <link rel="stylesheet" href="css/style.css">
+<style>
+.pm-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:28px 0}
+.pm-stat{background:#f8f9fa;border-left:3px solid var(--primary,#2a6049);padding:16px 20px;border-radius:2px}
+.pm-stat .num{font-size:2rem;font-weight:800;color:var(--primary,#2a6049);line-height:1}
+.pm-stat .label{font-size:.8rem;color:#666;margin-top:4px;line-height:1.4}
+.pm-checklist{list-style:none;padding:0;margin:16px 0}
+.pm-checklist li{padding:10px 0 10px 32px;border-bottom:1px solid #eee;position:relative;color:#444;line-height:1.6}
+.pm-checklist li:before{content:"✓";position:absolute;left:0;color:var(--primary,#2a6049);font-weight:700}
+.pm-checklist li:last-child{border-bottom:none}
+.pm-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.95rem}
+.pm-table th,.pm-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #eee}
+.pm-table th{background:#f8f9fa;font-weight:700;color:#333}
+.pm-table td:first-child{font-weight:600;color:#333}
+.pm-table tr:hover{background:#fafafa}
+.pm-faq{border:1px solid #e0e0e0;border-radius:4px;margin-bottom:12px;overflow:hidden}
+.pm-faq summary{padding:16px 20px;font-weight:600;color:#333;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#fff}
+.pm-faq summary::-webkit-details-marker{display:none}
+.pm-faq summary:after{content:"＋";font-size:1.2rem;color:var(--primary,#2a6049);flex-shrink:0;margin-left:12px}
+.pm-faq[open] summary:after{content:"－"}
+.pm-faq .pm-faq-body{padding:0 20px 16px;color:#555;line-height:1.8}
+.city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin:24px 0}
+.city-card{background:#fff;border:1px solid #e8e8e8;padding:20px;border-radius:4px}
+.city-card h4{margin:0 0 8px;color:var(--primary,#2a6049);font-size:1rem}
+.city-card p{margin:0;font-size:.9rem;color:#555;line-height:1.6}
+.alert-box{background:#fff8e1;border-left:4px solid #f59e0b;padding:16px 20px;margin:20px 0;border-radius:0 4px 4px 0}
+.alert-box strong{color:#92400e}
+.compliance-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.88rem}
+.compliance-table th{background:#e8f5e9;padding:10px 14px;text-align:left;font-weight:700;color:#2a6049}
+.compliance-table td{padding:10px 14px;border-bottom:1px solid #eee;vertical-align:top}
+.compliance-table tr:hover{background:#f9f9f9}
+</style>
 </head>
 <body>
 <div id="nav-placeholder"></div>
+
 <div class="page-header">
   <div class="container">
     <div class="breadcrumb"><a href="index.html">首页</a><span>›</span>物业管理</div>
-    <span class="tag">Property Management 物业管理</span>
-    <h1>专业物业管理<span>让您的投资真正「躺赢」· True Passive Income</span></h1>
-    <p>通过 Universal Elite Realty 专业团队，实现全托管，彻底解放双手。</p>
+    <span class="tag">Property Management 物业管理 · 2026</span>
+    <h1>California Property Management for Chinese Landlords (2026)<span>南加州华人投资房全托管 · AB 1482 · Orange County · LA · San Diego</span></h1>
+    <p>Professional, bilingual property management for California rental property owners. We handle tenant screening, rent collection, maintenance, and California compliance — so you don't have to. Serving Orange County, Los Angeles, San Diego, and the Inland Empire. 通过 Universal Elite Realty 环球地产专业团队，全中文对接，全程合规。</p>
   </div>
 </div>
+
 <section class="section">
   <div class="container">
+
+    <!-- Market stats copied from top competitors -->
+    <div class="pm-stats">
+      <div class="pm-stat"><div class="num">44%</div><div class="label">California households rent — above the 35% national average</div></div>
+      <div class="pm-stat"><div class="num">4.8%</div><div class="label">CA rental vacancy rate — below the 7.2% national rate</div></div>
+      <div class="pm-stat"><div class="num">$2,400+</div><div class="label">Average monthly rent in Orange County, CA (2026)</div></div>
+      <div class="pm-stat"><div class="num">15+</div><div class="label">Years old: threshold for AB 1482 rent cap applicability</div></div>
+    </div>
+
     <div class="two-col-content">
       <div>
-        <h2 class="section-title">您有出租房，但不想亲自管？</h2>
-        <p style="color:var(--text-mid);margin-bottom:16px;line-height:1.7">每天的租客电话、维修请求、租金追缴……物业管理是一份全职工作。如果您希望享受出租收益，同时又不想陷入日常事务，专业物业管理是最好的选择。</p>
-        <p style="color:var(--text-mid);margin-bottom:32px;line-height:1.7">通过 David Dai 与 Universal Elite Realty 环球地产的专业物业管理团队，您可以享受完整的全托管服务。</p>
 
-        <div class="info-box teal" style="margin-bottom:32px">
-          <h4>⚖️ 合规说明 Compliance Notice</h4>
-          <p>物业管理服务须由持有 Broker 执照的机构提供。David Dai（DRE# 02202763）为客户联络与转介，全套物业管理服务由 Universal Elite Realty 环球地产（DRE# 02121645）执行。<br><br>
-          <em>Property Management services are provided by Universal Elite Realty (DRE# 02121645). David Dai (DRE# 02202763) provides client liaison and referral services.</em></p>
+        <h2 class="section-title">What to Look for in a California Property Manager</h2>
+        <p style="color:var(--text-mid);line-height:1.7;margin-bottom:16px">California's rental market is one of the most heavily regulated in the United States. AB 1482, local rent control ordinances, SB 567 security deposit limits, habitability law, and strict eviction procedures create a compliance environment where the cost of a mistake far exceeds the cost of professional management. Here's what matters most when choosing a property manager:</p>
+
+        <ul class="pm-checklist">
+          <li><strong>AB 1482 expertise</strong> — Know which properties are covered, which are exempt, and how to serve the correct written exemption notice</li>
+          <li><strong>SB 567 (2024) compliance</strong> — California's new 1-month security deposit limit took effect April 1, 2024; your manager must follow the new rules</li>
+          <li><strong>Local rent control knowledge</strong> — Los Angeles, Santa Ana, Long Beach, and other cities have their own ordinances that go beyond state law</li>
+          <li><strong>Lawful notice procedures</strong> — Civil Code 1954 requires 24-hour written notice before entry; errors expose landlords to liability</li>
+          <li><strong>Proper eviction process</strong> — California unlawful detainer law requires strict compliance with notice formats, cure periods, and filing deadlines</li>
+          <li><strong>Transparent fees</strong> — No hidden leasing markups, maintenance upcharges, or inspection fees buried in fine print</li>
+          <li><strong>Owner portal and financial reporting</strong> — Monthly statements, year-end 1099 prep, and real-time maintenance visibility</li>
+          <li><strong>Chinese-speaking team</strong> — For overseas Chinese landlords, bilingual communication removes the risk of misunderstanding critical compliance issues</li>
+        </ul>
+
+        <h2 class="section-title" style="margin-top:40px">California Landlord Compliance: 2026 Key Laws</h2>
+        <p style="color:var(--text-mid);line-height:1.7;margin-bottom:16px">California landlord law changed significantly in 2019 (AB 1482) and again in 2024 (SB 567). Missing these rules is one of the most expensive mistakes a California landlord can make. Below is a quick-reference table for Southern California landlords:</p>
+
+        <div class="alert-box">
+          <strong>Note for Chinese landlords living overseas:</strong> If you own a California rental property but do not live in the US full-time, hiring a licensed property manager is not optional — California courts do not delay eviction proceedings for absent landlords, and compliance obligations continue regardless of where you live.
         </div>
 
-        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:20px">物业管理服务内容</h3>
+        <table class="compliance-table">
+          <thead><tr><th>Law / Rule</th><th>What It Means for You</th><th>Common Mistake</th></tr></thead>
+          <tbody>
+            <tr><td>AB 1482 (Tenant Protection Act)</td><td>Caps annual rent increases at 5% + local CPI (max 10%) for covered properties (15+ years old). Requires "just cause" for evictions after 12 months of tenancy.</td><td>Increasing rent more than 10% on a covered property; evicting a long-term tenant without just cause.</td></tr>
+            <tr><td>SB 567 (2024)</td><td>Security deposit limit reduced to 1 month's rent for most landlords. Small landlords (own ≤ 2 properties, ≤ 4 units total) may qualify for a limited exemption.</td><td>Collecting 2 months' deposit on a new lease signed after April 1, 2024.</td></tr>
+            <tr><td>Civil Code § 1954 (Entry)</td><td>24-hour written notice required before entering a rental unit. Entry must be between 8 AM and 8 PM. Emergency exceptions apply.</td><td>Sending notice by text only; entering without notice for "quick" repairs.</td></tr>
+            <tr><td>Civil Code § 1950.5 (Deposit return)</td><td>Security deposit must be returned within 21 days of move-out, with itemized statement of deductions.</td><td>Missing the 21-day deadline; charging for normal wear and tear.</td></tr>
+            <tr><td>Just Cause Eviction (AB 1482)</td><td>After 12 months of tenancy, landlords must have a qualifying reason (non-payment, lease violation, owner move-in, etc.) to terminate tenancy.</td><td>Issuing a 30/60-day no-fault notice on a covered property without following the correct process.</td></tr>
+            <tr><td>Habitability (CIV § 1941)</td><td>Landlords must maintain properties in habitable condition. Failure gives tenants the right to repair and deduct, or withhold rent.</td><td>Delaying repairs for months; not maintaining working heating, plumbing, or weatherproofing.</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="section-title" style="margin-top:40px">Full Property Management Services</h2>
+        <p style="color:var(--text-mid);line-height:1.7;margin-bottom:20px">Property management services are provided by <strong>Universal Elite Realty 环球地产 (DRE# 02121645)</strong>. David Dai (DRE# 02202763) provides client liaison and bilingual coordination for Chinese-speaking property owners.</p>
+
         <div class="feature-list">
-          <div class="feature-item"><div class="feature-check">✓</div><div><h4>租客寻找与审查</h4><p>专业筛选可靠租客，确保您的房产有稳定、高质量的租客入住。</p></div></div>
-          <div class="feature-item"><div class="feature-check">✓</div><div><h4>月度租金收取与财务报告</h4><p>按时收取租金，提供详细财务报告，让您随时掌握投资状况。</p></div></div>
-          <div class="feature-item"><div class="feature-check">✓</div><div><h4>日常维修协调与紧急处理</h4><p>处理所有维修请求，协调可靠的维修人员，紧急情况及时响应。</p></div></div>
-          <div class="feature-item"><div class="feature-check">✓</div><div><h4>租约续签与租金调整</h4><p>在合法范围内建议最优租金调整方案，最大化您的投资回报。</p></div></div>
-          <div class="feature-item"><div class="feature-check">✓</div><div><h4>驱逐程序协助</h4><p>如遇问题租客，协助处理加州驱逐程序，保护您的法律权益。</p></div></div>
-          <div class="feature-item"><div class="feature-check">✓</div><div><h4>年度房屋检查报告</h4><p>定期检查房屋状况，及时发现问题，保护您的资产价值。</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Tenant Screening &amp; Placement 租客审查与出租</h4><p>Credit check, employment verification, rental history, and background screening. We market your property on Zillow, Apartments.com, MLS, and Chinese-language channels to minimize vacancy.</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Rent Collection &amp; Financial Reporting 租金收取与财务报告</h4><p>Monthly rent collected via electronic transfer with automatic late fee enforcement. Detailed monthly owner statements plus annual 1099 preparation for tax season.</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Maintenance Coordination 日常维修协调</h4><p>24/7 emergency maintenance response. Licensed, insured vendor network. Transparent repair quotes before work begins. All maintenance documented for owner review.</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Lease Renewals &amp; Rent Adjustments 租约续签与租金调整</h4><p>AB 1482-compliant rent increase notices. Renewal reminders 90 days before lease expiration. Market rent analysis to maximize your annual income within legal limits.</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Eviction Assistance 驱逐程序协助</h4><p>3-Day Notice to Pay or Quit, unlawful detainer filing coordination, court appearance support. We work with California-licensed eviction attorneys to protect your rights and minimize cost.</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Annual Property Inspections 年度房屋检查</h4><p>Documented move-in and move-out inspections with photos. Mid-lease inspections available. Security deposit accounting and return within California's 21-day requirement.</p></div></div>
+          <div class="feature-item"><div class="feature-check">✓</div><div><h4>Chinese-Language Communication 全中文对接</h4><p>All owner communication available in Mandarin. WeChat consultation available. Monthly reports and lease documents translated on request. Ideal for overseas Chinese landlords.</p></div></div>
         </div>
+
+        <h2 class="section-title" style="margin-top:40px">Self-Management vs. Professional Management in California</h2>
+        <p style="color:var(--text-mid);line-height:1.7;margin-bottom:16px">Many California landlords start by self-managing their rental property. As California law grows more complex — and as portfolios grow — the cost-benefit calculus shifts significantly:</p>
+
+        <table class="pm-table">
+          <thead><tr><th>Factor</th><th>Self-Management</th><th>Professional Management</th></tr></thead>
+          <tbody>
+            <tr><td>AB 1482 &amp; rent control compliance</td><td>Owner must track and update annually</td><td>Manager handles all notices and tracking</td></tr>
+            <tr><td>Tenant disputes and evictions</td><td>High legal exposure; steep learning curve</td><td>Experienced process with legal coordination</td></tr>
+            <tr><td>Vacancy and leasing time</td><td>Depends on owner's availability and marketing</td><td>Professional listing, faster tenant placement</td></tr>
+            <tr><td>24/7 maintenance response</td><td>Owner personally handles emergency calls</td><td>Vendor network with after-hours coverage</td></tr>
+            <tr><td>Monthly cost</td><td>Your time (often 5–10 hrs/month per property)</td><td>~8–12% of monthly rent ($200–$350/mo on a $2,500/mo unit)</td></tr>
+            <tr><td>Overseas landlords</td><td>Very difficult; requires a local emergency contact</td><td>Fully hands-off; owner receives monthly reports</td></tr>
+            <tr><td>Financial reporting</td><td>Owner manages records and 1099s</td><td>Monthly statements + year-end tax prep</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="section-title" style="margin-top:40px">Southern California Rental Markets We Serve</h2>
+        <p style="color:var(--text-mid);line-height:1.7;margin-bottom:20px">California's rental market varies significantly by city and submarket. Here are the key markets where RentalInCA provides property management services:</p>
+
+        <div class="city-grid">
+          <div class="city-card">
+            <h4>Orange County (Irvine, Anaheim, Santa Ana)</h4>
+            <p>OC is one of the most desirable rental markets in Southern California, with Irvine consistently ranked among the safest and most educated cities in the US. Average rents range from $2,200 for a 1BR in Anaheim to $3,500+ for a 2BR in Irvine. Santa Ana has local rent control that goes beyond AB 1482 — a critical compliance point for landlords in that city.</p>
+          </div>
+          <div class="city-card">
+            <h4>Los Angeles County (LA, Long Beach, Glendale)</h4>
+            <p>LA has its own strict rent control ordinance (the Rent Stabilization Ordinance, RSO) covering buildings built before October 1978. The LA RSO significantly restricts allowable rent increases and just cause eviction procedures. Professional management in LA requires deep familiarity with both state and city-level rules.</p>
+          </div>
+          <div class="city-card">
+            <h4>San Diego County</h4>
+            <p>San Diego's rental market is driven by military installations and biotech/life sciences employment. Average rents in coastal areas run $2,400–$3,000+. San Diego City recently passed a local just cause eviction ordinance that applies to properties not already covered by AB 1482. Proper notice procedures are essential.</p>
+          </div>
+          <div class="city-card">
+            <h4>Inland Empire (Riverside, San Bernardino)</h4>
+            <p>The most affordable major market in Southern California, with strong tenant demand driven by logistics and warehouse industry growth. Average rents run $1,800–$2,400 for single-family homes. Lower entry prices and strong DSCR ratios make the IE attractive for investors from coastal markets looking to expand their portfolio.</p>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:40px">Frequently Asked Questions</h2>
+
+        <details class="pm-faq">
+          <summary>What is AB 1482 and does it apply to my California rental property?</summary>
+          <div class="pm-faq-body"><p>AB 1482 (the Tenant Protection Act of 2019) applies to most California residential rental properties that are at least 15 years old (built before 2010 as of 2025). It caps rent increases at 5% + local CPI, with a maximum of 10% per year, and requires "just cause" for eviction after 12 months of tenancy.</p><p>Single-family homes owned by individual landlords are <em>generally exempt</em> if the landlord provides the tenant with a written exemption notice at the start of the tenancy. Condos sold separately from other units may also be exempt. Many cities have their own local rent control ordinances (Los Angeles, Santa Ana, Long Beach) that may cover properties regardless of AB 1482 exemption status.</p><p>A property manager familiar with both state and local law is essential to ensure your property is properly categorized and notices are served correctly.</p></div>
+        </details>
+
+        <details class="pm-faq">
+          <summary>How much does property management cost in California? 物业管理多少钱？</summary>
+          <div class="pm-faq-body"><p>California property management fees typically range from <strong>8% to 12% of monthly collected rent</strong> for residential properties. Most companies also charge:</p><ul style="color:#555;line-height:1.8;padding-left:20px"><li>A <strong>leasing fee</strong> equal to 50%–100% of one month's rent when placing a new tenant</li><li>A <strong>lease renewal fee</strong> of $100–$300 per renewal</li><li>An <strong>annual inspection fee</strong> of $100–$200</li></ul><p>In Orange County, on a $2,500/month rental, the all-in annual cost of professional management typically runs $3,000–$4,500/year. That cost is generally tax-deductible as a rental property expense. For overseas Chinese landlords, the time savings and compliance protection far exceed this cost.</p></div>
+        </details>
+
+        <details class="pm-faq">
+          <summary>What is the California security deposit limit under SB 567 (2024)?</summary>
+          <div class="pm-faq-body"><p>Under SB 567, which took effect <strong>April 1, 2024</strong>, California landlords are generally limited to collecting a maximum security deposit equal to <strong>one month's rent</strong> for unfurnished residential units. This significantly reduced the prior limit of two months' rent.</p><p>Small landlords who own no more than two residential rental properties with a total of no more than four units may qualify for a limited exemption allowing up to two months' deposit. This exemption requires that the landlord is a natural person (not a corporation or LLC) and that the tenant is not active-duty military.</p><p>Security deposits must be returned within 21 days of move-out with an itemized written statement of any deductions. Deductions for normal wear and tear are not permitted.</p></div>
+        </details>
+
+        <details class="pm-faq">
+          <summary>How much notice must I give before entering my California rental property?</summary>
+          <div class="pm-faq-body"><p>Under California Civil Code Section 1954, you must give at least <strong>24 hours' advance written notice</strong> before entering a rental unit, and entry must take place at a reasonable time (generally between 8 AM and 8 PM). Notice can be delivered in person, left at the property, or sent by first-class mail (with a longer lead time for mailed notice to account for delivery).</p><p>Exceptions exist for genuine emergencies (e.g., a burst pipe, fire, or gas leak). Entry without proper notice — even for minor repairs — can expose landlords to tenant harassment claims and monetary penalties. A professional property manager handles all entry scheduling and documentation.</p></div>
+        </details>
+
+        <details class="pm-faq">
+          <summary>What is the eviction process in California for non-paying tenants?</summary>
+          <div class="pm-faq-body"><p>California's residential eviction process (unlawful detainer) typically proceeds as follows:</p><ol style="color:#555;line-height:1.9;padding-left:20px"><li><strong>3-Day Notice to Pay Rent or Quit</strong> — Served to the tenant with the exact amount owed and payment instructions. Must be prepared and served correctly or the case can be dismissed.</li><li><strong>File unlawful detainer in Superior Court</strong> — If the tenant does not pay or vacate within 3 days, you file in the county where the property is located (e.g., Orange County Superior Court, LA Superior Court).</li><li><strong>Tenant served with summons</strong> — Tenant has 5 business days to respond after service.</li><li><strong>Court hearing / default judgment</strong> — If tenant doesn't respond, landlord obtains a default judgment. If tenant contests, a trial is scheduled.</li><li><strong>Writ of possession</strong> — If you win, the court issues a writ; the Sheriff enforces the lockout typically within 5 days.</li></ol><p>In Orange County, an uncontested case typically takes 3–5 weeks from notice to lockout. Contested cases can take 2–4 months. Proper documentation and legal notice formats are critical at every step. We coordinate with California-licensed eviction attorneys.</p></div>
+        </details>
+
+        <details class="pm-faq">
+          <summary>Does California rent control apply to single-family homes? 独立屋受租控法律保护吗？</summary>
+          <div class="pm-faq-body"><p>Under AB 1482, single-family homes owned by individual landlords (not corporations or REITs) are <em>generally exempt</em> from the rent cap and just cause eviction requirements — but only if the landlord provides the tenant with a written notice of exemption in the lease or as a separate addendum.</p><p>However, many California cities have their own local rent control ordinances. In Los Angeles, for example, the Rent Stabilization Ordinance (RSO) covers buildings built before October 1978, including some single-family homes in certain circumstances. In Santa Ana, local rent control covers most rentals regardless of property type.</p><p>Always check both state and city law before raising rent or issuing a notice to terminate. Failing to follow the correct rules can result in the notice being invalidated and the case being dismissed.</p></div>
+        </details>
+
+        <details class="pm-faq">
+          <summary>我在中国/海外，可以远程持有加州出租房吗？</summary>
+          <div class="pm-faq-body"><p>可以，但必须通过持牌物业管理公司代理。加州法律并不因房东在海外而延长法庭截止期限或减少合规要求。具体建议：</p><ul style="color:#555;line-height:1.9;padding-left:20px"><li>授权持牌物业管理公司代为接收法律文件和处理紧急事务</li><li>确保银行账户支持电子转账，方便月度收款</li><li>提前告知物业管理公司您的联系方式和时区，约定微信/视频会议沟通时间</li><li>确保房产税、保险单均保持最新状态，并抄送给物业管理公司</li></ul><p>David Dai 为海外华人房东提供全中文对接服务，微信沟通，每月报告，让您在国内也能放心持有加州出租房。</p></div>
+        </details>
+
       </div>
+
       <div class="sticky-aside">
         <div class="aside-card">
-          <h3>🔧 了解物业管理</h3>
-          <p>联系 David，他将为您安排与 Universal Elite Realty 专业团队的免费咨询。</p>
+          <h3>免费咨询物业管理</h3>
+          <p>联系 David Dai，安排与 Universal Elite Realty 专业团队的免费物业管理评估。</p>
           <a href="contact.html" class="btn btn-white" style="width:100%;justify-content:center">预约免费咨询 →</a>
           <a href="tel:9496561278" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:10px;border-color:rgba(255,255,255,.4);color:#fff">(949) 656-1278</a>
+          <p style="font-size:.8rem;margin-top:14px;opacity:.8;text-align:center">微信咨询 · WeChat available</p>
         </div>
+
         <div class="aside-card-light" style="margin-top:16px">
-          <h4>🔄 服务流程</h4>
+          <h4>服务流程 Process</h4>
           <div class="steps-list" style="margin-top:12px">
-            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">1</div><div class="step-content"><h4 style="font-size:.85rem">联系 David 咨询</h4></div></div>
-            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">2</div><div class="step-content"><h4 style="font-size:.85rem">评估您的房产需求</h4></div></div>
-            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">3</div><div class="step-content"><h4 style="font-size:.85rem">对接专业管理团队</h4></div></div>
-            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">4</div><div class="step-content"><h4 style="font-size:.85rem">签署管理协议</h4></div></div>
+            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">1</div><div class="step-content"><h4 style="font-size:.85rem">Free consultation — David evaluates your property and needs</h4></div></div>
+            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">2</div><div class="step-content"><h4 style="font-size:.85rem">Property assessment &amp; management proposal from Universal Elite Realty</h4></div></div>
+            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">3</div><div class="step-content"><h4 style="font-size:.85rem">Sign management agreement — fully bilingual</h4></div></div>
+            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">4</div><div class="step-content"><h4 style="font-size:.85rem">Tenant placement or onboarding of existing tenants</h4></div></div>
+            <div class="step-item"><div class="step-num" style="width:28px;height:28px;font-size:.8rem">5</div><div class="step-content"><h4 style="font-size:.85rem">Monthly reports and WeChat updates — fully passive income</h4></div></div>
           </div>
+        </div>
+
+        <div class="aside-card-light" style="margin-top:16px;background:#f8f9fa;border-color:#e0e0e0">
+          <h4 style="color:#333">2026 CA Key Numbers</h4>
+          <ul style="list-style:none;padding:0;margin:12px 0 0;font-size:.85rem;color:#555;line-height:1.8">
+            <li><strong>Rent cap (AB 1482):</strong> 5% + CPI, max 10%/yr</li>
+            <li><strong>Security deposit limit:</strong> 1 month's rent (SB 567)</li>
+            <li><strong>Entry notice:</strong> 24 hours written (Civil Code 1954)</li>
+            <li><strong>Deposit return:</strong> 21 days after move-out</li>
+            <li><strong>3-Day notice:</strong> Pay or Quit for non-payment</li>
+            <li><strong>Management fee:</strong> ~8–12% monthly rent</li>
+          </ul>
         </div>
       </div>
     </div>
+
   </div>
 </section>
+
 <div id="footer-placeholder"></div>
-<div class="compliance">物业管理服务由 Universal Elite Realty (DRE# 02121645) 提供 · David Dai · DRE# 02202763 · © 2026 rentalinca.com</div>
+<div class="compliance">物业管理服务由 Universal Elite Realty (DRE# 02121645) 提供 · David Dai · DRE# 02202763 · rentalinca.com is not a property management company · © 2026 rentalinca.com</div>
 <script src="js/components.js"></script><script src="js/main.js"></script>
 </body></html>
