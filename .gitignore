@@ -7,3 +7,13 @@ npm-debug.log*
 *.log
 
 .vercel
+
+# agent / tooling working files
+.claude/
+.codex-*.json
+
+# local screenshot + generation scratch
+_codex-*.png
+_preview-*.png
+_tmp-*.png
+_minimax-gen/
