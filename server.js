@@ -80,31 +80,13 @@ function sanitizeInquiry(input) {
   return clean;
 }
 
-const RENTAL_DATA = {
-  irvine: { name: 'Irvine 尔湾', '1bd': [2300, 2800], '2bd': [3000, 3800], '3bd': [3800, 5000], sfr: [5500, 8000] },
-  'los-angeles': { name: 'Los Angeles 洛杉矶', '1bd': [2000, 2600], '2bd': [2500, 3500], '3bd': [3500, 5000], sfr: [5000, 8500] },
-  arcadia: { name: 'Arcadia 阿凯迪亚', '1bd': [1800, 2200], '2bd': [2500, 3200], '3bd': [3200, 4200], sfr: [4500, 6500] },
-  pasadena: { name: 'Pasadena 帕萨迪纳', '1bd': [2200, 2800], '2bd': [2700, 3500], '3bd': [3600, 4800], sfr: [5200, 7500] },
-  'san-gabriel': { name: 'San Gabriel 圣盖博', '1bd': [1800, 2300], '2bd': [2300, 3000], '3bd': [3000, 4200], sfr: [4200, 6200] },
-  'rowland-heights': { name: 'Rowland Heights 罗兰岗', '1bd': [1600, 2000], '2bd': [2200, 2800], '3bd': [2800, 3600], sfr: [3800, 5000] },
-  'diamond-bar': { name: 'Diamond Bar 钻石吧', '1bd': [1700, 2100], '2bd': [2300, 2900], '3bd': [2900, 3800], sfr: [4000, 5500] },
-  'chino-hills': { name: 'Chino Hills 奇诺岗', '1bd': [1800, 2200], '2bd': [2400, 3000], '3bd': [3000, 3900], sfr: [4200, 5800] },
-  riverside: { name: 'Riverside 河滨市', '1bd': [1400, 1800], '2bd': [1900, 2400], '3bd': [2400, 3200], sfr: [3200, 4500] }
-};
+// 唯一数据源: data/rent-ranges.json -> js/rent-data.js（生成物）
+// 改租金请改 data/rent-ranges.json 再跑 npm run sync:facts。
+const RENT_DATA = require('./js/rent-data.js');
 
-const PROPERTY_TYPE_LABELS = {
-  '1bd': '1BD / 1BA',
-  '2bd': '2BD / 2BA',
-  '3bd': '3BD / 2BA',
-  sfr: 'Single Family Home'
-};
-
-const TYPICAL_SQFT = {
-  '1bd': 750,
-  '2bd': 1050,
-  '3bd': 1450,
-  sfr: 2200
-};
+const RENTAL_DATA = RENT_DATA.cities;
+const PROPERTY_TYPE_LABELS = RENT_DATA.propertyTypeLabels;
+const TYPICAL_SQFT = RENT_DATA.typicalSqft;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
