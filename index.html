@@ -603,27 +603,12 @@
 </a>
 
 <script src="js/components.js"></script>
+<script src="js/rent-data.js"></script>
 <script>
 // Inline estimator logic
-const EST_DATA = {
-  "irvine":{"1bd":[2300,2800],"2bd":[3000,3800],"3bd":[3800,5000],"sfr":[5500,8500],"name":"Irvine 尔湾"},
-  "los-angeles":{"1bd":[2000,2800],"2bd":[2800,3800],"3bd":[3500,5000],"sfr":[4500,8000],"name":"Los Angeles 洛杉矶"},
-  "arcadia":{"1bd":[1800,2200],"2bd":[2500,3200],"3bd":[3200,4200],"sfr":[4500,6500],"name":"Arcadia 阿凯迪亚"},
-  "pasadena":{"1bd":[1900,2400],"2bd":[2600,3300],"3bd":[3300,4300],"sfr":[4500,6500],"name":"Pasadena 帕萨迪纳"},
-  "san-gabriel":{"1bd":[1700,2100],"2bd":[2300,2900],"3bd":[2900,3700],"sfr":[3800,5200],"name":"San Gabriel 圣盖博"},
-  "rowland-heights":{"1bd":[1600,2000],"2bd":[2200,2800],"3bd":[2800,3600],"sfr":[3800,5000],"name":"Rowland Heights 罗兰岗"},
-  "diamond-bar":{"1bd":[1700,2100],"2bd":[2300,2900],"3bd":[2900,3800],"sfr":[4000,5500],"name":"Diamond Bar 钻石吧"},
-  "chino-hills":{"1bd":[1800,2200],"2bd":[2400,3000],"3bd":[3000,3900],"sfr":[4200,5800],"name":"Chino Hills 奇诺岗"},
-  "riverside":{"1bd":[1400,1800],"2bd":[1900,2400],"3bd":[2400,3200],"sfr":[3200,4500],"name":"Riverside 河滨市"},
-  "monterey-park":{"1bd":[1600,2000],"2bd":[2100,2700],"3bd":[2700,3500],"sfr":[3600,5000],"name":"Monterey Park 蒙特利公园"},
-  "alhambra":{"1bd":[1700,2100],"2bd":[2200,2800],"3bd":[2800,3600],"sfr":[3700,5100],"name":"Alhambra 阿罕布拉"},
-  "temple-city":{"1bd":[1750,2150],"2bd":[2300,2900],"3bd":[2900,3700],"sfr":[3900,5300],"name":"Temple City 天普市"},
-  "west-covina":{"1bd":[1600,2000],"2bd":[2100,2700],"3bd":[2700,3500],"sfr":[3500,4800],"name":"West Covina 西科维纳"},
-  "walnut":{"1bd":[1750,2150],"2bd":[2300,2900],"3bd":[2900,3800],"sfr":[4000,5500],"name":"Walnut 核桃市"},
-  "rancho-cucamonga":{"1bd":[1700,2100],"2bd":[2200,2800],"3bd":[2800,3700],"sfr":[3800,5200],"name":"Rancho Cucamonga"},
-  "corona":{"1bd":[1600,2000],"2bd":[2100,2700],"3bd":[2700,3500],"sfr":[3600,5000],"name":"Corona 科罗纳"},
-  "ontario":{"1bd":[1600,2000],"2bd":[2100,2700],"3bd":[2700,3500],"sfr":[3500,4800],"name":"Ontario 安大略市"}
-};
+// 租金数据来自 js/rent-data.js（由 data/rent-ranges.json 生成，见 npm run sync:facts）。
+// 不要在这里硬编码租金。
+const EST_DATA = window.RENTAL_DATA || {};
 const LABELS = {"1bd":"1室1卫","2bd":"2室2卫","3bd":"3室2卫","sfr":"独立屋 SFR"};
 document.getElementById("estSubmit").addEventListener("click", function(){
   const c = document.getElementById("estCity").value;
@@ -655,6 +640,6 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 });
 </script>
-<script src="js/rent-data.js"></script><script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
