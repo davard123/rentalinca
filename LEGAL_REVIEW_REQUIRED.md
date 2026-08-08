@@ -86,16 +86,35 @@ David Dai 是 Realtor，不是律师 —— 全站措辞一律用「California l
 
 **待复核**：上述表述请律师过一遍，尤其是小房东例外的适用条件与 service member 定义。
 
-### 6b. 全站仍缺失的重要法规 — status: **not started**
+### 6b. 本地租管条例 — status: **已补写（2026-08-07），待复核**
 
-- **LA RSO**（Los Angeles Rent Stabilization Ordinance）
-- **Pasadena Measure H**（2022 通过的本地租管条例）
+**LA RSO** → `cities/los-angeles.html#la-rso`（依据 LAHD 官网）
+
+- 覆盖 1978-10-01 或之前建成的房产；类型含公寓、condo、townhome、duplex、同地块 2+ 独立屋、**ADU / JADU**、连住 >30 天的旅馆房间
+- 单独一栋独立屋通常不在 RSO 内，但可能仍受州法 AB 1482 管 —— 两套规则分开确认
+- **年度登记义务**（州法没有这一条）：所有出租单元须每年向 LAHD 登记并把证明给租客；新业主 45 天内完成
+- 涨租 12 个月一次；**允许涨幅站上刻意不写死**，只链到 LAHD 计算器（这个数每年变，写死必然过期）
+- 2026-02-02 起：涨租不得再另加水电百分比；「多一位受抚养人 +10%」取消（多一位成年租客仍可）
+- 2025-08-20 起须提供 Right to Counsel 通知
+- 无过错终止通常须付搬迁补助
+
+**Pasadena Measure H** → `cities/pasadena.html#pasadena-measure-h`（依据 Pasadena 租金稳定部门官网）
+
+- 覆盖 **1995-02-01 之前建成的多单元**住宅
+- **不覆盖 condo 和独立屋**（市府明确列出）—— 但不受 Measure H ≠ 无限制，1995–2007 建成的可能落入 AB 1482
+- 当期 AGA **2.25%**，适用期 2025-10-01 至 2026-09-30（上期 3%）。**站上已写明适用期并提示到期后另查** —— ⚠️ 2026-09-30 之后必须更新此数
+- 涨租 12 个月一次，提前 30 天书面通知
+- **Base Rent 以 2021-05-17 为界**；该日或之前起租的须先回退到当日租金才能涨；超额涨过的租客可申请 rollback
+
+**待复核**：两节均请律师过一遍，尤其 RSO 对 ADU 的适用条件、Measure H 的 rollback 计算。
+
+> 📌 **维护提醒**：Pasadena AGA 每年 10 月 1 日换期。LA 允许涨幅同样每年变，站上未写死，无需维护。
+
+### 6c. 仍缺失 — status: **not started**
+
 - **Civil Code §1954**（进屋 24 小时书面通知）
-- （已在 6a 处理）
-- **Civil Code §1950.6**（申请审核费 screening fee 的收取、上限与退还规则；以及书面筛选标准）
-
-LA 和 Pasadena 是主推城市，却没提本地租管条例 —— 这是目前最大的内容缺口。
-**但按 P0A 规范，这些不在本轮自行补写**，需要 David / 律师确认后再建页面。
+- **Civil Code §1950.6**（申请审核费 screening fee 的收取、上限与退还；书面筛选标准）
+- 其他城市的本地条例（Santa Monica、West Hollywood、Long Beach、Glendale 等，若日后扩展服务范围需逐一确认）
 
 ### 7. 驱逐程序表述 — status: **pending**
 
