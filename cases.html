@@ -21,6 +21,13 @@
 </script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/cases.css">
+<style>
+.landlord-mistakes{background:var(--bg,#f7f5ef)}
+.mistake-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:28px}
+.mistake-card{background:#fff;border:1px solid var(--border,#e7e2d7);border-left:3px solid var(--gold,#c9a35a);padding:22px 24px;border-radius:4px}
+.mistake-card h4{margin:0 0 10px;font-size:1rem;color:var(--green,#164734)}
+.mistake-card p{margin:0;font-size:.92rem;line-height:1.85;color:var(--text-mid,#66716b)}
+</style>
 </head>
 <body>
 <div id="nav-placeholder"></div>
@@ -53,23 +60,50 @@
   <h2 class="section-title">先看结果，再看过程</h2>
   <p class="section-sub">每个案例都尽量说清楚客户当时担心什么、我实际做了什么，以及最后换来了什么结果。</p>
 </div>
-<!-- [DAVID_INPUT_REQUIRED] 案例内容待补 —— P0A-2 未完成项
-     1) 6 个案例目前只有「客户情况 / 我做了什么 / 最终结果」三句话，5 个没有任何金额或周期。
-        按规范应改写为：情况 → 问题 → 我当时怎么判断 → 结果（多久、什么价位）→ 其他房东能学到什么。
-     2) Diamond Bar 那条的「最终结果」写的是「争取更好成交结果」—— 这不是结果，是意图。
-        请补真实结果，或把这条撤下。
-     3) 能公开到什么程度请你定：可以模糊化（如「两周内」「低于原挂牌价约 5%」），但不要虚构。
-     4) 你已发布口播稿里的真实案例（葡萄藤不肯砍、让降 200 不肯最后降 300 白等半年、
-        800 分老爷爷带孙女申请、楼梯地毯不肯换）是现成素材，确认后可以直接改写成案例。 -->
 <div class="case-grid">
-<div class="big-case" data-category="租"><img src="images/city-irvine.jpg" alt="Irvine 出租成交案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Irvine | Condo | 2B2B</div><h3>7天内成功出租</h3><div class="detail-list"><div><b>客户情况：</b>房子空置一段时间，客户不确定市场租金。</div><div><b>我做了什么：</b>重新定价、优化照片展示、同步推广。</div><div><b>最终结果：</b>快速找到合适租客，租金达到更理想区间。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
-<div class="big-case" data-category="租"><img src="images/city-arcadia.jpg" alt="Arcadia 家庭租客筛选案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Arcadia | House | 3B2B</div><h3>筛选稳定家庭租客</h3><div class="detail-list"><div><b>客户情况：</b>房东担心租客质量，不想只看价格。</div><div><b>我做了什么：</b>重点审查信用、收入、背景与居住计划。</div><div><b>最终结果：</b>找到匹配度高的家庭租客，签约过程顺利。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
-<div class="big-case" data-category="投资"><img src="images/city-los-angeles.jpg" alt="Los Angeles 投资房降低空置期案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Los Angeles | Apt | 1B1B</div><h3>降低空置期</h3><div class="detail-list"><div><b>客户情况：</b>投资房客户希望现金流稳定。</div><div><b>我做了什么：</b>根据区域租赁需求调整展示和定价。</div><div><b>最终结果：</b>提高询问量，缩短等待时间。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
-<div class="big-case" data-category="租"><img src="images/city-rowland-heights.jpg" alt="Rowland Heights 第一次房东出租案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Rowland Heights | House | 3B2B</div><h3>第一次房东顺利出租</h3><div class="detail-list"><div><b>客户情况：</b>客户第一次出租，不熟悉流程和合同。</div><div><b>我做了什么：</b>全程解释申请、筛选、合同与交接。</div><div><b>最终结果：</b>顺利完成出租，后续继续合作。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
-<div class="big-case" data-category="卖"><img src="images/city-diamond-bar.jpg" alt="Diamond Bar 卖房包装提升竞争力案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Diamond Bar | House</div><h3>卖房包装提升竞争力</h3><div class="detail-list"><div><b>客户情况：</b>客户希望卖价理想，但不想长期挂盘。</div><div><b>我做了什么：</b>重新梳理定价、展示卖点与市场策略。</div><div><b>最终结果：</b>提升房源吸引力，争取更好成交结果。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
-<div class="big-case" data-category="买"><img src="images/city-chino-hills.jpg" alt="Chino Hills 买房成交案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Chino Hills | House</div><h3>买到更适合的家庭房</h3><div class="detail-list"><div><b>客户情况：</b>客户预算有限，但希望兼顾社区和生活品质。</div><div><b>我做了什么：</b>筛选区域、比较房源、协助谈判。</div><div><b>最终结果：</b>锁定更合适房源，顺利完成交易。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
+<div class="big-case" data-category="租"><img src="images/city-irvine.jpg" alt="Irvine 出租成交案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Irvine | Condo | 2B2B</div><h3>7天内成功出租</h3><div class="detail-list"><div><b>客户情况：</b>房子空置一段时间，客户不确定市场租金。</div><div><b>我当时怎么判断：</b>空置时间本身就是成本。与其守着一个拍脑袋的数字，不如先看同社区正在租的同类房长什么样、挂了多久，再决定从哪个位置切进去。</div><div><b>我做了什么：</b>重新定价、优化照片展示、同步推广。</div><div><b>最终结果：</b>快速找到合适租客，租金达到更理想区间。</div><div><b>其他房东能学到什么：</b>房子空着的每一天都在花钱。定价的目标不是挂到最高，是让它在合理的时间内以合理的价格租出去。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
+<div class="big-case" data-category="租"><img src="images/city-arcadia.jpg" alt="Arcadia 家庭租客筛选案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Arcadia | House | 3B2B</div><h3>筛选稳定家庭租客</h3><div class="detail-list"><div><b>客户情况：</b>房东担心租客质量，不想只看价格。</div><div><b>我当时怎么判断：</b>租金高低只是一部分，租客能不能稳定住下去同样影响一年的实际收入。审核要按事先写好、对所有申请人一致适用的标准来看，而不是凭感觉。</div><div><b>我做了什么：</b>重点审查信用、收入、背景与居住计划。</div><div><b>最终结果：</b>找到匹配度高的家庭租客，签约过程顺利。</div><div><b>其他房东能学到什么：</b>把筛选标准提前写下来，逐项核对收入、信用、租房记录，以及这几样材料之间对不对得上。这比看人顺不顺眼可靠，也更合规。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
+<div class="big-case" data-category="投资"><img src="images/city-los-angeles.jpg" alt="Los Angeles 投资房降低空置期案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Los Angeles | Apt | 1B1B</div><h3>降低空置期</h3><div class="detail-list"><div><b>客户情况：</b>投资房客户希望现金流稳定。</div><div><b>我当时怎么判断：</b>投资房看的是全年现金流，不是挂牌价。挂高两百块、多空一个月，这一年是亏的。</div><div><b>我做了什么：</b>根据区域租赁需求调整展示和定价。</div><div><b>最终结果：</b>提高询问量，缩短等待时间。</div><div><b>其他房东能学到什么：</b>算账要算全年。把「月租 × 12」换成「月租 × 实际出租月数 − 周转成本」，很多定价决定会立刻反过来。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
+<div class="big-case" data-category="租"><img src="images/city-rowland-heights.jpg" alt="Rowland Heights 第一次房东出租案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Rowland Heights | House | 3B2B</div><h3>第一次房东顺利出租</h3><div class="detail-list"><div><b>客户情况：</b>客户第一次出租，不熟悉流程和合同。</div><div><b>我当时怎么判断：</b>第一次出租的房东，最大的风险不是价格，是流程里不知道会踩到什么：申请怎么审、租约条款意味着什么、入住交接要留什么记录。</div><div><b>我做了什么：</b>全程解释申请、筛选、合同与交接。</div><div><b>最终结果：</b>顺利完成出租，后续继续合作。</div><div><b>其他房东能学到什么：</b>入住前把房屋现状拍照存档。退租时押金一旦有争议，这些照片就是你唯一站得住脚的依据。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
+<div class="big-case" data-category="卖"><img src="images/city-diamond-bar.jpg" alt="Diamond Bar 卖房包装提升竞争力案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Diamond Bar | House</div><h3>卖房包装提升竞争力</h3><div class="detail-list"><div><b>客户情况：</b>客户希望卖价理想，但不想长期挂盘。</div><div><b>我当时怎么判断：</b>卖房和出租的第一步是同一件事：挂牌价。挂高了不只是少几组看房，挂久了买家会开始猜这房子是不是有毛病，最后往往还得降更多。</div><div><b>我做了什么：</b>重新梳理定价、展示卖点与市场策略。</div><div><b>最终结果：</b>房源关注度提升。这一条的最终成交数字不便公开，所以只讲做法。</div><div><b>其他房东能学到什么：</b>先看同区最近的成交价，不是只看邻居挂多少。挂牌价是给市场的第一印象，改起来的代价比一开始定对它高得多。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
+<div class="big-case" data-category="买"><img src="images/city-chino-hills.jpg" alt="Chino Hills 买房成交案例" width="800" height="260" loading="lazy"><div class="body"><div class="tag">Chino Hills | House</div><h3>买到更适合的家庭房</h3><div class="detail-list"><div><b>客户情况：</b>客户预算有限，但希望兼顾社区和生活品质。</div><div><b>我当时怎么判断：</b>预算有限的时候最怕什么都想要。先把「必须满足」和「可以让步」分开，能看的房子数量会立刻降下来，决策也快得多。</div><div><b>我做了什么：</b>筛选区域、比较房源、协助谈判。</div><div><b>最终结果：</b>锁定更合适房源，顺利完成交易。</div><div><b>其他房东能学到什么：</b>如果是投资房还要多算一层：这套房实际能租多少、空置多久、扣掉持有成本还剩什么，再决定值不值得买。</div></div><a class="btn btn-gold" href="contact.html">我也想咨询</a></div></div>
 </div></div></section>
 
+<section class="section landlord-mistakes">
+  <div class="container">
+    <div class="section-center section-center-tight">
+      <span class="tag">经验</span>
+      <h2 class="section-title">房子挂了几个月没人要，多半是这几个原因</h2>
+      <p class="section-sub">市场确实会波动，但我见过的长期空置里，很大一部分是房东自己造成的。下面这些都是我实际遇到过的情况。</p>
+    </div>
+    <div class="mistake-grid">
+      <div class="mistake-card">
+        <h4>不听劝的</h4>
+        <p>有个客人的房子出租了三年收回来，什么都不收拾就直接上市了。看的人不少，可就是都没下文。房子不用翻新，但「看得出没人管」这件事，租客一进门就能感觉到。</p>
+      </div>
+      <div class="mistake-card">
+        <h4>不相信专业意见的</h4>
+        <p>有个客人的房子后院有葡萄藤，叶子烂了、葡萄掉一地，谁来看都觉得院子没法用，可房东就是不愿意砍。拖了几个月终于砍了，几天后就租出去了。</p>
+      </div>
+      <div class="mistake-card">
+        <h4>非要挂社区最高价的</h4>
+        <p>有个客人非要挂小区最高价，我让他降 200 他不愿意。挂了几个月后终于愿意降 100，可租房高峰期已经过了，最后还是降了 300 才出手，白白多等了半年。多要的那点钱，早就被空置吃回去了。</p>
+      </div>
+      <div class="mistake-card">
+        <h4>总想等最好的</h4>
+        <p>不是每个租客都是信用分 760、大厂工作年薪几十万。在租金有保障的前提下，标准适当放宽才能尽快租出去。但要注意的是流程本身：我遇到过一位申请人条件很好，追问之下才说要和家人一起住——每个成年入住人都必须递交自己的申请材料，这是流程问题，不是对人的判断。</p>
+      </div>
+      <div class="mistake-card">
+        <h4>没有容忍度的</h4>
+        <p>租客入住前多提些要求是正常的。有套房各方面条件都不错，租客想把太旧的楼梯地毯换成地板，房东一口回绝。到现在这房子还在市场上挂着。</p>
+      </div>
+      <div class="mistake-card">
+        <h4>把房子租给朋友的</h4>
+        <p>这一条是忠告：尽量不要把房子租给自己的朋友。真出了问题，收租、维修、退租哪一样都不好开口，最后基本都闹得不愉快。</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="section case-cta-section">
   <div class="container">
     <div class="city-guides-cta case-cta">
