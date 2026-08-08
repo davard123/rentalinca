@@ -250,7 +250,7 @@ function prioritizeContactPage() {
     </div>
     <div class="info-box" style="margin-top:24px">
       <h4>\uD83D\uDCDC \u6267\u7167\u4fe1\u606f License</h4>
-      <p>David Dai · DRE# 02202763<br>Universal Elite Realty \u73af\u7403\u5730\u4ea7 · DRE# 02121645<br>DRE License<br><br>
+      <p>David Dai · DRE# 02202763<br>Universal Elite Realty \u73af\u7403\u5730\u4ea7 · DRE# 02121645<br><br>
       <em style="font-size:.82rem;color:var(--text-light)">Property Management services provided by Universal Elite Realty (DRE# 02121645)</em></p>
     </div>
   `;
