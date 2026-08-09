@@ -124,7 +124,8 @@ function buildFooter() {
         <span>\u90ae\u7bb1: daviddairealty@gmail.com</span>
         <a href="${BASE_PATH}contact.html">${ZH.footerPage}</a>
         <a href="${BASE_PATH}about.html">${ZH.footerAboutDavid}</a>
-        <a href="${BASE_PATH}what-is-rentalinca.html">关于本站</a>
+      <a href="${BASE_PATH}what-is-rentalinca.html">关于本站</a>
+      <a href="${BASE_PATH}privacy.html">隐私政策</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -133,6 +134,67 @@ function buildFooter() {
     </div>
   </div>
 </footer>`;
+}
+
+
+function buildNextStep() {
+  var path = window.location.pathname;
+  if (/index\.html$|\/contact\.html$|calculators\//.test(path)) return;
+  var key = path.split('/').pop() || 'index.html';
+  var config = {
+    'landlords.html': { label: '我是房东', title: '先把出租决定算清楚', body: '先估租、比较出租和出售，再把房源情况发给 David。', primary: '打开房东工具', href: BASE_PATH + 'landlords.html#landlord-tools', secondary: '预约出租咨询', secondaryHref: BASE_PATH + 'contact.html' },
+    'tenants.html': { label: '我要找房', title: '告诉我们你的找房条件', body: '城市、预算、房型和入住时间越清楚，越容易快速筛选。', primary: '提交找房需求', href: BASE_PATH + 'contact.html', secondary: '查看准备材料', secondaryHref: BASE_PATH + 'tenants.html#faq' },
+    'buy-sell.html': { label: '买卖房产', title: '先算清楚，再决定下一步', body: '如果你还在出租、出售之间犹豫，可以先比较现金结果。', primary: '打开出租/出售计算器', href: BASE_PATH + 'calculators/rent-vs-sell.html', secondary: '预约买卖咨询', secondaryHref: BASE_PATH + 'contact.html' },
+    'property-management.html': { label: '物业管理', title: '先聊清楚托管范围和费用', body: '把房产城市、房型和你最担心的问题发来，先判断是否适合托管。', primary: '预约托管咨询', href: BASE_PATH + 'contact.html', secondary: '查看出租工具', secondaryHref: BASE_PATH + 'landlords.html#landlord-tools' },
+    'cities.html': { label: '城市指南', title: '先选城市，再看租金和服务', body: '不同城市的租金、法规和出租策略差别很大。', primary: '先免费估租', href: BASE_PATH + 'index.html#estimator', secondary: '联系 David', secondaryHref: BASE_PATH + 'contact.html' },
+    'cases.html': { label: '成交案例', title: '你的房产情况也可以先聊聊', body: '参考案例只能帮助你建立预期，具体还要看房屋、城市和时间。', primary: '提交我的情况', href: BASE_PATH + 'contact.html', secondary: '先免费估租', secondaryHref: BASE_PATH + 'index.html#estimator' },
+    'about.html': { label: '关于 David', title: '直接说你的房产需求', body: '不用先读完全部内容，把城市、房型和目标发来即可。', primary: '发送咨询', href: BASE_PATH + 'contact.html', secondary: '拨打电话', secondaryHref: 'tel:9496561278' }
+  };
+  var item = config[key];
+  if (!item) {
+    if (/cities\//.test(path)) item = { label: '城市详情', title: '查看这座城市后，下一步是估租或咨询', body: '把地址、房型和预算发来，David 可以进一步判断。', primary: '先免费估租', href: BASE_PATH + 'index.html#estimator', secondary: '联系 David', secondaryHref: BASE_PATH + 'contact.html' };
+    else return;
+  }
+  var header = document.querySelector('.page-header');
+  if (!header || document.querySelector('.page-next-step')) return;
+  var el = document.createElement('section');
+  el.className = 'page-next-step';
+  el.setAttribute('aria-label', '下一步');
+  el.innerHTML = '<div class="container page-next-step-inner">' +
+    '<div class="page-next-step-copy"><span class="page-next-step-label">' + item.label + ' · 下一步</span><strong>' + item.title + '</strong><p>' + item.body + '</p></div>' +
+    '<div class="page-next-step-actions"><a class="btn btn-primary" href="' + item.href + '">' + item.primary + ' <span aria-hidden="true">→</span></a><a class="page-next-step-secondary" href="' + item.secondaryHref + '">' + item.secondary + '</a></div>' +
+    '</div></section>';
+  header.insertAdjacentElement('afterend', el);
+}
+
+function compactBilingualFaqs() {
+  document.querySelectorAll('.faq-a-en').forEach(function (source) {
+    if (source.closest('details')) return;
+    var details = document.createElement('details');
+    details.className = 'faq-en-toggle';
+    var summary = document.createElement('summary');
+    summary.textContent = 'English version';
+    var body = document.createElement('div');
+    body.innerHTML = source.innerHTML;
+    details.appendChild(summary);
+    details.appendChild(body);
+    source.replaceWith(details);
+  });
+}
+
+function preserveCalculatorContext() {
+  if (!/calculators\//.test(window.location.pathname)) return;
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[href*="contact"]');
+    if (!link) return;
+    try {
+      sessionStorage.setItem('rentalincaEstimate', JSON.stringify({
+        source: window.location.pathname.includes('rent-vs-sell') ? 'rent-vs-sell-calculator' : 'vacancy-cost-calculator',
+        estimateId: 'calculator-' + Date.now(),
+        displayRange: '客户刚刚使用了计算器，结果请结合咨询内容查看'
+      }));
+    } catch (error) {}
+  }, true);
 }
 
 function prioritizeHomeContact() {
@@ -287,4 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   prioritizeHomeContact();
   prioritizeContactPage();
+  buildNextStep();
+  compactBilingualFaqs();
+  preserveCalculatorContext();
 });

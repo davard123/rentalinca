@@ -63,6 +63,11 @@
       }
     }, true);
 
+    var tenantAssistant = document.getElementById('tenantAssistant');
+    if (tenantAssistant) tenantAssistant.addEventListener('submit', function () { track('tenant_search_started', { page: page }); });
+    var appointmentSelect = document.querySelector('#contactForm select:nth-of-type(3)');
+    if (appointmentSelect) appointmentSelect.addEventListener('change', function () { if (this.value) track('appointment_slot_selected', { page: page }); });
+
     // 页脚/联系页的二维码图片本身
     document.addEventListener('click', function (e) {
       var img = e.target.closest && e.target.closest('img[src*="wechat"]');

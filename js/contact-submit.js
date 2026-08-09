@@ -8,6 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = originalForm.cloneNode(true);
   originalForm.replaceWith(form);
 
+  // Set RENTALINCA_TURNSTILE_SITE_KEY in a small deployment config script to
+  // enable the widget. The backend remains compatible with local development
+  // when TURNSTILE_SECRET_KEY is not configured.
+  if (window.RENTALINCA_TURNSTILE_SITE_KEY) {
+    const widget = document.createElement('div');
+    widget.className = 'cf-turnstile';
+    widget.dataset.sitekey = window.RENTALINCA_TURNSTILE_SITE_KEY;
+    form.appendChild(widget);
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
   let errorBox = form.querySelector('.form-error-message');
   if (!errorBox) {
     errorBox = document.createElement('p');
@@ -33,6 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = form.querySelector('input[type="email"]');
     const selects = form.querySelectorAll('select');
     const notesInput = form.querySelector('textarea');
+    const estimateSummary = (() => {
+      try { return JSON.parse(sessionStorage.getItem('rentalincaEstimate') || 'null'); } catch { return null; }
+    })();
+    const tenantSearch = (() => {
+      try { return JSON.parse(sessionStorage.getItem('rentalincaTenantSearch') || 'null'); } catch { return null; }
+    })();
+    const turnstileToken = form.querySelector('input[name="turnstileToken"]')?.value || '';
+    const query = new URLSearchParams(window.location.search);
 
     const payload = {
       source: 'contact-form',
@@ -40,9 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
       name: textInput?.value.trim() || '',
       phone: phoneInput?.value.trim() || '',
       email: emailInput?.value.trim() || '',
-      serviceNeeded: selects[0]?.value.trim() || '',
-      city: selects[1]?.value.trim() || '',
-      notes: notesInput?.value.trim() || ''
+      serviceNeeded: selects[0]?.value.trim() || (tenantSearch ? '找租房 Find a Rental' : ''),
+      city: selects[1]?.value.trim() || tenantSearch?.city || '',
+      appointmentSlot: selects[2]?.value.trim() || '',
+      notes: [notesInput?.value.trim() || '', tenantSearch ? '找房助手：预算 $' + tenantSearch.budget + '，房型 ' + tenantSearch.type + '，入住 ' + (tenantSearch.moveIn || '不限') : ''].filter(Boolean).join('\n'),
+      source: query.get('source') || (estimateSummary ? estimateSummary.source : 'contact-form'),
+      estimateId: estimateSummary?.estimateId || query.get('estimateId') || '',
+      estimatedRent: estimateSummary?.displayRange || query.get('estimatedRent') || ''
+      ,turnstileToken
     };
 
     try {
@@ -61,6 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       form.style.display = 'none';
       successBox.style.display = 'block';
+      const id = successBox.querySelector('.form-confirmation-id');
+      if (id) id.textContent = '咨询编号：' + (result.id || '已生成');
+      try { sessionStorage.removeItem('rentalincaEstimate'); } catch {}
+      try { sessionStorage.removeItem('rentalincaTenantSearch'); } catch {}
       if (window.ricaTrack) {
         window.ricaTrack('lead_submitted', { source: payload.source, page: payload.page });
       }

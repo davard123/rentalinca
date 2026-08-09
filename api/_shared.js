@@ -15,6 +15,42 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload));
 }
 
+const RATE_BUCKETS = new Map();
+function enforceRateLimit(req, key = 'public', limit = 12, windowMs = 10 * 60 * 1000) {
+  const now = Date.now();
+  const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
+  const bucketKey = `${key}:${ip}`;
+  const item = RATE_BUCKETS.get(bucketKey);
+  if (!item || now - item.start > windowMs) {
+    RATE_BUCKETS.set(bucketKey, { start: now, count: 1 });
+    return;
+  }
+  item.count += 1;
+  if (item.count > limit) {
+    const error = new Error('Too many requests. Please try again later.');
+    error.statusCode = 429;
+    throw error;
+  }
+}
+
+async function verifyTurnstile(token, req) {
+  const secret = String(process.env.TURNSTILE_SECRET_KEY || '').trim();
+  if (!secret) return;
+  if (!token) {
+    const error = new Error('Turnstile verification is required');
+    error.statusCode = 400;
+    throw error;
+  }
+  const body = new URLSearchParams({ secret, response: String(token), remoteip: String(req.headers['x-forwarded-for'] || '') });
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
+  const result = await response.json().catch(() => ({}));
+  if (!result.success) {
+    const error = new Error('Bot verification failed');
+    error.statusCode = 403;
+    throw error;
+  }
+}
+
 /**
  * Constant-time string comparison for secrets.
  * A plain `!==` leaks the token byte-by-byte through response timing, and the
@@ -116,6 +152,8 @@ function sanitizeInquiry(input, req) {
     areaSqft: sanitizeString(input.areaSqft, 40),
     estimatedRent: sanitizeString(input.estimatedRent, 120),
     estimateId: sanitizeString(input.estimateId, 120),
+    appointmentSlot: sanitizeString(input.appointmentSlot, 120),
+    status: sanitizeString(input.status, 40) || 'new',
     page: sanitizeString(input.page, 300)
   };
 }
@@ -201,9 +239,36 @@ async function readGithubJson(filePath) {
   const issues = await response.json();
   const data = issues
     .filter(issue => String(issue.title || '').startsWith(`[rentalinca:${recordKind}]`))
-    .map(parseRecordFromIssue)
+    .map(issue => {
+      const record = parseRecordFromIssue(issue);
+      if (!record) return null;
+      record.issueNumber = issue.number;
+      record.status = record.status || 'new';
+      return record;
+    })
     .filter(Boolean);
   return { data, sha: null };
+}
+
+async function updateGithubRecordStatus(recordId, status) {
+  const { repo, token } = getGithubRepoConfig();
+  const response = await fetch(`https://api.github.com/repos/${repo}/issues?state=all&per_page=100`, {
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'User-Agent': 'rentalinca-api' }
+  });
+  if (!response.ok) throw Object.assign(new Error('GitHub issue read failed'), { statusCode: 502 });
+  const issues = await response.json();
+  const issue = issues.find(item => {
+    const record = parseRecordFromIssue(item);
+    return record && record.id === recordId;
+  });
+  if (!issue) throw Object.assign(new Error('Record not found'), { statusCode: 404 });
+  const patch = await fetch(`https://api.github.com/repos/${repo}/issues/${issue.number}`, {
+    method: 'PATCH',
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', 'User-Agent': 'rentalinca-api' },
+    body: JSON.stringify({ labels: ['rentalinca', status] })
+  });
+  if (!patch.ok) throw Object.assign(new Error('GitHub issue update failed'), { statusCode: 502 });
+  return { id: recordId, status };
 }
 
 async function prependGithubRecord(filePath, record, message) {
@@ -231,6 +296,7 @@ function formatTelegramRecord(recordKind, record) {
     `City: ${record.city || ''}`,
     `Type/Area: ${[record.propertyType, record.areaSqft ? `${record.areaSqft} sqft` : ''].filter(Boolean).join(' / ')}`,
     `Estimate: ${record.estimatedRent || ''}`,
+    `Preferred time: ${record.appointmentSlot || ''}`,
     `Notes: ${record.notes || ''}`,
     `Time: ${record.createdAt || ''}`
   ].join('\n');
@@ -340,6 +406,17 @@ async function sendTelegramNotification(recordKind, record) {
   }
 }
 
+async function sendCrmRecord(recordKind, record) {
+  const endpoint = String(process.env.CRM_WEBHOOK_URL || '').trim();
+  if (!endpoint) return;
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${String(process.env.CRM_WEBHOOK_TOKEN || '').trim()}` },
+    body: JSON.stringify({ kind: recordKind, record })
+  });
+  if (!response.ok) console.error(`CRM webhook failed: ${response.status}`);
+}
+
 module.exports = {
   createEstimate,
   prependGithubRecord,
@@ -348,5 +425,9 @@ module.exports = {
   sendResendAutoReply,
   sanitizeInquiry,
   sendJson,
-  safeEqual
+  safeEqual,
+  enforceRateLimit,
+  verifyTurnstile,
+  updateGithubRecordStatus
+  ,sendCrmRecord
 };

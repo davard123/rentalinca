@@ -17,6 +17,8 @@
   .admin-table th { background: var(--blue-light); color: var(--blue-dark); font-weight: 700; }
   .admin-table td { color: var(--text-mid); }
   .admin-empty { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; color: var(--text-mid); }
+  .admin-controls { display:flex; gap:12px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+  .admin-controls button, .admin-controls select { min-height:40px; padding:8px 12px; border:1px solid var(--border); border-radius:8px; background:#fff; }
 </style>
 </head>
 <body>
@@ -44,7 +46,8 @@ async function loadInquiries() {
   const content = document.getElementById('adminContent');
   try {
     const token = localStorage.getItem('adminToken') || '';
-    const response = await fetch('/api/inquiries', {
+    const page = window.adminPage || 1;
+    const response = await fetch('/api/inquiries?page=' + page + '&limit=25', {
       headers: token ? { Authorization: `Bearer ${token}` } : {}
     });
     if (response.status === 401) {
@@ -76,7 +79,7 @@ async function loadInquiries() {
             <th>城市</th>
             <th>房型/面积</th>
             <th>估价</th>
-            <th>备注</th>
+            <th>备注</th><th>状态</th>
           </tr>
         </thead>
         <tbody>
@@ -92,11 +95,18 @@ async function loadInquiries() {
               <td>${[item.propertyType, item.areaSqft ? `${item.areaSqft} sqft` : ''].filter(Boolean).map(escapeHtml).join('<br>')}</td>
               <td>${escapeHtml(item.estimatedRent)}</td>
               <td>${escapeHtml(item.notes)}</td>
+              <td><select class="lead-status" data-id="${escapeHtml(item.id)}"><option value="new" ${item.status === 'new' ? 'selected' : ''}>待联系</option><option value="contacted" ${item.status === 'contacted' ? 'selected' : ''}>已联系</option><option value="qualified" ${item.status === 'qualified' ? 'selected' : ''}>已确认</option><option value="closed" ${item.status === 'closed' ? 'selected' : ''}>已完成</option></select></td>
             </tr>
           `).join('')}
         </tbody>
       </table>
     `;
+    content.insertAdjacentHTML('afterend', '<div class="admin-controls"><button id="adminPrev">上一页</button><span>第 ' + data.page + ' / ' + data.pages + ' 页，共 ' + data.total + ' 条</span><button id="adminNext">下一页</button></div>');
+    document.getElementById('adminPrev').disabled = data.page <= 1;
+    document.getElementById('adminNext').disabled = data.page >= data.pages;
+    document.getElementById('adminPrev').onclick = function () { window.adminPage = data.page - 1; document.querySelector('.admin-controls')?.remove(); loadInquiries(); };
+    document.getElementById('adminNext').onclick = function () { window.adminPage = data.page + 1; document.querySelector('.admin-controls')?.remove(); loadInquiries(); };
+    content.querySelectorAll('.lead-status').forEach(function (select) { select.addEventListener('change', async function () { var token = localStorage.getItem('adminToken') || ''; await fetch('/api/inquiries', { method:'PATCH', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + token}, body:JSON.stringify({ id:this.dataset.id, status:this.value }) }); }); });
   } catch (error) {
     content.textContent = '后台服务没有启动，或 /api/inquiries 无法访问。';
   }

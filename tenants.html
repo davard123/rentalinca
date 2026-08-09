@@ -18,6 +18,38 @@
     <p>从看房到签约，用中文把每一步讲明白——尤其是租约里那些你签下去就要负责的条款。</p>
   </div>
 </div>
+<section class="tenant-assistant-section" aria-labelledby="tenant-assistant-title">
+  <div class="container">
+    <div class="tenant-assistant-intro">
+      <span class="tag">找房助手 Find a rental</span>
+      <h2 id="tenant-assistant-title">先把你的找房条件列清楚</h2>
+      <p>不用先翻完所有房源。填 4 项信息，David 可以按城市、预算和时间先帮你筛一轮。</p>
+    </div>
+    <form id="tenantAssistant" class="tenant-assistant-form">
+      <label>目标城市<select name="city" required><option value="">请选择城市</option><option>Irvine 尔湾</option><option>Los Angeles 洛杉矶</option><option>Arcadia 阿凯迪亚</option><option>Pasadena 帕萨迪纳</option><option>San Gabriel 圣盖博</option><option>Rowland Heights 罗兰岗</option><option>Diamond Bar 钻石吧</option><option>Chino Hills 奇诺岗</option><option>Riverside 河滨市</option></select></label>
+      <label>每月预算<input name="budget" type="number" min="500" step="100" placeholder="$3,000" required></label>
+      <label>房型<select name="type" required><option value="">请选择房型</option><option>1室</option><option>2室</option><option>3室</option><option>独立屋</option></select></label>
+      <label>计划入住<select name="moveIn"><option value="">时间不限</option><option>两周内</option><option>1个月内</option><option>1–3个月</option><option>3个月以后</option></select></label>
+      <button class="btn btn-primary" type="submit">提交找房条件 →</button>
+    </form>
+  </div>
+</section>
+
+<section class="tenant-materials-section" aria-labelledby="tenant-materials-title">
+  <div class="container">
+    <div><h2 id="tenant-materials-title">看房前，先准备这份材料清单</h2><p>不同房东要求会不同，这份清单帮助你少跑一趟。收入倍数是市场惯例，不是加州统一法律标准。</p></div>
+    <div class="tenant-checklist" role="group" aria-label="租房材料清单">
+      <label><input type="checkbox"> 有效身份证件（护照或驾照）</label>
+      <label><input type="checkbox"> 最近工资单或收入证明</label>
+      <label><input type="checkbox"> 银行流水或存款证明</label>
+      <label><input type="checkbox"> 信用报告授权</label>
+      <label><input type="checkbox"> 过往租赁记录或房东联系方式</label>
+      <label><input type="checkbox"> 海外收入、担保人或其他补充说明</label>
+    </div>
+    <button class="btn btn-white" id="printTenantChecklist" type="button">打印 / 保存清单</button>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="two-col-content">
@@ -99,6 +131,15 @@
   © 2026 rentalinca.com · 租金数据仅供参考
 </div>
 <script src="js/components.js"></script><script src="js/rent-data.js"></script><script src="js/main.js"></script>
+<script>
+document.getElementById('tenantAssistant')?.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var data = Object.fromEntries(new FormData(this).entries());
+  try { sessionStorage.setItem('rentalincaTenantSearch', JSON.stringify(data)); } catch (error) {}
+  window.location.href = 'contact.html?source=tenant-assistant';
+});
+document.getElementById('printTenantChecklist')?.addEventListener('click', function () { window.print(); });
+</script>
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="js/analytics.js"></script>

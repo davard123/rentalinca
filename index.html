@@ -607,6 +607,15 @@ document.getElementById("estSubmit").addEventListener("click", function(){
   document.getElementById("estMid").textContent  = "$" + mi.toLocaleString();
   document.getElementById("estHigh").textContent = "$" + hi.toLocaleString();
   document.getElementById("estCity2").textContent = d.name + " · " + LABELS[t] + " · 参考月租（实际因房况而异）";
+  try {
+    sessionStorage.setItem('rentalincaEstimate', JSON.stringify({
+      source: 'home-estimator',
+      estimateId: 'estimate-' + Date.now(),
+      city: d.name,
+      propertyType: LABELS[t],
+      displayRange: "$" + lo.toLocaleString() + " - $" + hi.toLocaleString() + "/mo"
+    }));
+  } catch (error) {}
   document.getElementById("estForm").style.display="none";
   document.getElementById("estResult").style.display="block";
 });

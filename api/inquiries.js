@@ -1,8 +1,10 @@
-const { prependGithubRecord, sanitizeInquiry, sendJson, sendTelegramNotification, sendResendAutoReply, safeEqual } = require('./_shared');
+const { prependGithubRecord, sanitizeInquiry, sendJson, sendTelegramNotification, sendResendAutoReply, sendCrmRecord, safeEqual, enforceRateLimit, verifyTurnstile, updateGithubRecordStatus } = require('./_shared');
 
 module.exports = async function handler(req, res) {
   if (req.method === 'POST') {
     try {
+      enforceRateLimit(req, 'inquiry', 6, 10 * 60 * 1000);
+      await verifyTurnstile(req.body?.turnstileToken, req);
       const inquiry = sanitizeInquiry(req.body || {}, req);
       await prependGithubRecord(
         'data/production-inquiries.json',
@@ -10,10 +12,27 @@ module.exports = async function handler(req, res) {
         `Record inquiry ${inquiry.id}`
       );
       await sendTelegramNotification('inquiry', inquiry);
+      sendCrmRecord('inquiry', inquiry).catch(err => console.error('CRM error:', err.message));
       sendResendAutoReply(inquiry).catch(err => console.error('Resend error:', err.message));
       sendJson(res, 201, { ok: true, id: inquiry.id });
     } catch (error) {
       sendJson(res, error.statusCode || 400, { ok: false, error: error.message || 'Invalid inquiry payload' });
+    }
+    return;
+  }
+
+  if (req.method === 'PATCH') {
+    const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || '';
+    const adminToken = String(process.env.ADMIN_TOKEN || '').trim();
+    if (!adminToken || !safeEqual(token.trim(), adminToken)) {
+      sendJson(res, 401, { ok: false, error: 'Unauthorized' });
+      return;
+    }
+    try {
+      const result = await updateGithubRecordStatus(String(req.body?.id || ''), String(req.body?.status || 'new'));
+      sendJson(res, 200, { ok: true, ...result });
+    } catch (error) {
+      sendJson(res, error.statusCode || 500, { ok: false, error: error.message || 'Unable to update status' });
     }
     return;
   }
@@ -38,7 +57,11 @@ module.exports = async function handler(req, res) {
     try {
       const { readGithubJson } = require('./_shared');
       const { data } = await readGithubJson('data/production-inquiries.json');
-      sendJson(res, 200, { ok: true, inquiries: Array.isArray(data) ? data : [] });
+      const all = Array.isArray(data) ? data : [];
+      const page = Math.max(1, Number(req.query?.page || 1));
+      const limit = Math.min(100, Math.max(1, Number(req.query?.limit || 25)));
+      const start = (page - 1) * limit;
+      sendJson(res, 200, { ok: true, inquiries: all.slice(start, start + limit), page, limit, total: all.length, pages: Math.max(1, Math.ceil(all.length / limit)) });
     } catch (error) {
       sendJson(res, error.statusCode || 500, { ok: false, error: error.message || 'Unable to read inquiries' });
     }

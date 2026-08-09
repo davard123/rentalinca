@@ -139,6 +139,17 @@
               <option>其他 Other</option>
             </select>
           </div>
+          <input type="hidden" name="turnstileToken" value="">
+          <div class="form-group">
+            <label>希望联系时间 Preferred time（可选）</label>
+            <select>
+              <option value="">不指定时间 / No preference</option>
+              <option>工作日上午 9:00–12:00 PT</option>
+              <option>工作日下午 12:00–3:00 PT</option>
+              <option>工作日下午 3:00–7:00 PT</option>
+              <option>周六 9:00 AM–1:00 PM PT</option>
+            </select>
+          </div>
           <div class="form-group">
             <label>备注 Additional Notes（可选）</label>
             <textarea placeholder="请简单描述您的需求，例如：房型、预算、时间安排等 / Briefly describe your needs..."></textarea>
@@ -147,8 +158,11 @@
           <p style="font-size:.78rem;color:var(--text-light);text-align:center;margin-top:12px">你的信息只用来联系你本人，不会转给第三方。</p>
         </form>
         <div class="form-success" id="formSuccess">
-          ✅ 已收到您的咨询！David 将在24小时内与您联系。<br>
+          ✅ 已收到您的咨询！<br>
+          <span class="form-confirmation-id"></span><br>
+          David 通常会在 1 个工作日内与您联系。<br>
           <span style="font-size:.875rem">Your inquiry has been received. David will contact you within 24 hours.</span>
+          <div class="form-success-actions"><a class="btn btn-primary" href="tel:9496561278">直接拨打电话</a><a class="btn btn-white" href="images/wechat-qr.jpg">打开微信二维码</a></div>
         </div>
       </div>
     </div>
