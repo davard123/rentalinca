@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<title>空置成本计算器：多要 $200 值不值得多空一个月？| rentalinca.com</title>
+<meta name="description" content="挂高一点先试试，真的划算吗？输入你想要的租金和预计空置天数，算出坚持高价和降价快租哪个一年下来收得多，以及最多能空几天还不亏。David Dai DRE# 02202763">
+<link rel="canonical" href="https://rentalinca.com/calculators/vacancy-cost.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rentalinca.com/calculators/vacancy-cost.html">
+<meta property="og:title" content="空置成本计算器｜挂高一点先试试，真的划算吗？">
+<meta property="og:description" content="多要 $200 一个月，如果因此多空一个月，一整年反而少收。这个计算器帮你算清楚这笔账。">
+<meta property="og:image" content="https://rentalinca.com/images/og-rentalinca.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="rentalinca.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="空置成本计算器｜挂高一点先试试，真的划算吗？">
+<meta name="twitter:description" content="输入目标租金和预计空置天数，算出坚持高价 vs 降价快租哪个一年收得多。">
+<meta name="twitter:image" content="https://rentalinca.com/images/og-rentalinca.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","@id":"https://rentalinca.com/calculators/vacancy-cost.html#breadcrumb","itemListElement":[
+{"@type":"ListItem","position":1,"name":"首页","item":"https://rentalinca.com/"},
+{"@type":"ListItem","position":2,"name":"房东工具","item":"https://rentalinca.com/calculators/vacancy-cost.html"},
+{"@type":"ListItem","position":3,"name":"空置成本计算器","item":"https://rentalinca.com/calculators/vacancy-cost.html"}]},
+{"@type":"WebApplication","@id":"https://rentalinca.com/calculators/vacancy-cost.html#app","name":"空置成本计算器","url":"https://rentalinca.com/calculators/vacancy-cost.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"比较坚持挂高价与降价快租在 12 个月内的实际租金收入差异。","inLanguage":["zh-CN"]},
+{"@type":"FAQPage","@id":"https://rentalinca.com/calculators/vacancy-cost.html#faq","mainEntity":[
+{"@type":"Question","name":"挂高一点先试试，没人再降，这样不行吗？","acceptedAnswer":{"@type":"Answer","text":"可以试，但要先知道试错的代价。空置期间是零收入，而且租房平台上「已挂多久」本身会影响租客判断——挂得越久，来看的人越会怀疑房子有问题，最后往往要降得更多才租得掉。这个计算器就是把「多要的钱」和「多空的天数」放在一起比。"}},
+{"@type":"Question","name":"一天空置到底值多少钱？","acceptedAnswer":{"@type":"Answer","text":"月租除以约 30.4 天。月租 $4,000 的房子，每空一天大约损失 $132。空一个月就是 $4,000，相当于一年租金的 8.3%。"}},
+{"@type":"Question","name":"这个结果准吗？","acceptedAnswer":{"@type":"Answer","text":"它只算租金收入这一项，用的是你自己填的预计空置天数。它不能替你预测市场，只能把你已经有的判断换算成金额。真正定价还要看同社区在租房源的数量、挂牌时长和装修差异。"}}]}]}
+</script>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .calc-wrap{max-width:860px}
+  .calc-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);margin-bottom:24px}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:600px){.calc-grid{grid-template-columns:1fr}}
+  .calc-field label{display:block;font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px}
+  .calc-field .hint{display:block;font-weight:400;font-size:.78rem;color:var(--text-light);margin-top:2px}
+  .calc-field input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit}
+  .calc-field input:focus{outline:none;border-color:var(--green)}
+  .calc-scenario{border-left:3px solid var(--border);padding-left:16px;margin-bottom:20px}
+  .calc-scenario h4{font-size:.95rem;margin:0 0 12px;color:var(--green)}
+  .calc-out{margin-top:8px}
+  .calc-verdict{background:var(--green);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:22px 0}
+  .calc-verdict .big{font-size:1.55rem;font-weight:800;line-height:1.3;margin:6px 0 10px}
+  .calc-verdict p{color:rgba(255,255,255,.86);margin:0;line-height:1.8;font-size:.92rem}
+  .calc-rows{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  @media(max-width:600px){.calc-rows{grid-template-columns:1fr}}
+  .calc-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px}
+  .calc-box.win{border-color:var(--green);border-width:2px;background:#fff}
+  .calc-box .lbl{font-size:.78rem;color:var(--text-mid);margin-bottom:4px}
+  .calc-box .amt{font-size:1.3rem;font-weight:800;color:var(--text)}
+  .calc-box .sub{font-size:.78rem;color:var(--text-light);margin-top:6px;line-height:1.6}
+  .calc-note{font-size:.82rem;color:var(--text-light);line-height:1.75;margin-top:14px}
+  .calc-err{color:#b42318;font-size:.86rem;margin-top:12px;display:none}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">首页</a><span>›</span>房东工具<span>›</span>空置成本</div>
+    <span class="tag">房东工具</span>
+    <h1>挂高一点先试试，<span>真的划算吗？</span></h1>
+    <p>很多房东的想法是「先挂高，没人再降」。这个想法不一定错，但要先知道试错要花多少钱。</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container calc-wrap">
+
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:8px">房子空着的时候是零收入。多要的那点租金，要好几个月才能把多空的时间赚回来——而且租房网站上「已经挂了多久」本身会影响租客判断，挂得越久，来看的人越容易觉得这房子是不是有什么问题，最后反而要降更多。</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:28px">把你自己的判断填进去，看看这笔账到底怎么算。</p>
+
+    <div class="calc-card">
+      <div class="calc-scenario">
+        <h4>方案 A ── 坚持你想要的价格</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>目标月租<span class="hint">你希望挂的价格</span></label>
+            <input type="number" id="rentA" min="0" step="50" value="4200" inputmode="numeric">
+          </div>
+          <div class="calc-field">
+            <label>预计还要空多少天<span class="hint">按这个价，你觉得还要多久租掉</span></label>
+            <input type="number" id="daysA" min="0" max="365" step="1" value="45" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-scenario" style="border-left-color:var(--gold)">
+        <h4>方案 B ── 降一点，早点租掉</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>降价后月租<span class="hint">你愿意接受的价格</span></label>
+            <input type="number" id="rentB" min="0" step="50" value="4000" inputmode="numeric">
+          </div>
+          <div class="calc-field">
+            <label>预计还要空多少天<span class="hint">降价后你觉得多久能租掉</span></label>
+            <input type="number" id="daysB" min="0" max="365" step="1" value="10" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+
+      <p class="calc-err" id="calcErr"></p>
+      <div class="calc-out" id="calcOut"></div>
+    </div>
+
+    <div class="calc-card">
+      <h3 style="font-size:1.05rem;font-weight:700;margin:0 0 12px">怎么用这个结果</h3>
+      <p style="color:var(--text-mid);line-height:1.85;margin-bottom:12px">上面那个「盈亏平衡天数」是最该记住的数字。它的意思是：按你想要的价格挂，<strong>最多只能再空这么多天</strong>；超过了，还不如一开始就降到方案 B 的价格。</p>
+      <p style="color:var(--text-mid);line-height:1.85;margin-bottom:12px">如果这个天数只有一两周，那说明你想多要的那点钱，容错空间其实很小——市场稍微冷一点就会亏。如果有两三个月，那坚持一下是合理的。</p>
+      <p style="color:var(--text-mid);line-height:1.85;margin:0">这个工具只算租金收入。房贷、地税、保险、HOA 在空置期照付不误，所以真实的空置成本比这里算出来的还高。</p>
+    </div>
+
+    <div class="aside-card" style="margin-top:8px">
+      <h3>不确定自己填的天数靠不靠谱？</h3>
+      <p>空置天数是这个计算里最难估的一项。把房子的地址、房型和你现在想挂的价格发给我，我可以按同社区正在租的同类房挂了多久，帮你判断这个天数合不合理。</p>
+      <a href="../contact.html" class="btn btn-white" style="margin-top:6px">把房子情况发给 David →</a>
+    </div>
+
+    <div style="margin-top:40px">
+      <h2 class="section-title" style="font-size:1.25rem;margin-bottom:18px">常见问题</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">一天空置到底值多少钱？<span class="faq-icon">+</span></button>
+          <div class="faq-a">月租除以约 30.4 天。月租 $4,000 的房子，每空一天大约 $132；空一个月就是 $4,000，相当于一整年租金的 8.3%。所以「多收 $100」和「少空一周」这两件事，量级其实差不多。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">那是不是应该一开始就往低了挂？<span class="faq-icon">+</span></button>
+          <div class="faq-a">也不是。挂太低会让你在还没开始筛人的时候就失去议价空间，而且申请人一多，反而更难判断谁是合适的。目标不是最快租掉，是在租金和空置时间之间找一个你自己能接受的位置——这个计算器只是帮你看清这个位置在哪。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">这个结果准吗？<span class="faq-icon">+</span></button>
+          <div class="faq-a">它只算租金收入，而且用的是<strong>你自己填的</strong>预计空置天数——它不预测市场，只是把你已有的判断换算成金额。真要定价，还得看同社区现在有几套在租、分别挂了多久、装修和车位差多少。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<div class="compliance">
+  David Dai · DRE# 02202763 · Universal Elite Realty 环球地产 · DRE# 02121645 · Irvine, California<br>
+  © 2026 rentalinca.com · 租金数据仅供参考
+</div>
+<script src="../js/components.js"></script>
+<script src="../js/rent-data.js"></script><script src="../js/main.js"></script>
+<script>
+(function () {
+  var DAYS_PER_MONTH = 30.4167;
+  var HORIZON = 365;
+  var ids = ['rentA', 'daysA', 'rentB', 'daysB'];
+  var out = document.getElementById('calcOut');
+  var err = document.getElementById('calcErr');
+
+  function money(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function num(id) {
+    var v = parseFloat(document.getElementById(id).value);
+    return isFinite(v) ? v : NaN;
+  }
+
+  function render() {
+    var rentA = num('rentA'), daysA = num('daysA'),
+        rentB = num('rentB'), daysB = num('daysB');
+
+    if ([rentA, daysA, rentB, daysB].some(isNaN) || rentA <= 0 || rentB <= 0) {
+      out.innerHTML = ''; err.textContent = '四个数字都填一下，租金要大于 0。'; err.style.display = 'block'; return;
+    }
+    if (daysA < 0 || daysB < 0 || daysA > HORIZON || daysB > HORIZON) {
+      out.innerHTML = ''; err.textContent = '空置天数请填 0 到 365 之间。'; err.style.display = 'block'; return;
+    }
+    err.style.display = 'none';
+
+    var dailyA = rentA / DAYS_PER_MONTH;
+    var dailyB = rentB / DAYS_PER_MONTH;
+    var incomeA = dailyA * (HORIZON - daysA);
+    var incomeB = dailyB * (HORIZON - daysB);
+    var diff = incomeA - incomeB;
+
+    // 按方案 A 的价格，最多能空多少天还不输给方案 B
+    var breakEven = HORIZON - (rentB * (HORIZON - daysB)) / rentA;
+
+    var aWins = diff > 0;
+    var headline, body;
+
+    if (Math.abs(diff) < 1) {
+      headline = '两个方案差不多打平';
+      body = '这一年收到的租金几乎一样。那就看你更在意哪一头：早点有现金流，还是多留一点议价空间。';
+    } else if (aWins) {
+      headline = '坚持 ' + money(rentA) + ' 更划算，一年多收 ' + money(diff);
+      body = '前提是它真的能在 ' + Math.round(daysA) + ' 天内租掉。按这个价，你最多只能再空 '
+           + '<strong>' + Math.max(0, Math.round(breakEven)) + ' 天</strong>；超过这个天数，就不如直接降到 ' + money(rentB) + '。';
+    } else {
+      headline = '降到 ' + money(rentB) + ' 更划算，一年多收 ' + money(-diff);
+      body = '多要的那 ' + money(rentA - rentB) + '/月，补不回多空的 ' + Math.round(daysA - daysB) + ' 天。'
+           + '按 ' + money(rentA) + ' 挂，只有在 <strong>' + Math.max(0, Math.round(breakEven)) + ' 天</strong>内租掉才划算。';
+    }
+
+    out.innerHTML =
+      '<div class="calc-verdict">' +
+        '<div style="font-size:.8rem;opacity:.75">按 12 个月计算</div>' +
+        '<div class="big">' + headline + '</div>' +
+        '<p>' + body + '</p>' +
+      '</div>' +
+      '<div class="calc-rows">' +
+        '<div class="calc-box' + (aWins ? ' win' : '') + '">' +
+          '<div class="lbl">方案 A ── ' + money(rentA) + '/月，空 ' + Math.round(daysA) + ' 天</div>' +
+          '<div class="amt">' + money(incomeA) + '</div>' +
+          '<div class="sub">空置损失 ' + money(dailyA * daysA) + '（每天 ' + money(dailyA) + '）</div>' +
+        '</div>' +
+        '<div class="calc-box' + (!aWins ? ' win' : '') + '">' +
+          '<div class="lbl">方案 B ── ' + money(rentB) + '/月，空 ' + Math.round(daysB) + ' 天</div>' +
+          '<div class="amt">' + money(incomeB) + '</div>' +
+          '<div class="sub">空置损失 ' + money(dailyB * daysB) + '（每天 ' + money(dailyB) + '）</div>' +
+        '</div>' +
+      '</div>' +
+      '<p class="calc-note">只计租金收入。房贷、地税、保险、HOA 在空置期照付，所以真实成本比这里更高。' +
+      '按 ' + money(rentA) + ' 计，每空一天约 ' + money(dailyA) + '，空一个月约 ' + money(rentA) + '。</p>';
+  }
+
+  ids.forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', render);
+    el.addEventListener('change', render);
+  });
+  render();
+})();
+</script>
+</body></html>

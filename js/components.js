@@ -1,6 +1,7 @@
 /* Shared header/footer and contact-priority enhancements */
 
-const BASE_PATH = /^\/(cities|guides)\//.test(window.location.pathname) ? '../' : '';
+// 任何一级子目录下的页面都要用 ../ 回到根。新增子目录时记得加进来。
+const BASE_PATH = /^\/(cities|guides|calculators)\//.test(window.location.pathname) ? '../' : '';
 
 const ZH = {
   home: '\u9996\u9875',
@@ -110,6 +111,7 @@ function buildFooter() {
         <span>\u90ae\u7bb1: daviddairealty@gmail.com</span>
         <a href="${BASE_PATH}contact.html">${ZH.footerPage}</a>
         <a href="${BASE_PATH}about.html">${ZH.footerAboutDavid}</a>
+        <a href="${BASE_PATH}what-is-rentalinca.html">关于本站</a>
       </div>
     </div>
     <div class="footer-bottom">
