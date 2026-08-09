@@ -57,33 +57,14 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload));
 }
 
-function sanitizeInquiry(input) {
-  const clean = {};
-  [
-    'source',
-    'name',
-    'phone',
-    'email',
-    'serviceNeeded',
-    'city',
-    'notes',
-    'propertyType',
-    'areaSqft',
-    'estimatedRent',
-    'estimateId',
-    'page'
-  ].forEach(key => {
-    if (input[key] !== undefined && input[key] !== null) {
-      clean[key] = String(input[key]).trim().slice(0, 2000);
-    }
-  });
-  return clean;
-}
+// sanitizeInquiry 不再在这里重复实现 —— 直接用 api/_shared.js 的版本，
+// 否则本地 dev 和线上 Vercel 的校验规则会各走各的（之前就是这样：
+// 线上已经拒绝空 payload，本地还照收不误）。见文件底部的 require。
 
 // 唯一数据源: data/rent-ranges.json -> js/rent-data.js（生成物）
 // 改租金请改 data/rent-ranges.json 再跑 npm run sync:facts。
 const RENT_DATA = require('./js/rent-data.js');
-const { safeEqual } = require('./api/_shared.js');
+const { safeEqual, sanitizeInquiry } = require('./api/_shared.js');
 
 const RENTAL_DATA = RENT_DATA.cities;
 const PROPERTY_TYPE_LABELS = RENT_DATA.propertyTypeLabels;
@@ -138,13 +119,9 @@ function createRentalEstimate(input, req) {
 function saveInquiry(input, req) {
   ensureStore();
   const inquiries = JSON.parse(fs.readFileSync(INQUIRIES_FILE, 'utf8'));
-  const inquiry = {
-    id: crypto.randomUUID(),
-    createdAt: new Date().toISOString(),
-    ip: req.socket.remoteAddress,
-    userAgent: req.headers['user-agent'] || '',
-    ...sanitizeInquiry(input)
-  };
+  // 校验 + 归一化都在 api/_shared.js 里，本地和线上共用同一套规则。
+  // 校验不过会抛带 statusCode 的错误，由调用方转成 400。
+  const inquiry = sanitizeInquiry(input, req);
   inquiries.unshift(inquiry);
   fs.writeFileSync(INQUIRIES_FILE, JSON.stringify(inquiries, null, 2) + '\n');
   return inquiry;
@@ -231,7 +208,7 @@ const server = http.createServer(async (req, res) => {
       await sendTelegramNotification('inquiry', inquiry);
       sendJson(res, 201, { ok: true, id: inquiry.id });
     } catch (error) {
-      sendJson(res, 400, { ok: false, error: 'Invalid inquiry payload' });
+      sendJson(res, error.statusCode || 400, { ok: false, error: error.message || 'Invalid inquiry payload' });
     }
     return;
   }

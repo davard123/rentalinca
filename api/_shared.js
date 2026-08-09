@@ -82,14 +82,33 @@ function createEstimate(input, req) {
 }
 
 function sanitizeInquiry(input, req) {
+  // The endpoint is public and unauthenticated (it backs the contact form), and
+  // it previously accepted a bare {} — creating a stored record, a Telegram ping
+  // and an auto-reply attempt for an empty payload. Require enough to be a real
+  // enquiry before anything is persisted.
+  const name = sanitizeString(input.name, 120);
+  const phone = sanitizeString(input.phone, 80);
+  const email = sanitizeString(input.email, 160);
+
+  const reject = (message) => {
+    const error = new Error(message);
+    error.statusCode = 400;
+    throw error;
+  };
+
+  if (!name) reject('Name is required');
+  if (!phone && !email) reject('A phone number or an email address is required');
+  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) reject('Email address looks invalid');
+  if (phone && (phone.replace(/\D/g, '').length < 7)) reject('Phone number looks invalid');
+
   return {
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
     ...getClientMeta(req),
     source: sanitizeString(input.source, 80),
-    name: sanitizeString(input.name, 120),
-    phone: sanitizeString(input.phone, 80),
-    email: sanitizeString(input.email, 160),
+    name,
+    phone,
+    email,
     serviceNeeded: sanitizeString(input.serviceNeeded, 200),
     city: sanitizeString(input.city, 160),
     notes: sanitizeString(input.notes, 2000),
