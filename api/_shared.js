@@ -15,6 +15,20 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload));
 }
 
+/**
+ * Constant-time string comparison for secrets.
+ * A plain `!==` leaks the token byte-by-byte through response timing, and the
+ * admin endpoint has no rate limiting in front of it.
+ */
+function safeEqual(a, b) {
+  const bufA = Buffer.from(String(a), 'utf8');
+  const bufB = Buffer.from(String(b), 'utf8');
+  // timingSafeEqual throws on length mismatch, so hash first to equalise length.
+  const hashA = crypto.createHash('sha256').update(bufA).digest();
+  const hashB = crypto.createHash('sha256').update(bufB).digest();
+  return crypto.timingSafeEqual(hashA, hashB);
+}
+
 function getClientMeta(req) {
   return {
     ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress || '',
@@ -314,5 +328,6 @@ module.exports = {
   sendTelegramNotification,
   sendResendAutoReply,
   sanitizeInquiry,
-  sendJson
+  sendJson,
+  safeEqual
 };

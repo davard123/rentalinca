@@ -83,6 +83,7 @@ function sanitizeInquiry(input) {
 // 唯一数据源: data/rent-ranges.json -> js/rent-data.js（生成物）
 // 改租金请改 data/rent-ranges.json 再跑 npm run sync:facts。
 const RENT_DATA = require('./js/rent-data.js');
+const { safeEqual } = require('./api/_shared.js');
 
 const RENTAL_DATA = RENT_DATA.cities;
 const PROPERTY_TYPE_LABELS = RENT_DATA.propertyTypeLabels;
@@ -249,7 +250,13 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === 'GET' && url.pathname === '/api/inquiries') {
     const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || url.searchParams.get('token') || '';
-    if (ADMIN_TOKEN && token.trim() !== ADMIN_TOKEN.trim()) {
+    // Fail CLOSED — an unset ADMIN_TOKEN previously skipped the guard entirely.
+    if (!ADMIN_TOKEN.trim()) {
+      console.error('ADMIN_TOKEN is not set — refusing to serve inquiries.');
+      sendJson(res, 503, { ok: false, error: 'Admin access is not configured' });
+      return;
+    }
+    if (!safeEqual(token.trim(), ADMIN_TOKEN.trim())) {
       sendJson(res, 401, { ok: false, error: 'Unauthorized' });
       return;
     }

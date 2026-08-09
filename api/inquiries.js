@@ -1,4 +1,4 @@
-const { prependGithubRecord, sanitizeInquiry, sendJson, sendTelegramNotification, sendResendAutoReply } = require('./_shared');
+const { prependGithubRecord, sanitizeInquiry, sendJson, sendTelegramNotification, sendResendAutoReply, safeEqual } = require('./_shared');
 
 module.exports = async function handler(req, res) {
   if (req.method === 'POST') {
@@ -21,7 +21,16 @@ module.exports = async function handler(req, res) {
   if (req.method === 'GET') {
     const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || req.query?.token || '';
     const adminToken = String(process.env.ADMIN_TOKEN || '').trim();
-    if (adminToken && token.trim() !== adminToken) {
+
+    // Fail CLOSED. The previous guard was `if (adminToken && ...)`, so an unset or
+    // empty ADMIN_TOKEN skipped the check entirely and served every lead's name,
+    // phone, email and IP to anyone who asked for it.
+    if (!adminToken) {
+      console.error('ADMIN_TOKEN is not configured — refusing to serve inquiries.');
+      sendJson(res, 503, { ok: false, error: 'Admin access is not configured' });
+      return;
+    }
+    if (!safeEqual(token.trim(), adminToken)) {
       sendJson(res, 401, { ok: false, error: 'Unauthorized' });
       return;
     }
