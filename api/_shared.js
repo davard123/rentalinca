@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { upsertCrmRecord, updateCrmStatus } = require('./db');
 
 // 唯一数据源: data/rent-ranges.json -> js/rent-data.js（生成物）
 // data/ 不部署到 Vercel（见 .vercelignore），所以这里读生成物。
@@ -273,6 +274,7 @@ async function updateGithubRecordStatus(recordId, status) {
 
 async function prependGithubRecord(filePath, record, message) {
   await createGithubRecord(getRecordKind(filePath), record, message);
+  try { await upsertCrmRecord(getRecordKind(filePath), record); } catch (error) { console.error('CRM database write failed:', error.message); }
 }
 
 function formatTelegramRecord(recordKind, record) {
@@ -407,6 +409,7 @@ async function sendTelegramNotification(recordKind, record) {
 }
 
 async function sendCrmRecord(recordKind, record) {
+  try { await upsertCrmRecord(recordKind, record); } catch (error) { console.error('CRM database write failed:', error.message); }
   const endpoint = String(process.env.CRM_WEBHOOK_URL || '').trim();
   if (!endpoint) return;
   const response = await fetch(endpoint, {
@@ -430,4 +433,5 @@ module.exports = {
   verifyTurnstile,
   updateGithubRecordStatus
   ,sendCrmRecord
+  ,updateCrmStatus
 };
