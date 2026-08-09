@@ -11,6 +11,7 @@ const ZH = {
   management: '\u7269\u4e1a\u7ba1\u7406',
   cities: '\u57ce\u5e02\u6307\u5357',
   cases: '\u6210\u4ea4\u6848\u4f8b',
+  tools: '\u623f\u4e1c\u5de5\u5177',
   about: '\u5173\u4e8e\u6211',
   wechatScan: '\u626b\u7801\u52a0\u5fae\u4fe1',
   phoneAssist: '\u7535\u8bdd\u8054\u7cfb',
@@ -35,6 +36,13 @@ function buildNav() {
       <div class="nav-links">
         <a href="${BASE_PATH}index.html">${ZH.home}</a>
         <a href="${BASE_PATH}landlords.html">${ZH.landlords}</a>
+        <div class="nav-menu-group">
+          <a href="${BASE_PATH}landlords.html#landlord-tools" class="nav-tools-trigger">${ZH.tools}<span aria-hidden="true">⌄</span></a>
+          <div class="nav-tools-menu">
+            <a href="${BASE_PATH}calculators/rent-vs-sell.html"><strong>出租还是卖掉？</strong><small>比较持有出租与现在出售</small></a>
+            <a href="${BASE_PATH}calculators/vacancy-cost.html"><strong>空置成本计算器</strong><small>算清多等一个月的真实成本</small></a>
+          </div>
+        </div>
         <a href="${BASE_PATH}tenants.html">${ZH.tenants}</a>
         <a href="${BASE_PATH}buy-sell.html">${ZH.buySell}</a>
         <a href="${BASE_PATH}property-management.html">${ZH.management}</a>
@@ -54,6 +62,9 @@ function buildNav() {
   <div class="nav-mobile" id="mobileNav">
     <a href="${BASE_PATH}index.html">${ZH.home} Home</a>
     <a href="${BASE_PATH}landlords.html">${ZH.landlords} For Landlords</a>
+    <div class="nav-mobile-tools-label">${ZH.tools}</div>
+    <a href="${BASE_PATH}calculators/rent-vs-sell.html" class="nav-mobile-tool">⚖️ 出租还是卖掉？</a>
+    <a href="${BASE_PATH}calculators/vacancy-cost.html" class="nav-mobile-tool">🧮 空置成本计算器</a>
     <a href="${BASE_PATH}tenants.html">${ZH.tenants} Find Rental</a>
     <a href="${BASE_PATH}buy-sell.html">${ZH.buySell} Buy &amp; Sell</a>
     <a href="${BASE_PATH}property-management.html">${ZH.management} Property Mgmt</a>
@@ -101,6 +112,8 @@ function buildFooter() {
       <div class="footer-col">
         <h4>Services</h4>
         <a href="${BASE_PATH}landlords.html">\u623f\u4e1c\u51fa\u79df</a>
+        <a href="${BASE_PATH}calculators/rent-vs-sell.html">出租还是卖掉计算器</a>
+        <a href="${BASE_PATH}calculators/vacancy-cost.html">空置成本计算器</a>
         <a href="${BASE_PATH}tenants.html">\u79df\u5ba2\u627e\u623f</a>
         <a href="${BASE_PATH}buy-sell.html">\u4e70\u623f / \u5356\u623f</a>
         <a href="${BASE_PATH}property-management.html">\u7269\u4e1a\u7ba1\u7406</a>

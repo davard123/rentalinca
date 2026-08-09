@@ -1176,3 +1176,67 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
 .resource-link:hover { gap: 6px; }
 @media (max-width: 900px) { .resource-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .resource-grid { grid-template-columns: 1fr; } }
+
+
+/* ── DISCOVERABILITY & ACCESSIBILITY PASS (2026-08) ── */
+:root { --text-mid: #626262; --text-light: #737373; }
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.nav-menu-group { position: relative; display: flex; align-items: center; }
+.nav-tools-trigger { color: #fff !important; background: rgba(201,169,110,.18); border: 1px solid rgba(201,169,110,.34); display: inline-flex; align-items: center; gap: 5px; }
+.nav-tools-trigger:hover, .nav-menu-group:focus-within .nav-tools-trigger { background: var(--gold); color: var(--primary-dark) !important; }
+.nav-tools-menu { position: absolute; top: calc(100% + 10px); left: 50%; width: 286px; padding: 8px; transform: translate(-50%, 6px); background: #fff; border-radius: 12px; box-shadow: 0 12px 32px rgba(7,20,16,.22); opacity: 0; visibility: hidden; transition: opacity .16s ease, transform .16s ease; z-index: 120; }
+.nav-tools-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+.nav-menu-group:hover .nav-tools-menu, .nav-menu-group:focus-within .nav-tools-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-links .nav-tools-menu a { display: block; color: var(--text); padding: 12px; border-radius: 8px; }
+.nav-links .nav-tools-menu a:hover, .nav-links .nav-tools-menu a:focus-visible { background: var(--primary-light); color: var(--primary-dark); }
+.nav-tools-menu strong, .nav-tools-menu small { display: block; }
+.nav-tools-menu strong { font-size: .9rem; }
+.nav-tools-menu small { margin-top: 3px; color: var(--text-mid); font-size: .76rem; font-weight: 500; line-height: 1.45; }
+.nav-mobile-tools-label { padding: 13px 24px 5px; color: var(--gold); font-size: .75rem; font-weight: 800; letter-spacing: .04em; }
+.nav-mobile a.nav-mobile-tool { margin: 3px 16px; padding: 12px 14px; color: #fff; background: rgba(201,169,110,.13); border: 1px solid rgba(201,169,110,.26); border-radius: 10px; }
+.landlord-tools-section { padding: 48px 0 52px; background: var(--primary-dark); color: #fff; scroll-margin-top: 80px; }
+.landlord-tools-head { display: grid; grid-template-columns: minmax(0,.9fr) minmax(320px,1.1fr); align-items: end; gap: 48px; margin-bottom: 26px; }
+.landlord-tools-kicker { display: block; color: var(--gold); font-size: .86rem; font-weight: 800; margin-bottom: 8px; }
+.landlord-tools-head h2 { color: #fff; font-size: clamp(1.7rem,3vw,2.35rem); letter-spacing: -.02em; text-wrap: balance; }
+.landlord-tools-head p { color: rgba(255,255,255,.82); max-width: 58ch; line-height: 1.75; }
+.landlord-tools-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.landlord-tool-card { min-height: 196px; display: flex; align-items: flex-start; gap: 18px; padding: 26px; border-radius: 14px; background: #fff; color: var(--text); transition: transform .18s ease, background .18s ease; }
+.landlord-tool-card-primary { background: var(--gold-light); }
+.landlord-tool-card:hover { transform: translateY(-3px); background: #fffdf7; }
+.landlord-tool-icon { flex: 0 0 46px; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.45rem; background: var(--primary-light); }
+.landlord-tool-copy { display: flex; min-width: 0; flex-direction: column; height: 100%; }
+.landlord-tool-copy strong { color: var(--primary-dark); font-size: 1.2rem; margin-bottom: 8px; }
+.landlord-tool-copy > span { color: var(--text-mid); font-size: .92rem; line-height: 1.7; }
+.landlord-tool-copy b { margin-top: auto; padding-top: 18px; color: var(--primary); font-size: .94rem; }
+.landlord-content-section { padding-top: 64px; }
+.aside-tools-shortcut { margin-bottom: 16px; border-radius: var(--radius); overflow: hidden; background: var(--primary-dark); }
+.aside-tools-shortcut-title { padding: 14px 18px; color: var(--gold); font-size: .8rem; font-weight: 800; }
+.aside-tools-shortcut a { display: flex; justify-content: space-between; gap: 12px; padding: 14px 18px; border-top: 1px solid rgba(255,255,255,.1); color: #fff; }
+.aside-tools-shortcut a:hover { background: rgba(255,255,255,.08); }
+.aside-tools-shortcut span { font-size: .88rem; font-weight: 700; }
+.aside-tools-shortcut b { color: var(--gold); font-size: .8rem; white-space: nowrap; }
+@media (max-width:1080px) { .nav-inner { gap:14px; } .nav-links a { padding-left:8px; padding-right:8px; font-size:.82rem; } .nav-phone-secondary { display:none; } }
+@media (max-width:900px) { .landlord-tools-head { grid-template-columns:1fr; gap:12px; } .landlord-tools-head p { max-width:65ch; } }
+@media (max-width:700px) { .landlord-tools-section { padding:36px 0 40px; } .landlord-tools-grid { grid-template-columns:1fr; } .landlord-tool-card { min-height:0; padding:22px 20px; } .landlord-tool-copy b { margin-top:4px; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+
+
+/* ── SITE-WIDE ENTRY CLARITY PASS ── */
+.service-link-prominent {
+  min-height: 44px; padding: 10px 14px; border-radius: 10px;
+  background: var(--primary-light); color: var(--primary-dark);
+  font-size: .9rem; font-weight: 800;
+}
+.service-link-prominent:hover { background: var(--primary); color: #fff; }
+.city-chip {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 9px 13px; border-radius: 999px; background: var(--primary-light);
+  color: var(--primary-dark); font-size: .86rem; font-weight: 700;
+}
+.city-chip:hover { background: var(--primary); color: #fff; }
+.cities-strip-all {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 10px 14px;
+  border-radius: 999px; color: #fff; background: rgba(255,255,255,.13);
+  font-size: .84rem; font-weight: 800;
+}
+.cities-strip-all:hover { background: #fff; color: var(--primary-dark); }
