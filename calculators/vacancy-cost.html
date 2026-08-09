@@ -118,6 +118,7 @@
       <h3>不确定自己填的天数靠不靠谱？</h3>
       <p>空置天数是这个计算里最难估的一项。把房子的地址、房型和你现在想挂的价格发给我，我可以按同社区正在租的同类房挂了多久，帮你判断这个天数合不合理。</p>
       <a href="../contact.html" class="btn btn-white" style="margin-top:6px">把房子情况发给 David →</a>
+      <a href="rent-vs-sell.html" class="btn btn-outline" style="margin-top:6px;border-color:rgba(255,255,255,.4);color:#fff">还在犹豫卖不卖？→</a>
     </div>
 
     <div style="margin-top:40px">
@@ -221,14 +222,27 @@
       '</div>' +
       '<p class="calc-note">只计租金收入。房贷、地税、保险、HOA 在空置期照付，所以真实成本比这里更高。' +
       '按 ' + money(rentA) + ' 计，每空一天约 ' + money(dailyA) + '，空一个月约 ' + money(rentA) + '。</p>';
+
+    reportUse(Math.abs(diff) < 1 ? 'tie' : (aWins ? 'hold_price' : 'cut_price'));
+  }
+
+  // 只在用户改过输入之后上报一次，避免页面载入时的默认渲染也算一次使用
+  var touched = false, reported = false;
+  function reportUse(verdict) {
+    if (!touched || reported || !window.ricaTrack) return;
+    reported = true;
+    window.ricaTrack('vacancy_calc_used', { verdict: verdict });
   }
 
   ids.forEach(function (id) {
     var el = document.getElementById(id);
-    el.addEventListener('input', render);
-    el.addEventListener('change', render);
+    el.addEventListener('input', function () { touched = true; render(); });
+    el.addEventListener('change', function () { touched = true; render(); });
   });
   render();
 })();
 </script>
+<!-- Vercel Web Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="../js/analytics.js"></script>
 </body></html>

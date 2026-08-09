@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       form.style.display = 'none';
       successBox.style.display = 'block';
+      if (window.ricaTrack) {
+        window.ricaTrack('lead_submitted', { source: payload.source, page: payload.page });
+      }
     } catch (error) {
       if (submitButton) {
         submitButton.disabled = false;
@@ -68,6 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       errorBox.textContent = '提交没有成功，请稍后再试，或直接微信 / 电话联系 David。';
       errorBox.style.display = 'block';
+      if (window.ricaTrack) {
+        window.ricaTrack('lead_failed', { source: payload.source });
+      }
     }
   });
 });
