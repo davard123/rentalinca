@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <title>搬走以后，这套房是留着出租还是卖掉？| 计算器 | rentalinca.com</title>
-<meta name="description" content="把租金、空置、房贷、地税、保险、HOA、维修和卖房净得款放在一起比，算出出租几年才追得上现在卖掉。David Dai DRE# 02202763">
+<meta name="description" content="把租金、空置、房贷、地税、保险、HOA、维修和卖房净得款放在一起比，算出出租几年才追得上现在卖掉，还能带上租金增长和房产增值两种假设分开看。David Dai DRE# 02202763">
 <link rel="canonical" href="https://rentalinca.com/calculators/rent-vs-sell.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rentalinca.com/calculators/rent-vs-sell.html">
@@ -23,11 +23,12 @@
 {"@type":"ListItem","position":1,"name":"首页","item":"https://rentalinca.com/"},
 {"@type":"ListItem","position":2,"name":"房东工具","item":"https://rentalinca.com/calculators/rent-vs-sell.html"},
 {"@type":"ListItem","position":3,"name":"出租还是卖掉","item":"https://rentalinca.com/calculators/rent-vs-sell.html"}]},
-{"@type":"WebApplication","@id":"https://rentalinca.com/calculators/rent-vs-sell.html#app","name":"出租还是卖掉计算器","url":"https://rentalinca.com/calculators/rent-vs-sell.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"比较继续出租的年度净现金流与现在出售的净得款。","inLanguage":["zh-CN"]},
+{"@type":"WebApplication","@id":"https://rentalinca.com/calculators/rent-vs-sell.html#app","name":"出租还是卖掉计算器","url":"https://rentalinca.com/calculators/rent-vs-sell.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"比较继续出租的年度净现金流（含租金增长假设）与现在出售的净得款，并单独给出一个房产增值的参考情景。","inLanguage":["zh-CN"]},
 {"@type":"FAQPage","@id":"https://rentalinca.com/calculators/rent-vs-sell.html#faq","mainEntity":[
 {"@type":"Question","name":"出租的净现金流怎么算？","acceptedAnswer":{"@type":"Answer","text":"用年租金收入，先按空置率打折，再减去房贷月供、地税、保险、HOA、维修预算和管理费。剩下的才是真正到手的钱。很多人只看月租减月供，会高估不少。"}},
 {"@type":"Question","name":"卖房净得款包含哪些成本？","acceptedAnswer":{"@type":"Answer","text":"售价减去经纪佣金、过户与其他成交费用，再减去尚未还清的贷款余额。这个计算器不含资本利得税、折旧回补或 1031 交换的影响——这几项因人而异，必须找 CPA 单独算。"}},
-{"@type":"Question","name":"这个结果能替我决定吗？","acceptedAnswer":{"@type":"Answer","text":"不能。它只比较现金这一项，没有把房产增值、税务、你自己要不要用这笔钱、以及你愿不愿意当房东算进去。它的作用是把模糊的犹豫变成一个具体数字，让你知道自己在权衡什么。"}}]}]}
+{"@type":"Question","name":"「追平年数」为什么会随着我改数字变化很大？","acceptedAnswer":{"@type":"Answer","text":"因为它同时把租金逐年增长的假设算了进去，不是简单用第一年净现金流去除。租金涨得越快，追平就越快。数字本身没有问题——年数从几十年降到二十几年，说明这套房的现金流在明显变好，但不代表二十几年就一定「划算」，具体划不划算要看这个年数落在哪个区间。"}},
+{"@type":"Question","name":"房产增值那部分靠谱吗？","acceptedAnswer":{"@type":"Answer","text":"不靠谱，也不该靠谱——这就是为什么它被单独放在一个标了「仅供参考」的区块里，用完全不同的颜色跟上面的硬算数字区分开。历史涨幅不代表未来一定涨，这一项完全交给你自己判断，工具只是帮你把假设换算成数字。"}}]}]}
 </script>
 <link rel="stylesheet" href="../css/style.css">
 <style>
@@ -44,19 +45,43 @@
   .calc-field .hint{display:block;font-weight:400;font-size:.75rem;color:var(--text-light);margin-top:2px}
   .calc-field input{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.98rem;font-family:inherit}
   .calc-field input:focus{outline:none;border-color:var(--green)}
-  .calc-verdict{background:var(--green);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:22px 0}
+
+  /* ── 结论：颜色随判断方向变化，跟下面的硬算数字明显不同（深底白字） ── */
+  .calc-verdict{background:var(--primary);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:22px 0;transition:background .2s}
+  .calc-verdict.tone-caution{background:var(--gold-dark)}
+  .calc-verdict.tone-bad{background:#7a2a2a}
+  .calc-verdict .kicker{font-size:.8rem;opacity:.75}
   .calc-verdict .big{font-size:1.5rem;font-weight:800;line-height:1.35;margin:6px 0 10px}
   .calc-verdict p{color:rgba(255,255,255,.86);margin:0;line-height:1.8;font-size:.92rem}
+  .calc-verdict p+p{margin-top:8px}
+
   .calc-rows{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
   @media(max-width:600px){.calc-rows{grid-template-columns:1fr}}
-  .calc-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px}
+
+  /* ── 计算值：出租 vs 卖掉，浅底 + 不同重音色，一眼能分开，且明显区别于上面的结论深底 ── */
+  .calc-box{background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:var(--radius-sm);padding:18px}
+  .calc-box.rent{border-left-color:var(--primary)}
+  .calc-box.sell{border-left-color:var(--gold-dark)}
   .calc-box .lbl{font-size:.78rem;color:var(--text-mid);margin-bottom:4px}
   .calc-box .amt{font-size:1.3rem;font-weight:800;color:var(--text)}
+  .calc-box.rent .amt{color:var(--primary)}
+  .calc-box.sell .amt{color:var(--gold-dark)}
   .calc-box .amt.neg{color:#b42318}
   .calc-line{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--text-mid);padding:5px 0;border-bottom:1px dashed var(--border)}
   .calc-line:last-child{border-bottom:none}
   .calc-line span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
   .calc-line.total{font-weight:700;color:var(--text);border-top:1.5px solid var(--border);border-bottom:none;margin-top:6px;padding-top:9px}
+
+  /* ── 增值假设：橙色系、虚线框，明确跟上面两个「硬算」框区分开 ── */
+  .appr-sec{margin-top:26px;padding-top:22px;border-top:1px dashed var(--border)}
+  .appr-sec h4{font-size:.95rem;margin:0 0 4px;color:#b45309;display:flex;align-items:center;gap:8px}
+  .appr-badge{font-size:.68rem;font-weight:700;color:#b45309;background:#fff3e0;border:1px solid #f3d19e;border-radius:20px;padding:2px 9px;letter-spacing:.02em}
+  .appr-box{background:#fffaf0;border:1.5px dashed #e8b34d;border-radius:var(--radius-sm);padding:18px;margin-top:14px}
+  .appr-box .amt{font-size:1.15rem;font-weight:800;color:#b45309}
+  .appr-box .lbl{font-size:.78rem;color:#9a6a1f;margin-bottom:4px}
+  .appr-box .calc-line{border-bottom-color:#f0dcae}
+  .appr-box .calc-line.total{border-top-color:#e8b34d;color:#7c4a12}
+
   .calc-note{font-size:.82rem;color:var(--text-light);line-height:1.75;margin-top:14px}
   .calc-err{color:#b42318;font-size:.86rem;margin-top:12px;display:none}
 </style>
@@ -77,7 +102,7 @@
   <div class="container calc-wrap">
 
     <p style="color:var(--text-mid);line-height:1.85;margin-bottom:8px">这个决定难，是因为两边的数字不在同一个维度上：出租是<strong>每年一点点</strong>的现金流，卖掉是<strong>现在一次性</strong>的一笔钱。不换算成同一个单位，就只能凭感觉。</p>
-    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:28px">下面填的都是你自己房子的数字。填完会告诉你：继续出租每年实际净到手多少，现在卖掉能净得多少，以及<strong>要租多少年才追得上现在卖掉的那笔钱</strong>。</p>
+    <p style="color:var(--text-mid);line-height:1.85;margin-bottom:28px">下面分两层：先是<strong>硬算的钱</strong>——出租每年实际净到手多少、卖掉净得多少、要多少年追平，这部分只用你填的数字，不猜未来。再往下是<strong>一个单独标出来的假设情景</strong>——如果房子还会继续增值，结果会怎么变；这部分完全是猜测，用了不一样的颜色，别把它和上面的硬数字混在一起看。</p>
 
     <div class="calc-card">
       <div class="calc-sec">
@@ -92,6 +117,7 @@
           <div class="calc-field"><label>HOA<span class="hint">每月，没有填 0</span></label><input type="number" id="hoa" min="0" step="10" value="250" inputmode="numeric"></div>
           <div class="calc-field"><label>维修预算<span class="hint">每年</span></label><input type="number" id="maintenance" min="0" step="100" value="2000" inputmode="numeric"></div>
           <div class="calc-field"><label>管理费<span class="hint">占租金 %，自管填 0</span></label><input type="number" id="mgmt" min="0" max="100" step="0.5" value="0" inputmode="numeric"></div>
+          <div class="calc-field"><label>年租金增长率<span class="hint">%，每年租金上涨多少</span></label><input type="number" id="rentGrowth" min="0" max="30" step="0.5" value="3" inputmode="numeric"></div>
         </div>
       </div>
 
@@ -107,12 +133,22 @@
 
       <p class="calc-err" id="calcErr"></p>
       <div id="calcOut"></div>
+
+      <div class="appr-sec">
+        <h4>如果房子还会继续增值 <span class="appr-badge">仅供参考 · 非必然</span></h4>
+        <p class="sechint">这一项完全是假设——过去涨过不代表以后一定涨，也可能不涨甚至跌。填一个你自己觉得合理的数字，看看它对结果的影响有多大；不填或填 0 就是假设房价不变。</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label>假设年增值率<span class="hint">%，房子每年涨价多少</span></label><input type="number" id="apprRate" min="0" max="30" step="0.5" value="4" inputmode="numeric"></div>
+          <div class="calc-field"><label>持有年限<span class="hint">打算再拿多少年</span></label><input type="number" id="holdYears" min="1" max="60" step="1" value="10" inputmode="numeric"></div>
+        </div>
+        <div id="apprOut"></div>
+      </div>
     </div>
 
     <div class="calc-card">
       <h3 style="font-size:1.05rem;font-weight:700;margin:0 0 12px">这个结果没有算什么</h3>
       <p style="color:var(--text-mid);line-height:1.85;margin-bottom:12px"><strong>税。</strong>资本利得税、折旧回补（depreciation recapture）、自住房免税额、1031 交换——这几项对结果的影响可能比上面所有数字加起来还大，而且完全因人而异。这部分必须找 CPA 或税务律师单独算，我不会在这里给你一个数字。</p>
-      <p style="color:var(--text-mid);line-height:1.85;margin-bottom:12px"><strong>房价涨跌。</strong>上面假设房子价值不变。真实情况里，继续持有既可能继续增值，也可能不涨甚至跌，这个工具不做预测。</p>
+      <p style="color:var(--text-mid);line-height:1.85;margin-bottom:12px"><strong>贷款余额会随时间下降。</strong>增值情景里的贷款余额按现在的数字不变来算，实际上每月还款都会把本金还掉一部分——这会让持有更多年之后的真实净得款比这里算出来的更高一点。</p>
       <p style="color:var(--text-mid);line-height:1.85;margin:0"><strong>你愿不愿意当房东。</strong>处理租客、维修、半夜的电话，这些没法折算成钱，但对很多人是决定性的。</p>
     </div>
 
@@ -134,8 +170,16 @@
           <div class="faq-a">5% 大约是一年空 18 天，8% 大约是一个月。取决于房子的位置、类型和你打算怎么定价——挂得比市场高，这个数就要往上调。不确定的话，可以先用<a href="vacancy-cost.html">空置成本计算器</a>看看不同定价下的空置代价。</div>
         </div>
         <div class="faq-item">
+          <button class="faq-q">「追平年数」为什么会随着我改数字变化很大？<span class="faq-icon">+</span></button>
+          <div class="faq-a">因为它同时把租金逐年增长的假设算了进去，不是简单用第一年净现金流去除净得款。租金涨得越快，追平就越快，所以这个数字对增长率很敏感——这是符合逻辑的，不是 bug。数字从几十年降到二十几年，说明现金流在明显变好；但具体算不算「划算」，要看这个年数落在哪个区间，年数本身的绝对值同样重要。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">房产增值那部分靠谱吗？<span class="faq-icon">+</span></button>
+          <div class="faq-a">不靠谱，也不该靠谱——这就是为什么它被单独放在一个标着「仅供参考」的橙色区块里，颜色和上面硬算的绿色/金色数字明显不一样。历史涨幅不代表未来一定涨，这一项完全交给你自己判断。</div>
+        </div>
+        <div class="faq-item">
           <button class="faq-q">「追平年数」是什么意思？<span class="faq-icon">+</span></button>
-          <div class="faq-a">用现在卖掉的净得款，除以继续出租每年的净现金流。意思是：要靠收租攒出和现在卖掉一样多的钱，需要多少年。年数越短，说明出租越划算；如果净现金流是负的，那再多年也追不上。注意这是纯现金比较，没算房价变化和税。</div>
+          <div class="faq-a">用现在卖掉的净得款，对比继续出租逐年攒下的净现金流（已经算上你设的租金增长率），算出攒到同样多的钱需要多少年。年数越短，出租越划算；如果净现金流是负的，那再多年也追不上——这种情况参考正文里的说明。注意这仍然是纯现金比较，没算房价涨跌，也没算税。</div>
         </div>
       </div>
     </div>
@@ -154,8 +198,11 @@
 (function () {
   'use strict';
   var out = document.getElementById('calcOut');
+  var apprOut = document.getElementById('apprOut');
   var err = document.getElementById('calcErr');
-  var ids = ['rent','mortgage','vacancy','tax','insurance','hoa','maintenance','mgmt','price','balance','closing'];
+  var HORIZON = 60; // 年，超过这个还追不平就当作「追不平」处理
+  var ids = ['rent','mortgage','vacancy','tax','insurance','hoa','maintenance','mgmt','rentGrowth',
+             'price','balance','closing','apprRate','holdYears'];
 
   function money(n) {
     var r = Math.round(n);
@@ -166,61 +213,144 @@
     return '<div class="calc-line' + (cls ? ' ' + cls : '') + '"><span>' + label + '</span><span>' + value + '</span></div>';
   }
 
+  // 逐年现金流：只有租金按增长率复利，房贷/地税/保险/HOA/维修按第一年数字保持不变。
+  function buildSchedule(v, fixedExpenses) {
+    var schedule = [];
+    var cumulative = 0;
+    for (var t = 1; t <= HORIZON; t++) {
+      var gross = v.rent * 12 * Math.pow(1 + v.rentGrowth / 100, t - 1);
+      var vacancyLoss = gross * (v.vacancy / 100);
+      var collected = gross - vacancyLoss;
+      var mgmtFee = collected * (v.mgmt / 100);
+      var net = collected - mgmtFee - fixedExpenses;
+      cumulative += net;
+      schedule.push({ year: t, net: net, cumulative: cumulative });
+    }
+    return schedule;
+  }
+
+  // 用累计现金流找出追平年份（可以有小数，同一年内线性插值）
+  function findBreakeven(schedule, target) {
+    if (target <= 0) return null;
+    var prevCum = 0;
+    for (var i = 0; i < schedule.length; i++) {
+      var s = schedule[i];
+      if (s.cumulative >= target) {
+        var needed = target - prevCum;
+        var frac = s.net > 0 ? needed / s.net : 1;
+        frac = Math.max(0, Math.min(1, frac));
+        return (s.year - 1) + frac;
+      }
+      prevCum = s.cumulative;
+    }
+    return null; // horizon 内追不平
+  }
+
+  function findFlipYear(schedule) {
+    for (var i = 0; i < schedule.length; i++) if (schedule[i].net > 0) return schedule[i].year;
+    return null;
+  }
+
+  function cumulativeAtYear(schedule, year) {
+    var idx = Math.max(1, Math.min(HORIZON, Math.round(year))) - 1;
+    return schedule[idx].cumulative;
+  }
+
+  // 分级判断：年数本身的大小要能改变结论的语气，不能只用一个阈值二分
+  function verdictTier(years) {
+    if (years === null) return { tone: 'bad', label: '追不平' };
+    if (years <= 4) return { tone: 'good', label: '非常划算' };
+    if (years <= 8) return { tone: 'good', label: '出租划算' };
+    if (years <= 15) return { tone: 'caution', label: '偏慢，可以考虑' };
+    if (years <= 30) return { tone: 'caution', label: '明显偏慢' };
+    return { tone: 'bad', label: '现金流太低' };
+  }
+
   function render() {
     var v = {}; ids.forEach(function (id) { v[id] = num(id); });
     if (ids.some(function (id) { return isNaN(v[id]); })) {
-      out.innerHTML = ''; err.textContent = '有几项还没填，先都填上（没有的填 0）。'; err.style.display = 'block'; return;
+      out.innerHTML = ''; apprOut.innerHTML = ''; err.textContent = '有几项还没填，先都填上（没有的填 0）。'; err.style.display = 'block'; return;
     }
-    if (v.vacancy < 0 || v.vacancy > 100 || v.mgmt < 0 || v.mgmt > 100 || v.closing < 0 || v.closing > 100) {
-      out.innerHTML = ''; err.textContent = '百分比请填 0 到 100 之间。'; err.style.display = 'block'; return;
+    if (v.vacancy < 0 || v.vacancy > 100 || v.mgmt < 0 || v.mgmt > 100 || v.closing < 0 || v.closing > 100 || v.rentGrowth < 0 || v.apprRate < 0) {
+      out.innerHTML = ''; apprOut.innerHTML = ''; err.textContent = '百分比请填 0 到 100 之间。'; err.style.display = 'block'; return;
+    }
+    if (v.holdYears < 1 || v.holdYears > HORIZON) {
+      out.innerHTML = ''; apprOut.innerHTML = ''; err.textContent = '持有年限请填 1 到 ' + HORIZON + ' 之间。'; err.style.display = 'block'; return;
     }
     err.style.display = 'none';
 
-    // ── 出租：年度净现金流 ──
-    var grossYear   = v.rent * 12;
-    var vacancyLoss = grossYear * (v.vacancy / 100);
-    var collected   = grossYear - vacancyLoss;
+    // ── 出租：第一年净现金流 + 逐年增长 schedule ──
+    var grossYear1  = v.rent * 12;
+    var vacancyLoss = grossYear1 * (v.vacancy / 100);
+    var collected   = grossYear1 - vacancyLoss;
     var mgmtFee     = collected * (v.mgmt / 100);
     var mortgageYr  = v.mortgage * 12;
     var hoaYr       = v.hoa * 12;
-    var expenses    = mortgageYr + v.tax + v.insurance + hoaYr + v.maintenance + mgmtFee;
-    var netYear     = collected - expenses;
+    var fixedExpenses = mortgageYr + v.tax + v.insurance + hoaYr + v.maintenance;
+    var netYear1    = collected - mgmtFee - fixedExpenses;
+
+    var schedule = buildSchedule(v, fixedExpenses);
 
     // ── 卖掉：净得款 ──
     var closingCost = v.price * (v.closing / 100);
     var netProceeds = v.price - closingCost - v.balance;
 
-    var headline, body;
-    if (netYear <= 0) {
-      headline = '继续出租是负现金流，每年倒贴 ' + money(-netYear);
-      body = '按你填的数字，收上来的租金覆盖不了持有成本。这不代表一定要卖——如果你看重的是长期增值或者暂时不想脱手，倒贴也可能是有意识的选择。但至少要知道自己每年在贴多少。';
+    var headline, bodyParts = [], tone = 'good', verdictKey;
+
+    if (netProceeds <= 0) {
+      tone = 'good';
+      headline = '现在卖掉拿不回现金';
+      bodyParts.push('扣掉成交成本和贷款余额之后，卖房净得款是 ' + money(netProceeds) + '。这种情况下继续出租通常更合理——第一年还有 ' + money(netYear1) + ' 的净现金流。');
+      verdictKey = 'no_equity';
+    } else if (netYear1 <= 0) {
+      tone = 'bad';
+      var flipYear = findFlipYear(schedule);
+      headline = '现在是负现金流，每年倒贴 ' + money(-netYear1);
+      bodyParts.push('按你填的数字，收上来的租金覆盖不了持有成本。这不代表一定要卖——如果你看重的是长期增值或暂时不想脱手，倒贴也可能是有意识的选择，但至少要知道自己每年在贴多少。');
+      if (flipYear) {
+        bodyParts.push('按你设的 ' + v.rentGrowth + '%/年租金增长，现金流大约会在第 ' + flipYear + ' 年转正；但要追上现在卖掉的 ' + money(netProceeds) + '，还需要更久。');
+      } else {
+        bodyParts.push('按你设的 ' + v.rentGrowth + '%/年租金增长，未来 ' + HORIZON + ' 年内现金流都很难转正——差距不是靠时间能填平的。');
+      }
+      verdictKey = 'negative_cashflow';
     } else {
-      var years = netProceeds > 0 ? netProceeds / netYear : 0;
-      if (netProceeds <= 0) {
-        headline = '现在卖掉拿不回现金';
-        body = '扣掉成交成本和贷款余额之后，卖房净得款是 ' + money(netProceeds) + '。这种情况下继续出租通常更合理——每年还有 ' + money(netYear) + ' 的净现金流。';
+      var years = findBreakeven(schedule, netProceeds);
+      var tier = verdictTier(years);
+      tone = tier.tone;
+      verdictKey = years === null ? 'sell_favored' : (years <= 8 ? 'rent_reasonable' : (years <= 30 ? 'lean_sell' : 'sell_favored'));
+      if (years === null) {
+        headline = '按这个增长率，' + HORIZON + ' 年内都追不平现在卖掉的 ' + money(netProceeds);
+        bodyParts.push('第一年净现金流是 ' + money(netYear1) + '，但相对于卖掉能拿到的这笔钱，差距太大——除非租金增长比 ' + v.rentGrowth + '%/年快很多，否则单靠收租很难追上。');
       } else {
         headline = '要租 ' + years.toFixed(1) + ' 年，才追得上现在卖掉的 ' + money(netProceeds);
-        body = '继续出租每年净到手 ' + money(netYear) + '。'
-             + (years <= 8
-                ? '这个年数不算长，如果你不排斥当房东，出租是说得通的。'
-                : '这个年数偏长，说明这套房的现金流相对于它的市值并不高——值得认真考虑卖掉，或者重新看看租金定价是不是偏低。')
-             + '注意这是纯现金比较，没算房价涨跌，也没算税。';
+        bodyParts.push('第一年净到手 ' + money(netYear1) + '，按 ' + v.rentGrowth + '%/年的租金增长算到追平那一年。' + '判断：' + tier.label + '。');
+        if (tier.tone === 'good') {
+          bodyParts.push('这个年数不算长，如果你不排斥当房东，出租是说得通的。');
+        } else if (tier.tone === 'caution') {
+          bodyParts.push('这个年数偏慢，不是不能接受，但值得认真比较卖掉的方案，或者重新看看租金定价是不是偏低。');
+        } else {
+          bodyParts.push('这个年数太长了，说明这套房的现金流相对市值明显偏低，卖掉通常更划算。');
+        }
       }
+      bodyParts.push('注意这仍然是纯现金比较，没算房价涨跌，也没算税。');
     }
 
+    var cashYieldLine = netProceeds > 0
+      ? line('第一年现金收益率（相对净得款）', (netYear1 / netProceeds * 100).toFixed(1) + '%')
+      : '';
+
     out.innerHTML =
-      '<div class="calc-verdict">' +
-        '<div style="font-size:.8rem;opacity:.75">纯现金比较 · 不含税、不含房价涨跌</div>' +
+      '<div class="calc-verdict tone-' + tone + '">' +
+        '<div class="kicker">纯现金比较 · 已算入租金增长 · 不含税、不含房价涨跌</div>' +
         '<div class="big">' + headline + '</div>' +
-        '<p>' + body + '</p>' +
+        bodyParts.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
       '</div>' +
       '<div class="calc-rows">' +
-        '<div class="calc-box">' +
-          '<div class="lbl">继续出租 · 每年净到手</div>' +
-          '<div class="amt' + (netYear < 0 ? ' neg' : '') + '">' + money(netYear) + '</div>' +
+        '<div class="calc-box rent">' +
+          '<div class="lbl">继续出租 · 第一年净现金流</div>' +
+          '<div class="amt' + (netYear1 < 0 ? ' neg' : '') + '">' + money(netYear1) + '</div>' +
           '<div style="margin-top:12px">' +
-            line('年租金收入', money(grossYear)) +
+            line('年租金收入', money(grossYear1)) +
             line('空置损失 (' + v.vacancy + '%)', '−' + money(vacancyLoss)) +
             line('房贷', '−' + money(mortgageYr)) +
             line('地税', '−' + money(v.tax)) +
@@ -228,10 +358,12 @@
             line('HOA', '−' + money(hoaYr)) +
             line('维修', '−' + money(v.maintenance)) +
             (v.mgmt > 0 ? line('管理费 (' + v.mgmt + '%)', '−' + money(mgmtFee)) : '') +
-            line('每年净现金流', money(netYear), 'total') +
+            line('第一年净现金流', money(netYear1), 'total') +
+            cashYieldLine +
           '</div>' +
+          '<div style="font-size:.76rem;color:var(--text-light);margin-top:10px;line-height:1.6">此后每年租金按 ' + v.rentGrowth + '%/年增长，房贷/地税/保险/HOA/维修按第一年数字不变计算。</div>' +
         '</div>' +
-        '<div class="calc-box">' +
+        '<div class="calc-box sell">' +
           '<div class="lbl">现在卖掉 · 净得款</div>' +
           '<div class="amt' + (netProceeds < 0 ? ' neg' : '') + '">' + money(netProceeds) + '</div>' +
           '<div style="margin-top:12px">' +
@@ -239,13 +371,35 @@
             line('成交成本 (' + v.closing + '%)', '−' + money(closingCost)) +
             line('贷款余额', '−' + money(v.balance)) +
             line('净得款', money(netProceeds), 'total') +
-            '<div style="font-size:.78rem;color:var(--text-light);margin-top:10px;line-height:1.6">未扣税。资本利得、折旧回补、自住房免税额需找 CPA 单独算。</div>' +
           '</div>' +
+          '<div style="font-size:.76rem;color:var(--text-light);margin-top:10px;line-height:1.6">未扣税。资本利得、折旧回补、自住房免税额需找 CPA 单独算。</div>' +
         '</div>' +
       '</div>' +
-      '<p class="calc-note">每月净现金流约 ' + money(netYear / 12) + '。想看不同定价下的空置代价，可以用<a href="vacancy-cost.html">空置成本计算器</a>。</p>';
+      '<p class="calc-note">第一年月均净现金流约 ' + money(netYear1 / 12) + '。想看不同定价下的空置代价，可以用<a href="vacancy-cost.html">空置成本计算器</a>。</p>';
 
-    reportUse(netYear <= 0 ? 'negative_cashflow' : (netProceeds <= 0 ? 'no_equity' : (netProceeds / netYear <= 8 ? 'rent_reasonable' : 'sell_worth_considering')));
+    // ── 增值情景（橙色区块，跟上面硬算的钱分开）──
+    var futureValue = v.price * Math.pow(1 + v.apprRate / 100, v.holdYears);
+    var futureClosing = futureValue * (v.closing / 100);
+    var futureSaleNet = futureValue - futureClosing - v.balance;
+    var cumRentAtHold = cumulativeAtYear(schedule, v.holdYears);
+    var totalIfHold = cumRentAtHold + futureSaleNet;
+    var diffVsSellNow = totalIfHold - netProceeds;
+
+    apprOut.innerHTML =
+      '<div class="appr-box">' +
+        '<div class="lbl">假设按 ' + v.apprRate + '%/年增值，持有 ' + v.holdYears + ' 年后</div>' +
+        '<div class="amt">' + money(totalIfHold) + '</div>' +
+        '<div style="font-size:.8rem;color:#9a6a1f;margin-top:2px">= 这 ' + v.holdYears + ' 年攒下的净租金 + 到时候卖掉的净得款</div>' +
+        '<div style="margin-top:12px">' +
+          line('房子届时大概值多少（现价 ' + money(v.price) + ' 起）', money(futureValue)) +
+          line(v.holdYears + ' 年累计净租金现金流（含租金增长）', money(cumRentAtHold)) +
+          line('到时候卖掉净得款（贷款余额按不变算）', money(futureSaleNet)) +
+          line('对比现在直接卖掉的 ' + money(netProceeds), (diffVsSellNow >= 0 ? '多 ' : '少 ') + money(Math.abs(diffVsSellNow)), 'total') +
+        '</div>' +
+        '<div style="font-size:.76rem;color:#9a6a1f;margin-top:10px;line-height:1.6">这一整块都是假设，不是硬算出来的钱——房价可能不涨、也可能跌，贷款余额实际会随还款下降。只用来估个量级，不是承诺。</div>' +
+      '</div>';
+
+    reportUse(verdictKey);
   }
 
   var touched = false, reported = false;
