@@ -4,6 +4,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/(.*)",
+      "destination": "https://rentalinca.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.rentalinca.com"
+        }
+      ]
+    },
+    {
       "source": "/guides/irvine-chinese-rental-agent.html",
       "destination": "/cities/irvine.html",
       "permanent": true
