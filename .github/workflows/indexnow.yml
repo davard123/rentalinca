@@ -1,0 +1,12 @@
+name: IndexNow
+
+on:
+  push:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify IndexNow
+        run: |
+          curl -sS -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" --data '{"host":"rentalinca.com","key":"e84ad24169fc0752e782d21d2ce63081","keyLocation":"https://rentalinca.com/e84ad24169fc0752e782d21d2ce63081.txt","urlList":["https://rentalinca.com/sitemap.xml"]}'
