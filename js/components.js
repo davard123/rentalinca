@@ -117,6 +117,7 @@ function buildFooter() {
         <a href="${BASE_PATH}tenants.html">\u79df\u5ba2\u627e\u623f</a>
         <a href="${BASE_PATH}buy-sell.html">\u4e70\u623f / \u5356\u623f</a>
         <a href="${BASE_PATH}property-management.html">\u7269\u4e1a\u7ba1\u7406</a>
+        <a href="https://www.loaninca.com" target="_blank" rel="noopener">\u8d37\u6b3e\u54a8\u8be2 LoanInCA</a>
       </div>
       <div class="footer-col">
         <h4>${ZH.footerAssist} Contact</h4>
