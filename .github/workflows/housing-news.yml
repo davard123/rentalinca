@@ -1,14 +1,8 @@
 name: Housing news source updates
 on:
   schedule:
-    - cron: '35 0,15 * * *'
+    - cron: '35 15 * * 1'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/housing-news.yml'
-      - 'scripts/news/**'
-      - 'tests/news.test.mjs'
 permissions:
   contents: write
 concurrency:
