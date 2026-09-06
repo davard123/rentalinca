@@ -47,6 +47,7 @@ function buildNav() {
         <a href="${BASE_PATH}buy-sell.html">${ZH.buySell}</a>
         <a href="${BASE_PATH}property-management.html">${ZH.management}</a>
         <a href="${BASE_PATH}cities.html">${ZH.cities}</a>
+        <a href="${BASE_PATH}news.html">房产动态</a>
         <a href="${BASE_PATH}cases.html">${ZH.cases}</a>
         <a href="${BASE_PATH}about.html">${ZH.about}</a>
       </div>
@@ -69,6 +70,7 @@ function buildNav() {
     <a href="${BASE_PATH}buy-sell.html">${ZH.buySell} Buy &amp; Sell</a>
     <a href="${BASE_PATH}property-management.html">${ZH.management} Property Mgmt</a>
     <a href="${BASE_PATH}cities.html">${ZH.cities} City Guides</a>
+    <a href="${BASE_PATH}news.html">房产动态 News</a>
     <a href="${BASE_PATH}cases.html">${ZH.cases} Cases</a>
     <a href="${BASE_PATH}about.html">${ZH.about} About</a>
     <a href="${BASE_PATH}contact.html" style="color:var(--green);font-weight:800">${ZH.wechatScan}</a>
@@ -111,6 +113,7 @@ function buildFooter() {
       </div>
       <div class="footer-col">
         <h4>Services</h4>
+        <a href="${BASE_PATH}news.html">南加州房产动态</a>
         <a href="${BASE_PATH}landlords.html">\u623f\u4e1c\u51fa\u79df</a>
         <a href="${BASE_PATH}calculators/rent-vs-sell.html">出租还是卖掉计算器</a>
         <a href="${BASE_PATH}calculators/vacancy-cost.html">空置成本计算器</a>

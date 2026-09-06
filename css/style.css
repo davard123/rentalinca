@@ -1306,3 +1306,9 @@ img[src*="wechat-qr"] { object-fit: contain !important; background: white; }
 /* Shared illustrative header avoids stretching small city-card photographs. */
 .page-header-photo { background-image: url('../images/home-scene-20260906.webp'); background-position: 65% center; }
 .case-image-caption { margin:0; padding:8px 16px; color:#5b625b; background:#f7f5f2; font-size:.8rem; line-height:1.5; }
+
+/* Keep the expanded news navigation comfortable before it can crowd. */
+@media (max-width:1360px) { .nav-links, .nav-cta .btn-primary { display:none; } .nav-hamburger { display:flex; } }
+
+.nav-inner > .nav-logo { flex-shrink:0; white-space:nowrap; }
+@media (min-width:1361px) { .nav-cta .nav-phone-secondary { display:none; } }

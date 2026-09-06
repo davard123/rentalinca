@@ -7,3 +7,8 @@ DEPLOYMENT.md
 server.js
 .env
 .env.*
+
+scripts/
+docs/
+tests/
+.github/
