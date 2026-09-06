@@ -1280,3 +1280,17 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, input:focu
   .page-next-step-actions .btn { width: 100%; justify-content: center; }
   .page-next-step-secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 10px; }
 }
+
+/* Readability and keyboard/touch access, retaining the existing green/gold identity. */
+:root { --text-mid: #626262; --text-light: #686868; }
+p { line-height: 1.85; }
+.btn, .faq-q { min-height: 46px; }
+input, select, textarea { font-size: 16px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #176caa; outline-offset: 4px; }
+.definition-links a { text-decoration: underline; text-underline-offset: 4px; }
+.page-header h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.35; }
+@media(max-width:600px) { .container { padding-inline: 20px; } .section { padding-block: 48px; } .definition-hero { padding: 24px 20px; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+
+.nav-hamburger { background: transparent; border: 0; min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
+.nav-mobile { max-height: calc(100dvh - 72px); overflow-y: auto; }

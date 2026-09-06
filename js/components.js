@@ -54,9 +54,9 @@ function buildNav() {
         <span class="nav-phone nav-phone-secondary">(949) 656-1278</span>
         <a href="${BASE_PATH}contact.html" class="btn btn-primary btn-sm">${ZH.wechatScan}</a>
       </div>
-      <div class="nav-hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <button type="button" class="nav-hamburger" id="hamburger" aria-label="打开菜单" aria-controls="mobileNav" aria-expanded="false">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </div>
   <div class="nav-mobile" id="mobileNav">

@@ -10,11 +10,22 @@ function initNav() {
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
   if (!hamburger || !mobileNav) return;
-  hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  function setMenu(open) {
+    mobileNav.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+  }
+  hamburger.addEventListener('click', () => setMenu(!mobileNav.classList.contains('open')));
   document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target))
-      mobileNav.classList.remove('open');
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) setMenu(false);
   });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+      setMenu(false);
+      hamburger.focus();
+    }
+  });
+  mobileNav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
   const path = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(a => {
     if (a.getAttribute('href') === path) a.classList.add('active');
