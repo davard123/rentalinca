@@ -375,7 +375,7 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
   padding: 28px;
   background:
     linear-gradient(135deg, rgba(18,54,42,.88) 0%, rgba(30,84,65,.72) 55%, rgba(201,169,110,.42) 100%),
-    url("../images/visual-family-tour.jpg") center 35% / cover no-repeat;
+    url("../images/home-scene-20260906.webp") center 35% / cover no-repeat;
 }
 .loan-program-eyebrow {
   display: inline-flex;
@@ -679,7 +679,7 @@ h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
   background: linear-gradient(135deg, rgba(22,54,41,.88) 0%, rgba(31,77,58,.72) 55%, rgba(42,100,80,.62) 100%);
 }
 .page-header-photo .container { position: relative; z-index: 1; }
-.page-header-city            { background-image: url("../images/visual-suburban-house.jpg"); }
+.page-header-city            { background-image: url("../images/home-scene-20260906.webp"); }
 .page-header-cities          { background-image: url("../images/visual-neighborhood-homes.jpg"); }
 .page-header-irvine          { background-image: url("../images/city-irvine.jpg"); }
 .page-header-los-angeles     { background-image: url("../images/city-los-angeles.jpg"); }
@@ -1294,3 +1294,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .nav-hamburger { background: transparent; border: 0; min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
 .nav-mobile { max-height: calc(100dvh - 72px); overflow-y: auto; }
+
+/* Image audit 2026-09-06: fictional housing illustrations, never listing evidence. */
+.city-image-note { margin: 12px 0 24px; font-size: .8rem; line-height: 1.7; color: var(--text-mid); }
+.page-header-photo .city-image-note { color: #fff; position: relative; z-index: 1; }
+.loan-program-visual.doctor-loan::after { content: "住宅示意图 · 非在售房源"; position: absolute; top: 12px; right: 12px; padding: 5px 9px; background: rgba(16,42,31,.88); color: #fff; font-size: 12px; border-radius: 4px; }
+img[src*="wechat-qr"] { object-fit: contain !important; background: white; }
+.nav-links a { white-space: nowrap; }
+@media (max-width:1280px) { .nav-links, .nav-cta .btn-primary { display:none; } .nav-hamburger { display:flex; } }
+
+/* Shared illustrative header avoids stretching small city-card photographs. */
+.page-header-photo { background-image: url('../images/home-scene-20260906.webp'); background-position: 65% center; }
+.case-image-caption { margin:0; padding:8px 16px; color:#5b625b; background:#f7f5f2; font-size:.8rem; line-height:1.5; }

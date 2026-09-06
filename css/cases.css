@@ -22,7 +22,7 @@ img{max-width:100%;display:block}
 .btn.light{background:#fff;color:var(--green);border-color:#d8d2c5}
 .btn.gold{background:var(--gold);color:#1b1609}
 .hero{position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(247,245,239,.98) 0%,rgba(247,245,239,.90) 45%,rgba(247,245,239,.15) 100%)}
-.hero:after{content:"";position:absolute;inset:0;background:url('../images/hero.jpg') center right/cover no-repeat;z-index:-2}
+.hero:after{content:"";position:absolute;inset:0;background:url('../images/home-scene-20260906.webp') center right/cover no-repeat;z-index:-2}
 .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(247,245,239,.92) 40%,rgba(247,245,239,.2) 100%);z-index:-1}
 .hero-wrap{min-height:760px;display:grid;grid-template-columns:1.04fr .86fr;gap:42px;align-items:center;padding:84px 0}
 .kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:900;font-size:13px}
