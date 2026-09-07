@@ -27,8 +27,8 @@
 {"@type":"FAQPage","@id":"https://rentalinca.com/calculators/rent-vs-sell.html#faq","mainEntity":[
 {"@type":"Question","name":"出租的净现金流怎么算？","acceptedAnswer":{"@type":"Answer","text":"用年租金收入，先按空置率打折，再减去房贷月供、地税、保险、HOA、维修预算和管理费。剩下的才是真正到手的钱。很多人只看月租减月供，会高估不少。"}},
 {"@type":"Question","name":"卖房净得款包含哪些成本？","acceptedAnswer":{"@type":"Answer","text":"售价减去经纪佣金、过户与其他成交费用，再减去尚未还清的贷款余额。这个计算器不含资本利得税、折旧回补或 1031 交换的影响——这几项因人而异，必须找 CPA 单独算。"}},
-{"@type":"Question","name":"「追平年数」为什么会随着我改数字变化很大？","acceptedAnswer":{"@type":"Answer","text":"因为它同时把租金逐年增长的假设算了进去，不是简单用第一年净现金流去除。租金涨得越快，追平就越快。数字本身没有问题——年数从几十年降到二十几年，说明这套房的现金流在明显变好，但不代表二十几年就一定「划算」，具体划不划算要看这个年数落在哪个区间。"}},
-{"@type":"Question","name":"房产增值那部分靠谱吗？","acceptedAnswer":{"@type":"Answer","text":"不靠谱，也不该靠谱——这就是为什么它被单独放在一个标了「仅供参考」的区块里，用完全不同的颜色跟上面的硬算数字区分开。历史涨幅不代表未来一定涨，这一项完全交给你自己判断，工具只是帮你把假设换算成数字。"}}]}]}
+{"@type":"Question","name":"「追平年数」为什么会随着我改数字变化很大？","acceptedAnswer":{"@type":"Answer","text":"因为它同时把租金逐年增长的假设算了进去，而不是只用第一年净现金流去除净得款。租金涨得越快，追平就越快。数字本身没有问题——年数从几十年降到二十几年，说明这套房的现金流在明显变好。这个年数只是回本时间，是否划算要结合现金需求、持有计划和其他成本来判断。"}},
+{"@type":"Question","name":"房产增值那部分靠谱吗？","acceptedAnswer":{"@type":"Answer","text":"这一项根据输入的房价年增长率计算。可以分别填入上涨、持平和下降的假设，比较持有房产的净值变化。"}}]}]}
 </script>
 <link rel="stylesheet" href="../css/style.css?v=20260906-news2">
 <style>
@@ -136,8 +136,8 @@
       <div id="calcOut"></div>
 
       <div class="appr-sec">
-        <h4>如果房子还会继续增值 <span class="appr-badge">仅供参考 · 非必然</span></h4>
-        <p class="sechint">这一项完全是假设——过去涨过不代表以后一定涨，也可能不涨甚至跌。填一个你自己觉得合理的数字，看看它对结果的影响有多大；不填或填 0 就是假设房价不变。</p>
+        <h4>如果房子还会继续增值 <span class="appr-badge">房价增长假设</span></h4>
+        <p class="sechint">输入你想比较的房价年增长率，查看它对结果的影响。填 0 表示房价持平，也可以输入负数比较房价下降的情形。</p>
         <div class="calc-grid">
           <div class="calc-field"><label>假设年增值率<span class="hint">%，房子每年涨价多少</span></label><input type="number" id="apprRate" min="0" max="30" step="0.5" value="4" inputmode="numeric"></div>
           <div class="calc-field"><label>持有年限<span class="hint">打算再拿多少年</span></label><input type="number" id="holdYears" min="1" max="60" step="1" value="10" inputmode="numeric"></div>
@@ -172,11 +172,11 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">「追平年数」为什么会随着我改数字变化很大？<span class="faq-icon">+</span></button>
-          <div class="faq-a">因为它同时把租金逐年增长的假设算了进去，不是简单用第一年净现金流去除净得款。租金涨得越快，追平就越快，所以这个数字对增长率很敏感——这是符合逻辑的，不是 bug。数字从几十年降到二十几年，说明现金流在明显变好；但具体算不算「划算」，要看这个年数落在哪个区间，年数本身的绝对值同样重要。</div>
+          <div class="faq-a">因为它同时把租金逐年增长的假设算了进去，而不是只用第一年净现金流去除净得款。租金涨得越快，追平就越快，所以这个数字对增长率很敏感。数字从几十年降到二十几年，说明现金流在明显变好；这个年数只是回本时间，是否划算要结合现金需求、持有计划和其他成本来判断。</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">房产增值那部分靠谱吗？<span class="faq-icon">+</span></button>
-          <div class="faq-a">不靠谱，也不该靠谱——这就是为什么它被单独放在一个标着「仅供参考」的橙色区块里，颜色和上面硬算的绿色/金色数字明显不一样。历史涨幅不代表未来一定涨，这一项完全交给你自己判断。</div>
+          <div class="faq-a">这一项根据输入的房价年增长率计算。可以分别比较上涨、持平和下降三种情形，查看房产净值的变化。</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">「追平年数」是什么意思？<span class="faq-icon">+</span></button>
@@ -191,7 +191,7 @@
 <div id="footer-placeholder"></div>
 <div class="compliance">
   David Dai · DRE# 02202763 · Universal Elite Realty 环球地产 · DRE# 02121645 · Irvine, California<br>
-  © 2026 rentalinca.com · 租金数据仅供参考
+  © 2026 rentalinca.com · 城市租金参考
 </div>
 <script src="../js/components.js?v=20260906-news2"></script>
 <script src="../js/rent-data.js"></script><script src="../js/main.js?v=20260906-images1"></script>
@@ -307,11 +307,11 @@
       tone = 'bad';
       var flipYear = findFlipYear(schedule);
       headline = '现在是负现金流，每年倒贴 ' + money(-netYear1);
-      bodyParts.push('按你填的数字，收上来的租金覆盖不了持有成本。这不代表一定要卖——如果你看重的是长期增值或暂时不想脱手，倒贴也可能是有意识的选择，但至少要知道自己每年在贴多少。');
+      bodyParts.push('按你填的数字，收上来的租金覆盖不了持有成本。如果计划继续持有，需要把每年的现金缺口纳入预算。');
       if (flipYear) {
         bodyParts.push('按你设的 ' + v.rentGrowth + '%/年租金增长，现金流大约会在第 ' + flipYear + ' 年转正；但要追上现在卖掉的 ' + money(netProceeds) + '，还需要更久。');
       } else {
-        bodyParts.push('按你设的 ' + v.rentGrowth + '%/年租金增长，未来 ' + HORIZON + ' 年内现金流都很难转正——差距不是靠时间能填平的。');
+        bodyParts.push('按你设的 ' + v.rentGrowth + '%/年租金增长，未来 ' + HORIZON + ' 年内现金流都很难转正——差距需要调整租金、成本或售价假设才能缩小。');
       }
       verdictKey = 'negative_cashflow';
     } else {
@@ -328,7 +328,7 @@
         if (tier.tone === 'good') {
           bodyParts.push('这个年数不算长，如果你不排斥当房东，出租是说得通的。');
         } else if (tier.tone === 'caution') {
-          bodyParts.push('这个年数偏慢，不是不能接受，但值得认真比较卖掉的方案，或者重新看看租金定价是不是偏低。');
+          bodyParts.push('回本时间较长，可以进一步比较出售方案，或结合周边同类房源检查租金定价。');
         } else {
           bodyParts.push('这个年数太长了，说明这套房的现金流相对市值明显偏低，卖掉通常更划算。');
         }
@@ -397,7 +397,7 @@
           line('到时候卖掉净得款（贷款余额按不变算）', money(futureSaleNet)) +
           line('对比现在直接卖掉的 ' + money(netProceeds), (diffVsSellNow >= 0 ? '多 ' : '少 ') + money(Math.abs(diffVsSellNow)), 'total') +
         '</div>' +
-        '<div style="font-size:.76rem;color:#9a6a1f;margin-top:10px;line-height:1.6">这一整块都是假设，不是硬算出来的钱——房价可能不涨、也可能跌，贷款余额实际会随还款下降。只用来估个量级，不是承诺。</div>' +
+        '<div style="font-size:.76rem;color:#9a6a1f;margin-top:10px;line-height:1.6">本区按你输入的房价增长率测算。贷款余额会随还款变化，调整增长率可以比较不同持有情形。</div>' +
       '</div>';
 
     reportUse(verdictKey);

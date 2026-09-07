@@ -59,7 +59,8 @@ test('403 stops; redirects never leave approved host',async()=>{
 });
 test('response size bounded',async()=>{await assert.rejects(()=>safeFetch(sources[1].url,sources[1],async()=>new Response('x'.repeat(2000001))),/2 MB/);});
 test('public feed rejects unreviewed summaries and duplicates',()=>{
-  const feed={version:1,contentUpdatedAt:now.toISOString(),items:[item]}; validate(feed);
-  assert.throws(()=>validate({...feed,items:[item,item]}));
-  assert.throws(()=>validate({...feed,items:[{...item,summary:'not reviewed'}]}));
+  const published={...item,title:'美国第二季度房价变化',summary:'FHFA 发布的季度房价指数显示，美国第二季度房价较去年同期上涨，报告同时提供州和都会区的详细数据。',reviewedAt:'2026-09-06'};
+  const feed={version:1,contentUpdatedAt:now.toISOString(),items:[published]}; validate(feed);
+  assert.throws(()=>validate({...feed,items:[published,published]}));
+  assert.throws(()=>validate({...feed,items:[{...published,summary:'not reviewed'}]}));
 });

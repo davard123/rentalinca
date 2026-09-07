@@ -45,6 +45,11 @@ export function relevant(item) {
 export function validDate(day, now = new Date()) {
   return /^\d{4}-\d{2}-\d{2}$/.test(day || '') && Number.isFinite(Date.parse(day)) && new Date(day).toISOString().slice(0,10) === day && day <= now.toISOString().slice(0,10);
 }
+export function readyForReaders(item) {
+  return typeof item.title === 'string' && /[\u3400-\u9fff]/.test(item.title)
+    && typeof item.summary === 'string' && item.summary.trim().length >= 50
+    && /[\u3400-\u9fff]/.test(item.summary) && validDate(item.reviewedAt);
+}
 export function merge(old, incoming, now = new Date()) {
   const map = new Map(old.map(i => [i.url, i]));
   for (const item of incoming) {
