@@ -29,7 +29,7 @@ jobs:
       - name: Publish only actual content changes
         shell: bash
         run: |
-          git add data/housing-news.json news.html index.html sitemap.xml
+          git add data/housing-news.json data/housing-news-pending.json news.html index.html sitemap.xml
           if git diff --cached --quiet; then
             echo 'No content change. No commit or deployment needed.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
@@ -40,3 +40,4 @@ jobs:
           # A concurrent human push is a reason to stop, never force-push production.
           git push origin HEAD:main
           echo 'Updated news data and static pages; existing Vercel Git deployment will publish.' >> "$GITHUB_STEP_SUMMARY"
+
