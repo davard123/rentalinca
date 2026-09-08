@@ -1312,3 +1312,44 @@ img[src*="wechat-qr"] { object-fit: contain !important; background: white; }
 
 .nav-inner > .nav-logo { flex-shrink:0; white-space:nowrap; }
 @media (min-width:1361px) { .nav-cta .nav-phone-secondary { display:none; } }
+
+/* Homepage prototype: role-based entry points above the fold. */
+.hero-audience-switcher {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+  max-width: 760px;
+}
+.hero-audience-label {
+  grid-column: 1 / -1;
+  color: rgba(255,255,255,.72);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+}
+.hero-audience-card {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 14px 15px;
+  border-radius: 14px;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.hero-audience-card:hover,
+.hero-audience-card:focus-visible { transform: translateY(-3px); background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.48); }
+.hero-audience-card-primary { background: rgba(201,169,110,.2); border-color: rgba(201,169,110,.56); }
+.hero-audience-card strong { font-size: .98rem; }
+.hero-audience-card small { color: rgba(255,255,255,.72); font-size: .78rem; line-height: 1.55; }
+.hero-audience-card b { color: var(--gold); font-size: .78rem; }
+@media (max-width: 700px) {
+  .hero-audience-switcher { grid-template-columns: 1fr; }
+  .hero-audience-label { margin-top: 2px; }
+  .hero-audience-card { min-height: 0; }
+}
