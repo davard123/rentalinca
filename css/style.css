@@ -1353,3 +1353,92 @@ img[src*="wechat-qr"] { object-fit: contain !important; background: white; }
   .hero-audience-label { margin-top: 2px; }
   .hero-audience-card { min-height: 0; }
 }
+
+/* ── FULL-SITE UI SYSTEM · 2026-09 ───────────────────────────────
+   Shared rhythm for the home page, service pages, city guides, cases and
+   news. The green/gold identity stays intact; surfaces and type now make
+   the next action obvious for Chinese readers on desktop and mobile. */
+:root {
+  --paper: #f8f6f2;
+  --paper-warm: #fffdf9;
+  --ink-deep: #142c26;
+  --ink-muted: #5f6964;
+  --line-soft: #ddd9d1;
+  --shadow-soft: 0 12px 34px rgba(17, 39, 31, .09);
+}
+
+body { background: var(--paper); color: var(--ink-deep); font-size: 16px; }
+.container { width: min(100% - 40px, 1200px); }
+.section { padding-block: clamp(64px, 8vw, 96px); }
+.section-title { letter-spacing: -.015em; text-wrap: balance; }
+.section-sub { line-height: 1.8; }
+
+.nav {
+  background: rgba(22, 54, 41, .97);
+  box-shadow: 0 4px 18px rgba(10, 30, 21, .16);
+  backdrop-filter: blur(14px);
+}
+.nav-inner { min-height: 70px; }
+.nav-logo-main { letter-spacing: -.03em; }
+.nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
+.nav-cta .btn { min-height: 44px; }
+
+.page-header,
+.page-header-photo {
+  padding: clamp(56px, 8vw, 92px) 0 58px;
+  background: linear-gradient(135deg, #102e26 0%, #1f4d3a 56%, #2c6750 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::after {
+  content: ''; position: absolute; inset: auto -10% -65% 38%; height: 420px;
+  border-radius: 50%; background: rgba(201,169,110,.12); pointer-events: none;
+}
+.page-header > .container { position: relative; z-index: 1; }
+.page-header h1 { color: #fff; max-width: 22ch; text-wrap: balance; }
+.page-header h1 span { display: block; margin-top: 9px; color: rgba(255,255,255,.72); font-size: .42em; letter-spacing: .01em; }
+.page-header p { max-width: 62ch; color: rgba(255,255,255,.82); font-size: 1.08rem; line-height: 1.8; }
+.page-header .breadcrumb, .page-header .breadcrumb a { color: rgba(255,255,255,.72); }
+.page-header .tag { background: rgba(255,255,255,.13); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+
+.service-card, .city-card, .case-card, .testimonial-card, .aside-card-light,
+.contact-form-card, .contact-info-card, .definition-card, .resource-card,
+.faq-item, .news-row, .info-box {
+  background: var(--paper-warm);
+  border-color: var(--line-soft);
+  box-shadow: var(--shadow-soft);
+}
+.service-card, .city-card, .case-card, .testimonial-card, .faq-item,
+.contact-form-card, .contact-info-card, .definition-card { border-radius: 18px; }
+.service-card:hover, .city-card:hover, .case-card:hover, .testimonial-card:hover {
+  transform: translateY(-3px); box-shadow: 0 18px 38px rgba(17,39,31,.14);
+}
+.service-card h3, .city-card h3, .case-card h3 { color: var(--ink-deep); }
+.service-card p, .city-card p, .case-card p, .faq-a, .news-row p { color: var(--ink-muted); }
+
+.estimator-card, .cta-banner, .landlord-tools-section,
+.tenant-assistant-section, .tenant-materials-section { border-radius: 22px; }
+.estimator-card { box-shadow: 0 18px 48px rgba(17,39,31,.13); }
+.cta-banner { margin-inline: 20px; }
+.news-intro { background: linear-gradient(135deg, #102e26, #2c6750); color: #fff; padding: clamp(52px,7vw,76px) 0 44px; }
+.news-intro h1 { color: #fff; }
+.news-intro p { color: rgba(255,255,255,.82); }
+.news-layout { padding-top: 44px; padding-bottom: 72px; }
+.news-row { padding: 28px 30px; margin-bottom: 16px; border: 1px solid var(--line-soft); border-radius: 16px; }
+.news-row h2 { color: var(--ink-deep); font-size: clamp(1.15rem, 2.3vw, 1.5rem); }
+.news-aside section { background: var(--paper-warm); border: 1px solid var(--line-soft); border-radius: 16px; box-shadow: var(--shadow-soft); padding: 22px; }
+
+.btn { min-height: 46px; border-radius: 12px; }
+.btn:focus-visible, .nav-hamburger:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #176caa; outline-offset: 3px; }
+input, select, textarea { border-radius: 10px; border-color: #b8bdb8; }
+.float-wechat { box-shadow: 0 12px 28px rgba(17,39,31,.2); }
+
+@media (max-width: 700px) {
+  .container { width: min(100% - 32px, 1200px); }
+  .nav-inner { min-height: 64px; }
+  .page-header { padding-block: 42px 36px; }
+  .page-header h1 { font-size: clamp(1.9rem, 9vw, 2.8rem); }
+  .news-row { padding: 22px 20px; }
+  .cta-banner { margin-inline: 0; border-radius: 0; }
+}
