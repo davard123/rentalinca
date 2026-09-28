@@ -1,0 +1,8 @@
+{
+  "template": "templates/videos.html",
+  "output": "videos.html",
+  "pageUrl": "https://rentalinca.com/videos.html",
+  "title": "南加州出租与买房视频：房东定租金、HOA、验房 | David Dai",
+  "description": "David Dai 的中文视频：房东怎么定租金、租客怎么挑、HOA 要看什么、买房怎么守住预算，以及南加州楼市和持有成本。",
+  "topics": ["rental", "buying", "market"]
+}

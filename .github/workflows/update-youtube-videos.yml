@@ -1,0 +1,45 @@
+name: Update YouTube videos
+
+on:
+  schedule:
+    # 每天太平洋时间凌晨一点左右读一次频道 RSS，有新视频就更新视频页
+    - cron: "15 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: youtube-videos-update
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Fetch channel RSS and render the videos page
+        run: node scripts/youtube-videos.mjs --refresh
+      - name: Validate
+        run: npm run -s check
+      - name: Publish changes
+        id: publish
+        run: |
+          if git diff --quiet -- data/youtube-videos.json videos.html sitemap.xml; then
+            echo "No new videos"
+            exit 0
+          fi
+          git config user.name "rentalinca-video-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/youtube-videos.json videos.html sitemap.xml
+          git commit -m "chore: sync new YouTube videos"
+          git pull --rebase origin main
+          git push
+          echo "pushed=1" >> "$GITHUB_OUTPUT"
+      - name: Notify IndexNow
+        if: steps.publish.outputs.pushed == '1'
+        run: |
+          curl -sS -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" --data '{"host":"rentalinca.com","key":"e84ad24169fc0752e782d21d2ce63081","keyLocation":"https://rentalinca.com/e84ad24169fc0752e782d21d2ce63081.txt","urlList":["https://rentalinca.com/videos.html"]}'
