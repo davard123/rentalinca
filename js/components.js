@@ -1,7 +1,7 @@
 /* Shared header/footer and contact-priority enhancements */
 
 // 任何一级子目录下的页面都要用 ../ 回到根。新增子目录时记得加进来。
-const BASE_PATH = /^\/(cities|guides|calculators)\//.test(window.location.pathname) ? '../' : '';
+const BASE_PATH = /^\/(cities|guides|calculators|en)\//.test(window.location.pathname) ? '../' : '';
 
 const ZH = {
   home: '\u9996\u9875',
