@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "contentUpdatedAt": "2026-09-06T21:00:00.000Z",
+  "contentUpdatedAt": "2026-09-28T21:20:30.981Z",
   "items": [
     {
       "url": "https://www.scag.ca.gov/news/scag-economic-roundtable-update-Sept-2026-Q3",
@@ -96,22 +96,6 @@
       ],
       "reviewedAt": "2026-09-06",
       "dataPeriod": "2026 年 4 月房价数据"
-    },
-    {
-      "url": "https://www.fhfa.gov/reports/house-price-index/2026/Q1",
-      "originalTitle": "U.S. House Price Index Report - 2026 Q1",
-      "published": "2026-05-26",
-      "dateBasis": "官网发布日期",
-      "source": "fhfa",
-      "region": "全美",
-      "category": "全美住房",
-      "title": "FHFA：美国第一季度房价同比上涨 1.7%",
-      "summary": "FHFA 2026 年第一季度房价报告显示，美国房价较 2025 年第一季度上涨 1.7%，较 2025 年第四季度上涨 0.5%。经季节调整后，3 月指数较 2 月上涨 0.1%。",
-      "paragraphs": [
-        "季度报告附件提供州、都会区、人口普查分区和全国数据，适合结合当地市场报告一起阅读。"
-      ],
-      "reviewedAt": "2026-09-06",
-      "dataPeriod": "2026 年第一季度；月度数据截至 2026 年 3 月"
     }
   ]
 }
