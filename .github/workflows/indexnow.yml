@@ -6,7 +6,22 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Notify IndexNow
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Notify IndexNow of changed pages
+        env:
+          INDEXNOW_HOST: rentalinca.com
+          INDEXNOW_KEY: e84ad24169fc0752e782d21d2ce63081
+          INDEXNOW_ALL: ""
+          BEFORE: ${{ github.event.before }}
         run: |
-          curl -sS -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" --data '{"host":"rentalinca.com","key":"e84ad24169fc0752e782d21d2ce63081","keyLocation":"https://rentalinca.com/e84ad24169fc0752e782d21d2ce63081.txt","urlList":["https://rentalinca.com/sitemap.xml"]}'
+          if git cat-file -e "$BEFORE" 2>/dev/null; then
+            export CHANGED_FILES="$(git diff --name-only "$BEFORE" "$GITHUB_SHA")"
+          fi
+          node .github/scripts/indexnow.mjs
