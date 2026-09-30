@@ -19,6 +19,7 @@ jobs:
           INDEXNOW_HOST: rentalinca.com
           INDEXNOW_KEY: e84ad24169fc0752e782d21d2ce63081
           INDEXNOW_ALL: ""
+          SITEMAP_FILE: sitemap.xml
           BEFORE: ${{ github.event.before }}
         run: |
           if git cat-file -e "$BEFORE" 2>/dev/null; then
