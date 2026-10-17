@@ -4,6 +4,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/templates/videos.html",
+      "destination": "/videos.html",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "destination": "https://rentalinca.com/$1",
       "permanent": true,
