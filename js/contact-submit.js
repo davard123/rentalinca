@@ -53,7 +53,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const tenantSearch = (() => {
       try { return JSON.parse(sessionStorage.getItem('rentalincaTenantSearch') || 'null'); } catch { return null; }
     })();
-    const turnstileToken = form.querySelector('input[name="turnstileToken"]')?.value || '';
+    // Turnstile writes its token to cf-turnstile-response, not to our own hidden
+    // turnstileToken field. Reading only turnstileToken sent an empty token and
+    // the API rejected every inquiry ("Turnstile verification is required").
+    const readTurnstileToken = () =>
+      form.querySelector('input[name="cf-turnstile-response"]')?.value ||
+      (window.turnstile && typeof window.turnstile.getResponse === 'function' ? window.turnstile.getResponse() : '') ||
+      form.querySelector('input[name="turnstileToken"]')?.value ||
+      '';
+    let turnstileToken = readTurnstileToken();
+    // The widget may still be finishing its check when someone submits quickly.
+    if (!turnstileToken && window.RENTALINCA_TURNSTILE_SITE_KEY) {
+      for (let i = 0; i < 16 && !turnstileToken; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        turnstileToken = readTurnstileToken();
+      }
+    }
+    if (!turnstileToken && window.RENTALINCA_TURNSTILE_SITE_KEY) {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+      errorBox.textContent = '请先完成表单下方的人机验证（勾选框），再点提交。如果看不到验证框，请刷新页面，或直接微信 / 电话联系 David。';
+      errorBox.style.display = 'block';
+      return;
+    }
     const query = new URLSearchParams(window.location.search);
 
     const payload = {
@@ -100,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.disabled = false;
         submitButton.textContent = originalLabel;
       }
+      // Turnstile tokens are single-use; get a fresh one before the next try.
+      try { window.turnstile && window.turnstile.reset(); } catch {}
       errorBox.textContent = '提交没有成功，请稍后再试，或直接微信 / 电话联系 David。';
       errorBox.style.display = 'block';
       if (window.ricaTrack) {
