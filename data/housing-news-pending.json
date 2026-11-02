@@ -1,5 +1,23 @@
 [
   {
+    "url": "https://www.fhfa.gov/reports/house-price-index/2026/10",
+    "originalTitle": "U.S. House Price Index - October 2026",
+    "published": "2026-10-27",
+    "dateBasis": "官网发布日期",
+    "source": "fhfa",
+    "region": "全美",
+    "category": "全美住房"
+  },
+  {
+    "url": "https://www.scag.ca.gov/news/state-releases-regional-housing-needs-determination-southern-california",
+    "originalTitle": "State Releases Regional Housing Needs Determination for Southern California",
+    "published": "2026-10-20",
+    "dateBasis": "官网发布日期",
+    "source": "scag",
+    "region": "南加州",
+    "category": "南加市场"
+  },
+  {
     "url": "https://www.scag.ca.gov/news/understanding-7th-cycle-regional-housing-needs-allocation-process-what-know-process-gets",
     "originalTitle": "Understanding the 7th Cycle Regional Housing Needs Allocation Process: What to Know as the Process Gets Underway",
     "published": "2026-10-06",

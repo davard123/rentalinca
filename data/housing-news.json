@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "contentUpdatedAt": "2026-09-28T21:20:30.981Z",
+  "contentUpdatedAt": "2026-11-02T23:11:05.095Z",
   "items": [
     {
       "url": "https://www.scag.ca.gov/news/scag-economic-roundtable-update-Sept-2026-Q3",
@@ -80,22 +80,6 @@
       ],
       "reviewedAt": "2026-09-06",
       "dataPeriod": "2026 年 5 月房价数据"
-    },
-    {
-      "url": "https://www.fhfa.gov/reports/house-price-index/2026/6",
-      "originalTitle": "U.S. House Price Index - June 2026",
-      "published": "2026-06-30",
-      "dateBasis": "官网发布日期",
-      "source": "fhfa",
-      "region": "全美",
-      "category": "全美住房",
-      "title": "FHFA：2026 年 4 月美国房价环比下降 0.1%",
-      "summary": "FHFA 2026 年 6 月发布的月度房价指数显示，美国房价在 2026 年 4 月较 3 月下降 0.1%，较 2025 年 4 月上涨 2.0%。此前公布的 3 月月度变化由下降 0.1% 修订为上涨 0.2%。",
-      "paragraphs": [
-        "九个人口普查分区的月度变化介于下降 0.8% 和上涨 1.0% 之间，年度变化介于上涨 0.2% 和上涨 4.4% 之间。"
-      ],
-      "reviewedAt": "2026-09-06",
-      "dataPeriod": "2026 年 4 月房价数据"
     }
   ]
 }
