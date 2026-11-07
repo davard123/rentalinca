@@ -1,0 +1,25 @@
+/* Rental screening and verification additions, scoped to relevant pages. */
+.rental-safety-note { border-left: 4px solid var(--primary, #276749); background: #f2f7f3; color: #24382b; padding: 18px 20px; margin: 20px 0; line-height: 1.85; overflow-wrap: anywhere; }
+.rental-verification-section { padding: 48px 0; border-bottom: 1px solid var(--border, #ddd); background: #fafcf9; }
+.rental-verification-content { max-width: 960px; }
+.rental-verification-content h2 { line-height: 1.45; margin-bottom: 18px; }
+.rental-verification-content h3 { line-height: 1.5; margin: 28px 0 12px; }
+.rental-verification-content p { margin: 0 0 16px; overflow-wrap: anywhere; }
+.rental-verification-content a, .rental-safety-note a, .rental-source-note a { text-decoration: underline; text-underline-offset: .2em; }
+.rental-verification-check { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; line-height: 1.7; }
+.rental-verification-check input { flex: 0 0 auto; margin-top: 6px; width: 18px; height: 18px; }
+.rental-source-note { font-size: .86rem; color: var(--text-mid, #555); line-height: 1.8; margin: 20px 0; }
+#rental-verification, #screening-faq { scroll-margin-top: 100px; }
+@media (max-width: 600px) { .rental-verification-section { padding: 32px 0; } .rental-safety-note { padding: 14px; } }
+@media print {
+  .tenant-materials-section > .container > div:first-child { display: block !important; }
+  .rental-safety-note, .rental-verification-section { display: block !important; color: #000; background: #fff; }
+  .rental-verification-section { padding: 16px 0; }
+  .rental-verification-content { max-width: none; }
+  .rental-verification-content h2, .rental-verification-content h3 { break-after: avoid; }
+  .rental-verification-content p, .rental-verification-check { orphans: 3; widows: 3; }
+  .faq-a { display: block !important; max-height: none !important; }
+  .faq-q { break-after: avoid; }
+  .faq-icon { display: none; }
+  #nav-placeholder, #footer-placeholder, .sticky-aside, .compliance { display: none !important; }
+}

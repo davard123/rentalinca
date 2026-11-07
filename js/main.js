@@ -34,11 +34,28 @@ function initNav() {
 
 // ── FAQ Accordion ─────────────────────────────────────────────────────
 function initFAQ() {
-  document.querySelectorAll('.faq-q').forEach(btn => {
+  const buttons = [...document.querySelectorAll('.faq-q')];
+  const setOpen = (btn, open) => {
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.nextElementSibling.classList.toggle('open', open);
+  };
+  buttons.forEach((btn, index) => {
+    const answer = btn.nextElementSibling;
+    if (!answer) return;
+    btn.type = 'button';
+    if (!answer.id) {
+      let id = 'faq-answer-' + index;
+      while (document.getElementById(id)) id += '-panel';
+      answer.id = id;
+    }
+    btn.setAttribute('aria-controls', answer.id);
+    btn.querySelector('.faq-icon')?.setAttribute('aria-hidden', 'true');
+    setOpen(btn, btn.classList.contains('open'));
     btn.addEventListener('click', () => {
       const isOpen = btn.classList.contains('open');
-      document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
-      if (!isOpen) { btn.classList.add('open'); btn.nextElementSibling.classList.add('open'); }
+      buttons.forEach(b => { if (b.nextElementSibling) setOpen(b, false); });
+      if (!isOpen) setOpen(btn, true);
     });
   });
 }

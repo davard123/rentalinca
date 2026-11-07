@@ -5,7 +5,7 @@
   "description": "rentalinca.com website with rental estimate and inquiry backend",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check js/main.js && node --check js/components.js && node --check js/rent-data.js && node --check api/_shared.js && node --check api/rental-estimate.js && node --check api/inquiries.js && node scripts/sync-facts.js --check",
+    "check": "node --check server.js && node --check js/main.js && node --check js/components.js && node --check js/rent-data.js && node --check api/_shared.js && node --check api/rental-estimate.js && node --check api/inquiries.js && node scripts/sync-facts.js --check && node --test tests/rental-safety.test.mjs",
     "sync:facts": "node scripts/sync-facts.js",
     "sync:facts:check": "node scripts/sync-facts.js --check",
     "news:update": "node scripts/news/update.mjs && node scripts/news/render.mjs",
