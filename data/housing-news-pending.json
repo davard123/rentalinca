@@ -1,5 +1,23 @@
 [
   {
+    "url": "https://www.scag.ca.gov/news/scag-regional-council-approves-objection-states-regional-housing-needs-determination-southern-california",
+    "originalTitle": "SCAG Regional Council Approves Objection to State’s Regional Housing Needs Determination for Southern California",
+    "published": "2026-11-05",
+    "dateBasis": "官网发布日期",
+    "source": "scag",
+    "region": "南加州",
+    "category": "南加市场"
+  },
+  {
+    "url": "https://www.scag.ca.gov/news/toolbox-tuesday-recap-introduction-21st-century-road-housing-act",
+    "originalTitle": "Toolbox Tuesday Recap: An Introduction to the 21st Century ROAD to Housing Act",
+    "published": "2026-11-03",
+    "dateBasis": "官网发布日期",
+    "source": "scag",
+    "region": "南加州",
+    "category": "南加市场"
+  },
+  {
     "url": "https://www.fhfa.gov/reports/house-price-index/2026/10",
     "originalTitle": "U.S. House Price Index - October 2026",
     "published": "2026-10-27",
@@ -34,14 +52,5 @@
     "source": "fhfa",
     "region": "全美",
     "category": "全美住房"
-  },
-  {
-    "url": "https://www.scag.ca.gov/news/scag-surveying-local-jurisdictions-kick-rhna-process",
-    "originalTitle": "SCAG Surveying Local Jurisdictions to Kick Off RHNA Process",
-    "published": "2026-09-14",
-    "dateBasis": "官网发布日期",
-    "source": "scag",
-    "region": "南加州",
-    "category": "南加市场"
   }
 ]
