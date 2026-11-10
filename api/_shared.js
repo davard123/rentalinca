@@ -373,19 +373,43 @@ async function sendResendAutoReply(inquiry) {
 </body>
 </html>`
 
-  await fetch('https://api.resend.com/emails', {
+  // 发不出去时不能悄悄失败：记日志，并在 Telegram 上提醒（只带状态码和 Resend 给的原因，不带客户信息）
+  let failure = '';
+  try {
+    const mailRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify({
+        from,
+        to: inquiry.email,
+        subject: `已收到您的物业管理咨询 | RentalInCA`,
+        html,
+      }),
+    });
+    if (!mailRes.ok) {
+      const detail = (await mailRes.text().catch(() => '')).slice(0, 300);
+      failure = `HTTP ${mailRes.status} ${detail}`;
+    }
+  } catch (error) {
+    failure = `请求出错：${error.message}`;
+  }
+  if (!failure) return;
+  console.error('Auto-reply email failed:', failure);
+  const botToken = String(process.env.TELEGRAM_BOT_TOKEN || '').trim();
+  const chatId = String(process.env.TELEGRAM_CHAT_ID || '').trim();
+  if (!botToken || !chatId) return;
+  await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json; charset=utf-8',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from,
-      to: inquiry.email,
-      subject: `已收到您的物业管理咨询 | RentalInCA`,
-      html,
+      chat_id: chatId,
+      text: `⚠️ RentalInCA 给客户的自动回复邮件没发出去（咨询本身已收到）
+原因：${failure}`,
     }),
-  })
+  }).catch(() => {});
 }
 
 async function sendTelegramNotification(recordKind, record) {
