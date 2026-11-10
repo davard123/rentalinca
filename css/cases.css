@@ -107,3 +107,9 @@ select,input{width:100%;padding:16px 18px;border-radius:14px;border:1px solid #d
   .nav-cta .light{display:none}.hero-actions{flex-direction:column}.btn{width:100%}
   .section{padding:64px 0}.steps{grid-template-columns:1fr}.cta{padding:32px}.city-card{min-height:230px}
 }
+
+/* 2026-11-09：案例页导航是米白底，但共用导航里的网站名、菜单按钮是白色，印上去看不见。这里改成深绿。 */
+.nav .nav-logo-main{color:var(--green)}
+.nav .nav-logo-sub{color:#5f6964}
+.nav .nav-hamburger span{background:var(--green)}
+.nav .nav-links a{color:var(--green)}

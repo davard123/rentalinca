@@ -1442,3 +1442,21 @@ input, select, textarea { border-radius: 10px; border-color: #b8bdb8; }
   .news-row { padding: 22px 20px; }
   .cta-banner { margin-inline: 0; border-radius: 0; }
 }
+
+/* ── 看不清的字 · 2026-11-09 ───────────────────────────────────────────
+   逐页核对对比度后修正。原因多数是卡片后来换成了浅色底，字还留着给深色底用的白色。 */
+/* 客户评价：卡片是米白底，原来白字印在上面整块像空白 */
+.testimonial-card .testimonial-text { color: var(--ink-deep, #142c26); }
+.testimonial-card .testimonial-author { color: var(--ink-muted, #5f6964); }
+/* 城市卡片：照片上的字加深遮罩、加阴影，中文小字不再半透明 */
+.city-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.10) 10%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.82) 100%); }
+.city-name, .city-name-cn, .city-desc-tag, .city-price { text-shadow: 0 1px 3px rgba(0,0,0,.65); }
+.city-name-cn { color: #fff; }
+.city-desc-tag { color: rgba(255,255,255,.94); }
+.city-price { color: #f6dfae; }
+.city-area-tag { background: #e3c88f; color: #1c2f27; text-shadow: none; }
+/* 金色按钮：白字在金色上对比只有 2.2，改成深绿字 */
+.btn-gold, .btn-gold:hover { color: #142c26; }
+/* 微信绿：小字和悬浮按钮加深，仍然是绿色 */
+.wechat-qr-label { color: #087a3d; }
+.float-wechat { background: #077d38; }
