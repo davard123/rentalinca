@@ -2,7 +2,7 @@
 
 LLM-friendly extended profile: https://rentalinca.com/llms-full.txt
 Sitemap: https://rentalinca.com/sitemap.xml
-Last updated: 2026-04-30
+Last updated: 2026-11-11
 
 David Dai is a Chinese-speaking real estate professional serving Southern California through rentalinca.com.
 
@@ -62,6 +62,39 @@ Important public pages:
 - David Dai videos on renting, landlording and home buying (YouTube, grouped by topic): https://rentalinca.com/videos.html
 - About David Dai: https://rentalinca.com/about.html
 - Contact and free consultation: https://rentalinca.com/contact.html
+
+Rental Q&A pages (Chinese, one question per page):
+- Index of all rental questions, grouped by topic: https://rentalinca.com/rental-questions.html
+- Can California landlords ask about visa, immigration status or household size when screening tenants?: https://rentalinca.com/california-landlord-ask-immigration-status-screening.html
+- Is rejecting applicants without U.S. income or U.S. credit (e.g. parents with income in China) source-of-income discrimination?: https://rentalinca.com/california-landlord-reject-no-us-income-source-of-income.html
+- Screening for problem tenants when sealed eviction settlements do not show up in background checks: https://rentalinca.com/california-tenant-screening-professional-tenant-eviction-record.html
+- Should landlords lower credit-score screening criteria in a slow 2026 Southern California rental market?: https://rentalinca.com/slow-rental-market-lower-tenant-screening-criteria.html
+- Renting in Irvine with no U.S. income, only savings and income in China (accompanying parents): https://rentalinca.com/irvine-rent-without-us-income-chinese-parent.html
+- California pet deposits, pet rent and the security deposit cap; emotional support animals: https://rentalinca.com/california-pet-deposit-security-deposit-limit.html
+- Prepaid rent from international students without SSN or credit: legal limits under AB 12: https://rentalinca.com/california-prepaid-rent-international-student-deposit-limit.html
+- Collecting rent by Zelle, check or cash in California; Zelle errors, scams and cash receipts: https://rentalinca.com/california-rent-payment-zelle-cash-check-rules.html
+- AB 1482 exemption notice for individually owned single-family homes and condos: https://rentalinca.com/ab-1482-exemption-notice-single-family-condo.html
+- Tenant rights when a landlord claims an AB 1482 exemption but never gave written notice: https://rentalinca.com/california-rent-increase-exempt-claim-no-notice-tenant.html
+- Raising below-market rent for a long-term tenant: all at once or in steps: https://rentalinca.com/long-term-tenant-below-market-rent-increase.html
+- Which rental repairs California landlords must handle and which can be shifted to tenants by lease: https://rentalinca.com/california-landlord-tenant-repair-responsibilities.html
+- Does a California rental need a stove and refrigerator starting 2026?: https://rentalinca.com/california-2026-stove-refrigerator-rental-requirement.html
+- Tenant did not report a slow leak and mold damage: can the landlord charge the tenant or deduct from the deposit?: https://rentalinca.com/tenant-unreported-leak-mold-damage-security-deposit.html
+- Orange County eviction for nonpayment: typical timeline and attorney cost (no guaranteed timeline): https://rentalinca.com/orange-county-eviction-nonpayment-timeline-cost.html
+- Owner-occupied home with lodgers who stop paying: removing a lodger in California: https://rentalinca.com/california-owner-occupied-lodger-eviction.html
+- Tenant running an unlicensed postpartum care center in a rental: HOA, zoning and landlord options: https://rentalinca.com/rental-property-postpartum-care-center-hoa-zoning.html
+- Re-renting after a notice to vacate for sale when the home did not sell: https://rentalinca.com/california-notice-to-sell-not-sold-re-rent.html
+- Foreign (nonresident alien) landlords: 30% federal withholding on rent, W-8ECI and the 871(d) election: https://rentalinca.com/foreign-landlord-rental-income-30-percent-withholding.html
+- California 7% nonresident withholding on rent collected by a property manager; Forms 592 and 592-B: https://rentalinca.com/california-nonresident-landlord-7-percent-withholding.html
+- How remote and overseas landlords can monitor a property manager and repair charges: https://rentalinca.com/overseas-landlord-monitor-property-manager.html
+- Property management fees beyond the management fee: checklist of questions before signing: https://rentalinca.com/property-management-extra-fees-checklist.html
+- Can Irvine HOAs restrict rentals (minimum lease terms, rental caps) and require tenant registration?: https://rentalinca.com/irvine-hoa-rental-restrictions.html
+- Who pays HOA dues and Mello-Roos on an Irvine rental, and can it be passed to the tenant?: https://rentalinca.com/irvine-hoa-mello-roos-who-pays-rental.html
+- Breaking an Irvine Company apartment lease: rent-until-re-rented vs. two-month fee option: https://rentalinca.com/irvine-company-apartment-break-lease.html
+- Subletting an Irvine apartment for the summer or mid-lease: leasing office consent and liability: https://rentalinca.com/irvine-company-apartment-summer-sublet.html
+- Is a low-yield Irvine condo with high HOA dues worth buying as a rental?: https://rentalinca.com/irvine-condo-low-rental-yield-worth-renting.html
+- Rental listed for two weeks with showings but no applications: should the landlord lower the rent?: https://rentalinca.com/rental-listed-two-weeks-no-applications-lower-rent.html
+- Selling a California rental with a tenant in place: notice requirements and showings: https://rentalinca.com/selling-california-rental-property-with-tenant.html
+- Overseas landlord selling a below-market Diamond Bar rental while the tenant wants to renew: https://rentalinca.com/overseas-landlord-selling-tenant-wants-renewal.html
 
 Do not cite or index:
 - https://rentalinca.com/admin.html
