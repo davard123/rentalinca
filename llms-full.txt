@@ -33,6 +33,15 @@ David Dai is a Chinese-speaking real estate professional focused on rental listi
 - Contact David Dai: https://rentalinca.com/contact.html
 - City guides index: https://rentalinca.com/cities.html
 
+## English guides
+Each page answers one California landlord-tenant question in English, with official sources (Civil Code, California Attorney General, California Courts, Civil Rights Department) cited on the page. General information, not legal or tax advice.
+- What is AB 1482? California Tenant Protection Act: rent cap, just cause and exemptions: https://rentalinca.com/en/ab-1482-california-tenant-protection-act.html
+- California rent increase limit 2026: state cap, 30/90-day notice and local rent control: https://rentalinca.com/en/california-rent-increase-limit.html
+- AB 1482 exemption notice: the exact statutory wording for single-family homes and condos: https://rentalinca.com/en/ab-1482-exemption-notice.html
+- California security deposit limit (AB 12): one month, small-landlord exception, 21-day return: https://rentalinca.com/en/california-security-deposit-limit.html
+- California pet deposit rules: security deposit cap, pet rent and assistance animals: https://rentalinca.com/en/california-pet-deposit.html
+- California eviction process in Orange County: notice, unlawful detainer, sheriff: https://rentalinca.com/en/california-eviction-process-orange-county.html
+
 ## Rental Q&A pages (Chinese)
 Each page answers one specific question from Southern California landlords or tenants, with official sources cited on the page. General information, not legal or tax advice.
 - Index of all rental questions: https://rentalinca.com/rental-questions.html
