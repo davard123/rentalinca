@@ -40,6 +40,16 @@
   }
   window.ricaTrack = track;
 
+  /** 发一个 GA4 事件（gtag 在各页 <head> 里加载）。没加载到就跳过。 */
+  function gaEvent(name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    } catch (e) {
+      // 埋点永远不能影响页面功能
+    }
+  }
+  window.ricaGaEvent = gaEvent;
+
   function pageKey() {
     return window.location.pathname.replace(/^\//, '') || 'index.html';
   }
@@ -53,7 +63,12 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
 
+      // GA4：联系方式点击（命名与 loaninca 一致）
+      if (href.indexOf('mailto:') === 0) gaEvent('contact_email', { page: page });
+      if (/^https?:\/\/(t\.me|telegram\.me|telegram\.org)\//i.test(href) || href.indexOf('tg:') === 0) gaEvent('contact_telegram', { page: page });
+
       if (href.indexOf('tel:') === 0) {
+        gaEvent('contact_phone', { page: page });
         track('phone_clicked', { page: page });
         return;
       }

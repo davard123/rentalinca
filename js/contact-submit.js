@@ -119,6 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.ricaTrack) {
         window.ricaTrack('lead_submitted', { source: payload.source, page: payload.page });
       }
+      // GA4：只在服务端返回成功（response.ok 且 result.ok）之后才发
+      try { if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { source: payload.source, page: payload.page }); } catch {}
     } catch (error) {
       if (submitButton) {
         submitButton.disabled = false;
