@@ -79,6 +79,7 @@ Each page answers one specific question from Southern California landlords or te
 - Breaking an Irvine Company apartment lease: rent-until-re-rented vs. two-month fee option: https://rentalinca.com/irvine-company-apartment-break-lease.html
 - Subletting an Irvine apartment for the summer or mid-lease: leasing office consent and liability: https://rentalinca.com/irvine-company-apartment-summer-sublet.html
 ### Selling, pricing and leasing up
+- Irvine median rent by bedroom and ZIP code, with sources (Census ACS, HUD Small Area FMR, Zillow ZORI): https://rentalinca.com/irvine-rent-by-bedroom-zip-data.html
 - Is a low-yield Irvine condo with high HOA dues worth buying as a rental?: https://rentalinca.com/irvine-condo-low-rental-yield-worth-renting.html
 - Rental listed for two weeks with showings but no applications: should the landlord lower the rent?: https://rentalinca.com/rental-listed-two-weeks-no-applications-lower-rent.html
 - Selling a California rental with a tenant in place: notice requirements and showings: https://rentalinca.com/selling-california-rental-property-with-tenant.html
