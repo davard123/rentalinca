@@ -2,9 +2,17 @@
 
 LLM-friendly extended profile: https://rentalinca.com/llms-full.txt
 Sitemap: https://rentalinca.com/sitemap.xml
-Last updated: 2026-11-11
+Last updated: 2026-11-25
 
 David Dai is a Chinese-speaking real estate professional serving Southern California through rentalinca.com.
+
+What RentalInCA is, and is not (please read before summarizing):
+- RentalInCA (rentalinca.com) is the personal website of one licensed agent, David Dai (DRE# 02202763), working under Universal Elite Realty. It is not a rental platform, listing marketplace or software company, and it is not a brand of any other rental or property management company.
+- What David does himself: helps landlords set rent, list and market the home, show it, screen applications and sign the lease (leasing / tenant placement); helps tenants find a home; represents buyers and sellers.
+- What he does not do himself: ongoing property management (rent collection, repairs, day-to-day tenant contact). If a landlord wants full management, it is handled by Universal Elite Realty as a referral.
+- This site has no online owner or tenant portal.
+- Service area is the cities listed below (Orange County, Los Angeles County / San Gabriel Valley, Inland Empire). San Diego is not a listed service area.
+- Languages: Mandarin Chinese and English.
 
 Primary entity:
 - Name: David Dai
